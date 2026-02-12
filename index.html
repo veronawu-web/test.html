@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026 VIP Offline Gala | Exclusive Access</title>
+    <title>2026 VIP Offline Gala | Titanium Excellence</title>
     <style>
         :root {
             --bg-dark: #050108;
@@ -11,6 +11,7 @@
             --brand-purple: #8a2be2;
             --vip-gold: #fccd4d;
             --gold-gradient: linear-gradient(135deg, #fceabb 0%, #fccd4d 50%, #f8b500 100%);
+            --metallic-silver: linear-gradient(135deg, #777 0%, #eee 50%, #777 100%);
             --glass: rgba(255, 255, 255, 0.03);
             --glass-border: rgba(255, 255, 255, 0.12);
             --text-dim: rgba(255, 255, 255, 0.6);
@@ -19,21 +20,21 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', 'Noto Sans TC', sans-serif; }
         body { background-color: var(--bg-dark); color: white; overflow-x: hidden; line-height: 1.5; }
 
-        .container { max-width: 600px; margin: 0 auto; padding: 20px 0; }
+        .container { max-width: 600px; margin: 0 auto; padding: 10px 0; }
         header { text-align: center; padding: 20px; }
         h1 { font-size: 2.2rem; font-weight: 900; background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
         /* --- 1. 基本資訊區 --- */
         .basic-info-box {
-            margin: 10px 20px 30px; padding: 20px; border-radius: 20px;
+            margin: 0 20px 30px; padding: 20px; border-radius: 20px;
             background: linear-gradient(145deg, rgba(255, 45, 120, 0.1), rgba(138, 43, 226, 0.1));
             border: 1px solid var(--glass-border); display: flex; flex-direction: column; gap: 12px;
         }
         .info-item { display: flex; align-items: center; gap: 12px; font-size: 14px; }
         .info-icon { width: 32px; height: 32px; background: var(--glass); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--brand-pink); border: 1px solid rgba(255, 45, 120, 0.3); }
 
-        /* --- 2. 3D 主播輪播 (含點擊邏輯) --- */
-        .host-section { margin-bottom: 40px; position: relative; }
+        /* --- 2. 3D 主播輪播 --- */
+        .host-section { margin-bottom: 30px; position: relative; }
         .carousel-wrapper {
             display: flex; overflow-x: auto; gap: 0;
             scroll-snap-type: x mandatory; padding: 20px 0;
@@ -51,39 +52,74 @@
         .host-info { position: absolute; bottom: 0; left: 0; width: 100%; padding: 20px; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); text-align: center; }
         .carousel-spacer { flex: 0 0 15%; }
 
-        /* --- 3. 鑽石獎勵門檻 --- */
-        .section-title { padding: 0 20px; margin-bottom: 15px; color: #00f2ff; font-size: 1.2rem; display: flex; align-items: center; gap: 8px; }
-        .reward-table { margin: 0 20px 30px; border-radius: 20px; overflow: hidden; background: var(--glass); border: 1px solid var(--glass-border); }
-        .reward-row { display: grid; grid-template-columns: 90px 1fr; border-bottom: 1px solid var(--glass-border); }
-        .row-head { background: rgba(255, 45, 120, 0.1); padding: 12px; font-size: 11px; font-weight: bold; color: var(--brand-pink); text-align: center; display: flex; align-items: center; justify-content: center; }
-        .row-body { padding: 12px 15px; font-size: 13px; }
+        /* --- 3. 鑽石獎勵門檻 + LV30 加碼 --- */
+        .reward-group { margin: 0 20px 30px; border-radius: 24px; background: var(--glass); border: 1px solid var(--glass-border); overflow: hidden; }
+        .section-title { padding: 20px 20px 5px; color: #00f2ff; font-size: 1.1rem; font-weight: 800; display: flex; align-items: center; gap: 8px; }
+        .reward-table { padding: 10px 20px 20px; }
+        .reward-row { display: grid; grid-template-columns: 85px 1fr; border-bottom: 1px solid var(--glass-border); padding: 10px 0; }
+        .row-head { font-size: 11px; font-weight: bold; color: var(--brand-pink); }
+        .row-body { font-size: 13px; color: #fff; }
+        .lv30-integrated-banner { background: linear-gradient(90deg, #3d0000, #1a0b0b); padding: 15px; border-top: 1px solid var(--vip-gold); text-align: center; }
+        .lv30-text { font-size: 13px; color: var(--vip-gold); font-weight: bold; }
 
-        /* --- 4. 互動流程 --- */
+        /* --- 4. VIP 階級特權 (三並排 + 金屬動態) --- */
+        .vip-tiers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 0 20px 30px; }
+        .tier-col { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 18px; padding: 15px 5px; text-align: center; position: relative; overflow: hidden; }
+        
+        /* 金屬感 LV 50+ 樣式 */
+        .tier-col.metallic-50 {
+            background: linear-gradient(135deg, #222 0%, #444 50%, #222 100%);
+            border: 2px solid #999;
+            box-shadow: 0 0 15px rgba(255,255,255,0.1);
+        }
+        /* 金屬掃光動畫 */
+        .tier-col.metallic-50::after {
+            content: ''; position: absolute; top: -100%; left: -100%; width: 300%; height: 300%;
+            background: linear-gradient(45deg, transparent 45%, rgba(255,255,255,0.2) 50%, transparent 55%);
+            animation: metalShine 4s infinite;
+        }
+        @keyframes metalShine {
+            0% { transform: translate(0,0); }
+            100% { transform: translate(30%, 30%); }
+        }
+
+        .tier-col.gold { background: rgba(252, 205, 77, 0.05); border-color: var(--vip-gold); }
+        .tier-name { font-size: 10px; font-weight: bold; margin-bottom: 8px; position: relative; z-index: 1; }
+        .tier-feature { font-size: 9px; color: var(--text-dim); line-height: 1.4; list-style: none; position: relative; z-index: 1; }
+
+        /* --- 5. 用戶報到基本福利 --- */
+        .perks-section { margin: 0 20px 30px; }
+        .perks-box { border-radius: 24px; background: var(--glass); border: 1px solid var(--glass-border); padding: 20px; }
+        .perks-header { color: var(--brand-pink); font-size: 1.1rem; font-weight: bold; margin-bottom: 15px; text-align: center; }
+        .perks-table { width: 100%; border-collapse: collapse; font-size: 11px; }
+        .perks-table th { color: var(--text-dim); padding: 10px 2px; border-bottom: 1px solid var(--glass-border); text-align: center; }
+        .perks-table td { padding: 12px 2px; border-bottom: 1px solid var(--glass-border); text-align: center; }
+        .highlight-text { color: var(--brand-pink); font-weight: bold; }
+
+        /* --- 6. 活動互動流程 --- */
         .interaction-flow { margin: 0 20px 40px; padding: 25px 15px; border-radius: 24px; background: var(--glass); border: 1px solid var(--glass-border); text-align: center; }
         .flow-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px; }
         .flow-icon { width: 45px; height: 45px; background: rgba(255, 45, 120, 0.1); border: 1px solid var(--brand-pink); border-radius: 50%; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
         .flow-text { font-size: 11px; font-weight: bold; }
 
-        /* --- 5. LV30 加碼橫幅 --- */
-        .lv30-bonus-banner { margin: 0 20px 40px; padding: 20px; border-radius: 20px; background: linear-gradient(135deg, #3d0000 0%, #1a0b0b 100%); border: 2px solid var(--vip-gold); text-align: center; box-shadow: 0 0 20px rgba(252, 205, 77, 0.2); }
-        .lv30-badge { background: var(--gold-gradient); color: black; font-size: 10px; font-weight: 900; padding: 2px 10px; border-radius: 50px; margin-bottom: 10px; display: inline-block; }
-
-        /* --- 6. VIP 階級特權 (三並排) --- */
-        .vip-tiers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 0 20px 40px; }
-        .tier-col { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 20px; padding: 15px 8px; text-align: center; display: flex; flex-direction: column; gap: 8px; }
-        .tier-col.gold-focus { background: rgba(252, 205, 77, 0.05); border-color: var(--vip-gold); }
-        .tier-name { font-size: 11px; font-weight: bold; color: var(--vip-gold); }
-        .tier-feature { font-size: 9px; color: var(--text-dim); line-height: 1.4; }
-
-        /* --- 7. 主播詳情彈窗 --- */
-        .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); z-index: 2000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: 0.3s; padding: 20px; }
+        /* --- 7. 主播詳情彈窗 (互動選單分類) --- */
+        .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); backdrop-filter: blur(15px); z-index: 2000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: 0.3s; padding: 20px; }
         .modal.active { opacity: 1; pointer-events: auto; }
-        .modal-content { background: #111; border: 1px solid var(--glass-border); width: 100%; max-width: 380px; border-radius: 30px; overflow: hidden; transform: scale(0.9); transition: 0.3s; }
-        .modal.active .modal-content { transform: scale(1); }
-        .modal-img { width: 100%; height: 350px; object-fit: cover; }
-        .modal-body { padding: 25px; text-align: center; }
-        .btn-profile { display: block; width: 100%; padding: 15px; border-radius: 15px; background: white; color: black; font-weight: bold; text-decoration: none; margin-top: 15px; }
+        .modal-content { background: #111; border: 1px solid var(--glass-border); width: 100%; max-width: 420px; height: 85vh; border-radius: 30px; overflow-y: auto; position: relative; }
+        .modal-close { position: absolute; top: 15px; right: 15px; background: rgba(255,255,255,0.1); border: none; color: white; width: 30px; height: 30px; border-radius: 50%; z-index: 10; cursor: pointer; }
+        .modal-img { width: 100%; height: 320px; object-fit: cover; }
+        .modal-body { padding: 20px; }
+        
+        .menu-category { margin-top: 20px; }
+        .category-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+        .ticket-badge { background: var(--brand-pink); color: white; font-size: 10px; padding: 2px 8px; border-radius: 4px; font-weight: 800; }
+        .category-title { font-size: 14px; font-weight: bold; color: var(--vip-gold); }
+        .menu-list { list-style: none; background: rgba(255,255,255,0.03); border-radius: 12px; padding: 12px; }
+        .menu-item { font-size: 12px; color: #ddd; margin-bottom: 8px; line-height: 1.4; border-bottom: 1px dashed rgba(255,255,255,0.1); padding-bottom: 8px; }
+        .menu-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .or-divider { font-size: 10px; color: var(--brand-pink); font-weight: bold; margin: 4px 0; text-transform: uppercase; }
 
+        .btn-profile { display: block; width: 100%; padding: 15px; border-radius: 15px; background: white; color: black; font-weight: bold; text-decoration: none; margin-top: 25px; text-align: center; }
         .cta-container { position: sticky; bottom: 20px; padding: 0 20px; z-index: 100; }
         .main-btn { width: 100%; padding: 18px; border-radius: 50px; border: none; background: linear-gradient(45deg, var(--brand-pink), var(--brand-purple)); color: white; font-size: 18px; font-weight: 800; cursor: pointer; }
     </style>
@@ -91,34 +127,74 @@
 <body>
 
     <div class="container">
+        <!-- Header -->
         <header>
             <h1>2026 VIP GALA</h1>
             <p style="color: var(--brand-pink); font-size: 13px; font-weight: bold; margin-top: 5px;">跨越螢幕 ‧ 零距離感受戀愛溫度</p>
         </header>
 
+        <!-- 1. 基本資訊 -->
         <section class="basic-info-box">
             <div class="info-item"><div class="info-icon">📅</div><div><p style="font-size: 10px; opacity: 0.6;">活動時間</p><p style="font-weight: bold; font-size: 13px;">2026/03/29 (週日) 13:00 - 17:00</p></div></div>
-            <div class="info-item"><div class="info-icon">📍</div><div><p style="font-size: 10px; opacity: 0.6;">活動地點</p><p style="font-weight: bold; font-size: 13px;">台北市私密奢華會所</p></div></div>
+            <div class="info-item"><div class="info-icon">📍</div><div><p style="font-size: 10px; opacity: 0.6;">活動地點</p><p style="font-weight: bold; font-size: 13px;">台北市私密奢華會所 (報名成功後通知)</p></div></div>
         </section>
 
-        <!-- 主播輪播 (動態渲染) -->
+        <!-- 2. 主播輪播 -->
         <section class="host-section">
             <div class="carousel-wrapper" id="carousel">
                 <div class="carousel-spacer"></div>
-                <!-- 主播卡片由 JS 產生 -->
+                <!-- JS content -->
             </div>
-            <p style="text-align: center; font-size: 10px; color: var(--brand-pink); margin-top: 10px;">✦ 點擊卡片查看主播主頁 ✦</p>
+            <p style="text-align: center; font-size: 10px; color: var(--brand-pink); margin-top: 10px;">✦ 點擊卡片查看互動詳細菜單 ✦</p>
         </section>
 
-        <!-- 鑽石獎勵 -->
-        <h2 class="section-title">💎 數十萬鑽石大獎</h2>
-        <div class="reward-table">
-            <div class="reward-row"><div class="row-head">20人達成</div><div class="row-body">共抽 1 位：<span style="color:#00f2ff; font-weight:bold;">200,000 鑽石</span></div></div>
-            <div class="reward-row"><div class="row-head">30人達成</div><div class="row-body">共抽 2 位：<span style="color:#00f2ff; font-weight:bold;">300k / 100k</span></div></div>
-            <div class="reward-row"><div class="row-head">50人達成</div><div class="row-body">共抽 4 位：<span style="color:#00f2ff; font-weight:bold;">400k / 200k*2 / 100k</span></div></div>
-        </div>
+        <!-- 3. 鑽石獎勵 + LV30 加碼 -->
+        <section class="reward-group">
+            <div class="section-title">💎 數十萬鑽石大獎</div>
+            <div class="reward-table">
+                <div class="reward-row"><div class="row-head">20人達成</div><div class="row-body">共抽 1 位：<span style="color:#00f2ff; font-weight:bold;">200,000 鑽石</span></div></div>
+                <div class="reward-row"><div class="row-head">30人達成</div><div class="row-body">共抽 2 位：<span style="color:#00f2ff; font-weight:bold;">300k X 1 / 100k X 1</span></div></div>
+                <div class="reward-row"><div class="row-head">50人達成</div><div class="row-body">共抽 4 位：<span style="color:#00f2ff; font-weight:bold;">400k / 200k*2 / 100k</span></div></div>
+            </div>
+            <div class="lv30-integrated-banner">
+                <span class="lv30-text">🔥 VIP LV30+ 限定：加碼抽 100,000 鑽石 X 1</span>
+            </div>
+        </section>
 
-        <!-- 互動流程 -->
+        <!-- 4. VIP 階級特權 (三並排 + 金屬感) -->
+        <section class="vip-tiers-grid">
+            <div class="tier-col">
+                <div class="tier-name" style="color:#aaa;">全體用戶</div>
+                <ul class="tier-feature"><li>✦ 精緻茶點</li><li>✦ 公共區域</li><li>✦ 標準流程</li></ul>
+            </div>
+            <div class="tier-col metallic-50">
+                <div class="tier-name" style="color:#eee;">LV 50+ 福利</div>
+                <ul class="tier-feature" style="color:#fff;"><li>✦ 高級酒水餐點</li><li>✦ 獨立休息區域</li></ul>
+            </div>
+            <div class="tier-col gold">
+                <div class="tier-name" style="color:var(--vip-gold);">LV 30+ 加碼</div>
+                <ul class="tier-feature" style="color:#fceabb;"><li>✦ 限定抽獎資格</li><li>✦ 10萬鑽大獎</li></ul>
+            </div>
+        </section>
+
+        <!-- 5. 用戶報到基本福利 -->
+        <section class="perks-section">
+            <div class="perks-box">
+                <div class="perks-header">🎁 用戶報到基本福利</div>
+                <table class="perks-table">
+                    <thead>
+                        <tr><th>等級階層</th><th>互動券</th><th>報到鑽石</th><th>報到禮</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td style="color:var(--vip-gold); font-weight:bold;">VIP LV 1-29</td><td class="highlight-text">依照等級發放</td><td>抽取式</td><td>敬請期待</td></tr>
+                        <tr><td style="color:var(--vip-gold); font-weight:bold;">VIP LV 30-49</td><td class="highlight-text">依照等級發放</td><td>抽取式</td><td>敬請期待</td></tr>
+                        <tr><td style="color:var(--vip-gold); font-weight:bold;">VIP LV 50+</td><td class="highlight-text">依照等級發放</td><td>抽取式</td><td>敬請期待</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 6. 活動流程 -->
         <section class="interaction-flow">
             <h3 style="font-size: 15px; color: var(--brand-pink); margin-bottom: 15px;">✦ 活動互動流程 ✦</h3>
             <div class="flow-grid">
@@ -128,44 +204,61 @@
             </div>
         </section>
 
-        <!-- VIP LV30 加碼 -->
-        <div class="lv30-bonus-banner">
-            <div class="lv30-badge">VIP LV30+ LIMITED</div>
-            <h3 style="color: var(--vip-gold); font-size: 18px; margin-bottom: 5px;">加碼抽獎 100,000 鑽石 X 1</h3>
-            <p style="font-size: 12px; color: var(--text-dim);">符合等級即享自動抽獎資格</p>
-        </div>
-
-        <!-- VIP 階級特權 -->
-        <div class="vip-tiers-grid">
-            <div class="tier-col"><div class="tier-name" style="color:#aaa;">LV 1 - 49</div><p class="tier-feature">✦ 精緻茶點<br>✦ 公共區域<br>✦ 標準服務</p></div>
-            <div class="tier-col" style="background: #2a0000; border-color: #ff4d4d;"><div class="tier-name" style="color:#ff4d4d;">LV 50+</div><p class="tier-feature" style="color:#ffcccc;">✦ 高級酒水<br>✦ 獨立包廂<br>✦ 優先進入</p></div>
-            <div class="tier-col gold-focus"><div class="tier-name">LV 30+ 加碼</div><p class="tier-feature" style="color:#fceabb;">✦ 限定抽獎<br>✦ 10萬鑽大獎<br>✦ 專屬禮禮</p></div>
-        </div>
-
         <footer style="text-align: center; font-size: 10px; color: var(--text-dim); padding-bottom: 120px;">* 活動最終解釋權歸本平台所有</footer>
     </div>
 
-    <!-- 主播詳情彈窗 -->
+    <!-- Modal -->
     <div class="modal" id="host-modal" onclick="closeModal()">
         <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal()">×</button>
             <img id="modal-img" src="" class="modal-img">
             <div class="modal-body">
                 <h2 id="modal-name" style="color: white; margin-bottom: 5px;"></h2>
                 <p id="modal-handle" style="color: var(--brand-pink); font-size: 14px;"></p>
-                <a id="modal-link" href="#" target="_blank" class="btn-profile">前往個人主頁</a>
+                <div id="modal-menu-container">
+                    <!-- Categorized menu here -->
+                </div>
+                <a id="modal-link" href="#" target="_blank" class="btn-profile">前往主播主頁</a>
             </div>
         </div>
     </div>
 
     <div class="cta-container">
-        <button class="main-btn" onclick="alert('報名成功！專屬管家將與您聯繫。')">立即報名盛典</button>
+        <button class="main-btn" onclick="alert('報名成功！專屬管家將與您聯繫。')">立即報名參加盛典</button>
     </div>
 
     <script>
         const hostData = [
-            { name: '粿粿', handle: '@guoguo777', img: 'https://public.swag.live/campaigns/vip-offline-event/guoguo777%20(1).jpeg', link: 'https://swag.live/user/624c360b06776928e476b11b' },
-            { name: '妘霏', handle: '@minicat', img: 'https://public.swag.live/campaigns/vip-offline-event/JO_112%20-%20%E9%AD%8F%E8%8A%B7%E6%B6%B5.jpg', link: 'https://swag.live/user/5d3ff8a0290e25d7ee2315a4' },
-            { name: '糖騎羊🐑', handle: '@belene.', img: 'https://public.swag.live/campaigns/vip-offline-event/IMG_2780%20-%20Feeze.jpeg', link: 'https://swag.live/user/671bcccf0f86853f534cc65e' }
+            { 
+                name: '粿粿', handle: '@guoguo777', 
+                img: 'https://public.swag.live/campaigns/vip-offline-event/guoguo777%20(1).jpeg', 
+                link: 'https://swag.live/user/624c360b06776928e476b11b',
+                menu: {
+                    1: ['對看 5 秒'],
+                    3: ['對看 5 秒 + 牽手 15 秒'],
+                    5: ['對看 5 秒 + 牽手 15 秒', '抱抱 15 秒']
+                }
+            },
+            { 
+                name: '妘霏', handle: '@minicat', 
+                img: 'https://public.swag.live/campaigns/vip-offline-event/%E5%A6%98%E9%9D%9E.png', 
+                link: 'https://swag.live/user/5d3ff8a0290e25d7ee2315a4',
+                menu: {
+                    1: ['坐大腿抓手/抓奶/摸腿 30秒', '跨坐面向你對視讓你抓屁屁 30秒', '裸足或穿高跟鞋踩私密處 30秒'],
+                    3: ['牽手對視吃巧克力棒 30秒', '緊緊相擁親臉頰 15秒', '坐大腿扶奶扭腰上下擺動 15秒'],
+                    5: ['內衣拍照 3 張', '上空貼胸貼拍照 3 張', '波浪洗面奶 15秒']
+                }
+            },
+            { 
+                name: '糖騎羊🐑', handle: '@belene.', 
+                img: 'https://public.swag.live/campaigns/vip-offline-event/IMG_2780%20-%20Feeze.jpeg', 
+                link: 'https://swag.live/user/671bcccf0f86853f534cc65e',
+                menu: {
+                    1: ['聊天 10 分鐘 + 合照一張'],
+                    3: ['對看 5 秒 + 合照一張'],
+                    5: ['大擁抱 3 秒']
+                }
+            }
         ];
 
         function initHosts() {
@@ -177,7 +270,6 @@
                 card.innerHTML = `<img src="${host.img}" class="host-img"><div class="host-info"><p class="host-handle">${host.handle}</p><p class="host-name">${host.name}</p></div>`;
                 container.appendChild(card);
             });
-            // 補上最後的 spacer
             const spacer = document.createElement('div');
             spacer.className = 'carousel-spacer';
             container.appendChild(spacer);
@@ -188,6 +280,29 @@
             document.getElementById('modal-name').innerText = host.name;
             document.getElementById('modal-handle').innerText = host.handle;
             document.getElementById('modal-link').href = host.link;
+            
+            const container = document.getElementById('modal-menu-container');
+            container.innerHTML = '';
+
+            [1, 3, 5].forEach(ticket => {
+                const cat = document.createElement('div');
+                cat.className = 'menu-category';
+                const items = host.menu[ticket];
+                
+                let itemsHtml = items.map((it, idx) => {
+                    return `<div class="menu-item">${it}</div>` + (idx < items.length - 1 ? `<div class="or-divider">—— OR ——</div>` : '');
+                }).join('');
+
+                cat.innerHTML = `
+                    <div class="category-header">
+                        <span class="ticket-badge">${ticket} 張券</span>
+                        <span class="category-title">專屬互動項目</span>
+                    </div>
+                    <div class="menu-list">${itemsHtml}</div>
+                `;
+                container.appendChild(cat);
+            });
+            
             document.getElementById('host-modal').classList.add('active');
         }
 
