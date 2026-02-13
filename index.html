@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026 VIP Offline Gala | Titanium Excellence</title>
+    <title>2026 VIP Offline Gala | Ultimate Integration</title>
     <style>
         :root {
             --bg-dark: #050108;
@@ -11,7 +11,6 @@
             --brand-purple: #8a2be2;
             --vip-gold: #fccd4d;
             --gold-gradient: linear-gradient(135deg, #fceabb 0%, #fccd4d 50%, #f8b500 100%);
-            --metallic-silver: linear-gradient(135deg, #777 0%, #eee 50%, #777 100%);
             --glass: rgba(255, 255, 255, 0.03);
             --glass-border: rgba(255, 255, 255, 0.12);
             --text-dim: rgba(255, 255, 255, 0.6);
@@ -20,7 +19,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', 'Noto Sans TC', sans-serif; }
         body { background-color: var(--bg-dark); color: white; overflow-x: hidden; line-height: 1.5; }
 
-        .container { max-width: 600px; margin: 0 auto; padding: 10px 0; }
+        .container { max-width: 600px; margin: 0 auto; padding: 10px 0; perspective: 1000px; }
         header { text-align: center; padding: 20px; }
         h1 { font-size: 2.2rem; font-weight: 900; background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
@@ -34,173 +33,191 @@
         .info-icon { width: 32px; height: 32px; background: var(--glass); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--brand-pink); border: 1px solid rgba(255, 45, 120, 0.3); }
 
         /* --- 2. 3D 主播輪播 --- */
-        .host-section { margin-bottom: 30px; position: relative; }
+        .host-section { margin-bottom: 30px; position: relative; width: 100%; }
         .carousel-wrapper {
             display: flex; overflow-x: auto; gap: 0;
             scroll-snap-type: x mandatory; padding: 20px 0;
-            scrollbar-width: none;
+            scrollbar-width: none; -ms-overflow-style: none;
         }
         .carousel-wrapper::-webkit-scrollbar { display: none; }
         .host-card {
             flex: 0 0 70%; scroll-snap-align: center;
             position: relative; border-radius: 30px; overflow: hidden;
-            transition: all 0.5s ease; transform: scale(0.85); opacity: 0.3;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            transform: scale(0.85); opacity: 0.3;
             filter: blur(2px) grayscale(50%); border: 1px solid var(--glass-border); aspect-ratio: 4/5; cursor: pointer;
         }
         .host-card.active { transform: scale(1.05); opacity: 1; filter: blur(0) grayscale(0); border-color: var(--brand-pink); box-shadow: 0 15px 40px rgba(255, 45, 120, 0.4); z-index: 2; }
-        .host-img { width: 100%; height: 100%; object-fit: cover; }
-        .host-info { position: absolute; bottom: 0; left: 0; width: 100%; padding: 20px; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); text-align: center; }
+        .coming-soon-card { background: linear-gradient(135deg, #1a0b2e 0%, #050108 100%) !important; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px; }
+        .coming-soon-text { font-size: 1.2rem; font-weight: 800; color: var(--text-dim); line-height: 1.6; }
+        .host-img { width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+        .host-info { position: absolute; bottom: 0; left: 0; width: 100%; padding: 20px; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); text-align: center; pointer-events: none; }
         .carousel-spacer { flex: 0 0 15%; }
 
-        /* --- 3. 鑽石獎勵門檻 + LV30 加碼 --- */
-        .reward-group { margin: 0 20px 30px; border-radius: 24px; background: var(--glass); border: 1px solid var(--glass-border); overflow: hidden; }
-        .section-title { padding: 20px 20px 5px; color: #00f2ff; font-size: 1.1rem; font-weight: 800; display: flex; align-items: center; gap: 8px; }
-        .reward-table { padding: 10px 20px 20px; }
-        .reward-row { display: grid; grid-template-columns: 85px 1fr; border-bottom: 1px solid var(--glass-border); padding: 10px 0; }
-        .row-head { font-size: 11px; font-weight: bold; color: var(--brand-pink); }
-        .row-body { font-size: 13px; color: #fff; }
-        .lv30-integrated-banner { background: linear-gradient(90deg, #3d0000, #1a0b0b); padding: 15px; border-top: 1px solid var(--vip-gold); text-align: center; }
-        .lv30-text { font-size: 13px; color: var(--vip-gold); font-weight: bold; }
-
-        /* --- 4. VIP 階級特權 (三並排 + 金屬動態) --- */
-        .vip-tiers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 0 20px 30px; }
-        .tier-col { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 18px; padding: 15px 5px; text-align: center; position: relative; overflow: hidden; }
-        
-        /* 金屬感 LV 50+ 樣式 */
-        .tier-col.metallic-50 {
-            background: linear-gradient(135deg, #222 0%, #444 50%, #222 100%);
-            border: 2px solid #999;
-            box-shadow: 0 0 15px rgba(255,255,255,0.1);
-        }
-        /* 金屬掃光動畫 */
-        .tier-col.metallic-50::after {
-            content: ''; position: absolute; top: -100%; left: -100%; width: 300%; height: 300%;
-            background: linear-gradient(45deg, transparent 45%, rgba(255,255,255,0.2) 50%, transparent 55%);
-            animation: metalShine 4s infinite;
-        }
-        @keyframes metalShine {
-            0% { transform: translate(0,0); }
-            100% { transform: translate(30%, 30%); }
-        }
-
-        .tier-col.gold { background: rgba(252, 205, 77, 0.05); border-color: var(--vip-gold); }
-        .tier-name { font-size: 10px; font-weight: bold; margin-bottom: 8px; position: relative; z-index: 1; }
-        .tier-feature { font-size: 9px; color: var(--text-dim); line-height: 1.4; list-style: none; position: relative; z-index: 1; }
-
-        /* --- 5. 用戶報到基本福利 --- */
-        .perks-section { margin: 0 20px 30px; }
-        .perks-box { border-radius: 24px; background: var(--glass); border: 1px solid var(--glass-border); padding: 20px; }
-        .perks-header { color: var(--brand-pink); font-size: 1.1rem; font-weight: bold; margin-bottom: 15px; text-align: center; }
-        .perks-table { width: 100%; border-collapse: collapse; font-size: 11px; }
-        .perks-table th { color: var(--text-dim); padding: 10px 2px; border-bottom: 1px solid var(--glass-border); text-align: center; }
-        .perks-table td { padding: 12px 2px; border-bottom: 1px solid var(--glass-border); text-align: center; }
-        .highlight-text { color: var(--brand-pink); font-weight: bold; }
-
-        /* --- 6. 活動互動流程 --- */
+        /* --- 3. 活動互動流程 --- */
         .interaction-flow { margin: 0 20px 40px; padding: 25px 15px; border-radius: 24px; background: var(--glass); border: 1px solid var(--glass-border); text-align: center; }
-        .flow-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px; }
+        .flow-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 15px; }
         .flow-icon { width: 45px; height: 45px; background: rgba(255, 45, 120, 0.1); border: 1px solid var(--brand-pink); border-radius: 50%; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
-        .flow-text { font-size: 11px; font-weight: bold; }
 
-        /* --- 7. 主播詳情彈窗 (互動選單分類) --- */
-        .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); backdrop-filter: blur(15px); z-index: 2000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: 0.3s; padding: 20px; }
-        .modal.active { opacity: 1; pointer-events: auto; }
-        .modal-content { background: #111; border: 1px solid var(--glass-border); width: 100%; max-width: 420px; height: 85vh; border-radius: 30px; overflow-y: auto; position: relative; }
-        .modal-close { position: absolute; top: 15px; right: 15px; background: rgba(255,255,255,0.1); border: none; color: white; width: 30px; height: 30px; border-radius: 50%; z-index: 10; cursor: pointer; }
-        .modal-img { width: 100%; height: 320px; object-fit: cover; }
-        .modal-body { padding: 20px; }
+        /* --- 4. 尊榮分級整合區 (Bento Hierarchy) --- */
+        .tiers-header { padding: 0 20px; margin-bottom: 15px; color: var(--vip-gold); font-size: 1.1rem; font-weight: bold; text-align: center; }
+        .tier-cards-stack { display: flex; flex-direction: column; gap: 15px; margin: 0 20px 40px; }
+        .tier-card { 
+            background: var(--glass); border: 1px solid var(--glass-border); border-radius: 24px; padding: 20px;
+            position: relative; overflow: hidden; transform-style: preserve-3d; transition: transform 0.1s ease-out;
+        }
+
+        /* 絲絨奢華樣式 LV 50+ */
+        .tier-card.lv50 {
+            background: linear-gradient(145deg, #1a0b0b 0%, #3d0000 100%);
+            border: 2.5px solid #fccd4d; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .tier-card.lv30 { border-color: var(--brand-purple); background: linear-gradient(145deg, rgba(138, 43, 226, 0.05), transparent); }
+
+        .tier-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; transform: translateZ(20px); }
+        .tier-title { font-size: 1.1rem; font-weight: 800; color: #fff; }
+        .lv50 .tier-title { font-size: 1.4rem; background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .badge-premium { background: var(--vip-gold); color: #000; font-size: 9px; font-weight: 900; padding: 2px 8px; border-radius: 4px; }
+        .badge-bonus { background: var(--brand-purple); color: #fff; font-size: 9px; font-weight: 800; padding: 2px 8px; border-radius: 4px; animation: pulse 2s infinite; }
         
-        .menu-category { margin-top: 20px; }
-        .category-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
-        .ticket-badge { background: var(--brand-pink); color: white; font-size: 10px; padding: 2px 8px; border-radius: 4px; font-weight: 800; }
-        .category-title { font-size: 14px; font-weight: bold; color: var(--vip-gold); }
-        .menu-list { list-style: none; background: rgba(255,255,255,0.03); border-radius: 12px; padding: 12px; }
-        .menu-item { font-size: 12px; color: #ddd; margin-bottom: 8px; line-height: 1.4; border-bottom: 1px dashed rgba(255,255,255,0.1); padding-bottom: 8px; }
-        .menu-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-        .or-divider { font-size: 10px; color: var(--brand-pink); font-weight: bold; margin: 4px 0; text-transform: uppercase; }
+        @keyframes pulse { 0% { opacity: 0.7; } 50% { opacity: 1; } 100% { opacity: 0.7; } }
 
-        .btn-profile { display: block; width: 100%; padding: 15px; border-radius: 15px; background: white; color: black; font-weight: bold; text-decoration: none; margin-top: 25px; text-align: center; }
+        .tier-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; transform: translateZ(10px); }
+        .tier-sub-section { display: flex; flex-direction: column; gap: 5px; }
+        .sub-label { font-size: 9px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; }
+        .sub-content { font-size: 11px; color: #eee; list-style: none; line-height: 1.4; }
+        .lv50 .sub-content { color: #fceabb; }
+        .reward-highlight { color: var(--brand-pink); font-weight: bold; }
+        .lv50 .reward-highlight { color: #fff; text-shadow: 0 0 5px var(--vip-gold); }
+
+        /* --- 5. 抽獎區塊 --- */
+        .reward-group { margin: 0 20px 40px; border-radius: 24px; background: var(--glass); border: 1px solid var(--glass-border); overflow: hidden; }
+        .reward-table { padding: 15px 20px; }
+        .reward-row { display: grid; grid-template-columns: 85px 1fr; border-bottom: 1px solid var(--glass-border); padding: 10px 0; }
+        .reward-row:last-of-type { border-bottom: none; }
+        .row-head { font-size: 11px; font-weight: bold; color: var(--brand-pink); }
+        .row-body { font-size: 13px; color: #fff; line-height: 1.4; }
+        .diamond-val { color: #00f2ff; font-weight: bold; }
+        .lv30-banner { background: linear-gradient(90deg, #3d0000, #1a0b0b); padding: 15px; border-top: 1px solid var(--vip-gold); text-align: center; }
+
+        /* --- Modal --- */
+        .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.96); backdrop-filter: blur(20px); z-index: 9999; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: 0.3s; padding: 20px; }
+        .modal.active { opacity: 1; pointer-events: auto; }
+        .modal-content { background: #111; border: 1px solid var(--glass-border); width: 90%; max-width: 420px; height: 85vh; border-radius: 30px; overflow-y: auto; position: relative; }
+        .modal-close { position: absolute; top: 15px; right: 15px; background: rgba(255,255,255,0.2); border: none; color: white; width: 35px; height: 35px; border-radius: 50%; z-index: 10; cursor: pointer; font-size: 20px; }
+        .modal-img { width: 100%; height: 320px; object-fit: cover; }
+        .modal-body { padding: 25px; text-align: left; }
+        .menu-category { margin-top: 20px; }
+        .ticket-badge { background: var(--brand-pink); color: white; font-size: 10px; padding: 2px 8px; border-radius: 4px; font-weight: 800; margin-right: 8px; }
+        .category-title { font-size: 14px; font-weight: bold; color: var(--vip-gold); }
+        .menu-list { background: rgba(255,255,255,0.03); border-radius: 12px; padding: 15px; margin-top: 10px; }
+        .menu-item { font-size: 12px; color: #ddd; margin-bottom: 8px; line-height: 1.4; border-bottom: 1px dashed rgba(255,255,255,0.1); padding-bottom: 8px; }
+        .or-divider { font-size: 10px; color: var(--brand-pink); font-weight: bold; margin: 4px 0; text-align: center; }
+        .btn-profile { display: block; width: 100%; padding: 16px; border-radius: 15px; background: white; color: black; font-weight: bold; text-decoration: none; margin-top: 25px; text-align: center; }
+
         .cta-container { position: sticky; bottom: 20px; padding: 0 20px; z-index: 100; }
-        .main-btn { width: 100%; padding: 18px; border-radius: 50px; border: none; background: linear-gradient(45deg, var(--brand-pink), var(--brand-purple)); color: white; font-size: 18px; font-weight: 800; cursor: pointer; }
+        .main-btn { width: 100%; padding: 18px; border-radius: 50px; border: none; background: linear-gradient(45deg, var(--brand-pink), var(--brand-purple)); color: white; font-size: 18px; font-weight: 800; cursor: pointer; box-shadow: 0 10px 30px rgba(255, 45, 120, 0.5); }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- Header -->
+        <!-- 1. 基本資訊 (地點已更新) -->
         <header>
             <h1>2026 VIP GALA</h1>
             <p style="color: var(--brand-pink); font-size: 13px; font-weight: bold; margin-top: 5px;">跨越螢幕 ‧ 零距離感受戀愛溫度</p>
         </header>
 
-        <!-- 1. 基本資訊 -->
         <section class="basic-info-box">
             <div class="info-item"><div class="info-icon">📅</div><div><p style="font-size: 10px; opacity: 0.6;">活動時間</p><p style="font-weight: bold; font-size: 13px;">2026/03/29 (週日) 13:00 - 17:00</p></div></div>
-            <div class="info-item"><div class="info-icon">📍</div><div><p style="font-size: 10px; opacity: 0.6;">活動地點</p><p style="font-weight: bold; font-size: 13px;">台北市私密奢華會所 (報名成功後通知)</p></div></div>
+            <div class="info-item"><div class="info-icon">📍</div><div><p style="font-size: 10px; opacity: 0.6;">活動地點</p><p style="font-weight: bold; font-size: 13px;">台北市大直區 (3/23私訊行前通知)</p></div></div>
         </section>
 
-        <!-- 2. 主播輪播 -->
+        <!-- 2. 3D 主播輪播 -->
         <section class="host-section">
-            <div class="carousel-wrapper" id="carousel">
-                <div class="carousel-spacer"></div>
-                <!-- JS content -->
-            </div>
-            <p style="text-align: center; font-size: 10px; color: var(--brand-pink); margin-top: 10px;">✦ 點擊卡片查看互動詳細菜單 ✦</p>
+            <div class="carousel-wrapper" id="carousel"></div>
+            <p style="text-align: center; font-size: 10px; color: var(--brand-pink); margin-top: 15px;">✦ 點擊卡片查看 1/3/5 張券互動詳情 ✦</p>
         </section>
 
-        <!-- 3. 鑽石獎勵 + LV30 加碼 -->
-        <section class="reward-group">
-            <div class="section-title">💎 數十萬鑽石大獎</div>
-            <div class="reward-table">
-                <div class="reward-row"><div class="row-head">20人達成</div><div class="row-body">共抽 1 位：<span style="color:#00f2ff; font-weight:bold;">200,000 鑽石</span></div></div>
-                <div class="reward-row"><div class="row-head">30人達成</div><div class="row-body">共抽 2 位：<span style="color:#00f2ff; font-weight:bold;">300k X 1 / 100k X 1</span></div></div>
-                <div class="reward-row"><div class="row-head">50人達成</div><div class="row-body">共抽 4 位：<span style="color:#00f2ff; font-weight:bold;">400k / 200k*2 / 100k</span></div></div>
-            </div>
-            <div class="lv30-integrated-banner">
-                <span class="lv30-text">🔥 VIP LV30+ 限定：加碼抽 100,000 鑽石 X 1</span>
-            </div>
-        </section>
-
-        <!-- 4. VIP 階級特權 (三並排 + 金屬感) -->
-        <section class="vip-tiers-grid">
-            <div class="tier-col">
-                <div class="tier-name" style="color:#aaa;">全體用戶</div>
-                <ul class="tier-feature"><li>✦ 精緻茶點</li><li>✦ 公共區域</li><li>✦ 標準流程</li></ul>
-            </div>
-            <div class="tier-col metallic-50">
-                <div class="tier-name" style="color:#eee;">LV 50+ 福利</div>
-                <ul class="tier-feature" style="color:#fff;"><li>✦ 高級酒水餐點</li><li>✦ 獨立休息區域</li></ul>
-            </div>
-            <div class="tier-col gold">
-                <div class="tier-name" style="color:var(--vip-gold);">LV 30+ 加碼</div>
-                <ul class="tier-feature" style="color:#fceabb;"><li>✦ 限定抽獎資格</li><li>✦ 10萬鑽大獎</li></ul>
-            </div>
-        </section>
-
-        <!-- 5. 用戶報到基本福利 -->
-        <section class="perks-section">
-            <div class="perks-box">
-                <div class="perks-header">🎁 用戶報到基本福利</div>
-                <table class="perks-table">
-                    <thead>
-                        <tr><th>等級階層</th><th>互動券</th><th>報到鑽石</th><th>報到禮</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td style="color:var(--vip-gold); font-weight:bold;">VIP LV 1-29</td><td class="highlight-text">依照等級發放</td><td>抽取式</td><td>敬請期待</td></tr>
-                        <tr><td style="color:var(--vip-gold); font-weight:bold;">VIP LV 30-49</td><td class="highlight-text">依照等級發放</td><td>抽取式</td><td>敬請期待</td></tr>
-                        <tr><td style="color:var(--vip-gold); font-weight:bold;">VIP LV 50+</td><td class="highlight-text">依照等級發放</td><td>抽取式</td><td>敬請期待</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <!-- 6. 活動流程 -->
+        <!-- 3. 活動互動流程 -->
         <section class="interaction-flow">
-            <h3 style="font-size: 15px; color: var(--brand-pink); margin-bottom: 15px;">✦ 活動互動流程 ✦</h3>
+            <h3 style="font-size: 15px; color: var(--brand-pink);">✦ 活動互動流程 ✦</h3>
             <div class="flow-grid">
-                <div class="flow-step"><div class="flow-icon">🎟️</div><p class="flow-text">購買<br>互動券</p></div>
-                <div class="flow-step"><div class="flow-icon">🥂</div><p class="flow-text">現場<br>排隊等待</p></div>
-                <div class="flow-step"><div class="flow-icon">💖</div><p class="flow-text">一對一<br>專屬包廂</p></div>
+                <div class="flow-step"><div class="flow-icon">🎟️</div><p style="font-size:11px;font-weight:bold;">購買互動券</p></div>
+                <div class="flow-step"><div class="flow-icon">🥂</div><p style="font-size:11px;font-weight:bold;">尋找心儀主播</p></div>
+                <div class="flow-step"><div class="flow-icon">💖</div><p style="font-size:11px;font-weight:bold;">一對一包廂</p></div>
+            </div>
+        </section>
+
+        <!-- 4. 尊榮分級全整合區 -->
+        <div class="tiers-header">👑 尊榮身分與報到福利</div>
+        <section class="tier-cards-stack">
+            
+            <!-- Standard Card -->
+            <div class="tier-card tilt-effect">
+                <div class="tier-card-header">
+                    <span class="tier-title">全體用戶</span>
+                </div>
+                <div class="tier-grid">
+                    <div class="tier-sub-section">
+                        <span class="sub-label">現場服務</span>
+                        <ul class="sub-content"><li>• 精緻茶點供應</li><li>• 公共區域權限</li><li>• 標準流程引導</li></ul>
+                    </div>
+                    <div class="tier-sub-section">
+                        <span class="sub-label">報到福利</span>
+                        <ul class="sub-content"><li>• 互動券：<span class="reward-highlight">依照等級</span></li><li>• 鑽石：<span class="reward-highlight">抽取式</span></li><li>• 報到禮：<span class="reward-highlight">敬請期待</span></li></ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LV 30 Card -->
+            <div class="tier-card lv30 tilt-effect">
+                <div class="tier-card-header">
+                    <span class="tier-title">VIP LV 30 - 49</span>
+                    <span class="badge-bonus">限定加碼</span>
+                </div>
+                <div class="tier-grid">
+                    <div class="tier-sub-section">
+                        <span class="sub-label">現場服務</span>
+                        <ul class="sub-content"><li>• 標準 VIP 所有特權</li><li>• 專屬管家諮詢</li></ul>
+                    </div>
+                    <div class="tier-sub-section">
+                        <span class="sub-label">報到福利</span>
+                        <ul class="sub-content"><li>• 獎勵同標準用戶</li><li>• <span style="color:var(--vip-gold);font-weight:bold;">享有加碼抽獎資格</span></li></ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LV 50 Card (絲絨) -->
+            <div class="tier-card lv50 tilt-effect">
+                <div class="tier-card-header">
+                    <span class="tier-title">VIP LV 50+</span>
+                    <span class="badge-premium">PREMIUM</span>
+                </div>
+                <div class="tier-grid">
+                    <div class="tier-sub-section">
+                        <span class="sub-label">頂級服務</span>
+                        <ul class="sub-content"><li>• 高級酒水餐點</li><li>• 獨立奢華休息室</li></ul>
+                    </div>
+                    <div class="tier-sub-section">
+                        <span class="sub-label">最高禮遇</span>
+                        <ul class="sub-content"><li>• 互動券：<span class="reward-highlight">依照等級</span></li><li>• 鑽石：<span class="reward-highlight">抽取式</span></li><li>• 享有<span style="color:var(--vip-gold);font-weight:bold;">最高加碼抽獎</span></li></ul>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- 5. 抽獎區塊 -->
+        <section class="reward-group">
+            <div style="padding: 20px 20px 5px; color: #00f2ff; font-size: 1.1rem; font-weight: 800;">💎 數十萬鑽石大獎</div>
+            <div class="reward-table">
+                <div class="reward-row"><div class="row-head">20人達成</div><div class="row-body"><span class="diamond-val">200,000 鑽石（1位）</span></div></div>
+                <div class="reward-row"><div class="row-head">30人達成</div><div class="row-body"><span class="diamond-val">300,000 鑽石（1位） / 100,000 鑽石（1位）</span></div></div>
+                <div class="reward-row"><div class="row-head">50人達成</div><div class="row-body"><span class="diamond-val">400,000 鑽石（1位） / 200,000 鑽石（2位） / 100,000 鑽石（1位）</span></div></div>
+            </div>
+            <div class="lv30-banner">
+                <span style="color:var(--vip-gold); font-size:13px; font-weight:bold;">🔥 VIP LV30+ 限定：100,000 鑽石（1位）</span>
             </div>
         </section>
 
@@ -208,122 +225,92 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal" id="host-modal" onclick="closeModal()">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <button class="modal-close" onclick="closeModal()">×</button>
+    <div class="modal" id="host-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close-btn">×</button>
             <img id="modal-img" src="" class="modal-img">
             <div class="modal-body">
                 <h2 id="modal-name" style="color: white; margin-bottom: 5px;"></h2>
                 <p id="modal-handle" style="color: var(--brand-pink); font-size: 14px;"></p>
-                <div id="modal-menu-container">
-                    <!-- Categorized menu here -->
-                </div>
+                <div id="modal-menu-container"></div>
                 <a id="modal-link" href="#" target="_blank" class="btn-profile">前往主播主頁</a>
             </div>
         </div>
     </div>
 
-    <div class="cta-container">
-        <button class="main-btn" onclick="alert('報名成功！專屬管家將與您聯繫。')">立即報名參加盛典</button>
-    </div>
+    <div class="cta-container"><button class="main-btn" onclick="alert('報名成功！專屬管家將與您聯繫。')">立即報名參加盛典</button></div>
 
     <script>
         const hostData = [
-            { 
-                name: '粿粿', handle: '@guoguo777', 
-                img: 'https://public.swag.live/campaigns/vip-offline-event/guoguo777%20(1).jpeg', 
-                link: 'https://swag.live/user/624c360b06776928e476b11b',
-                menu: {
-                    1: ['對看 5 秒'],
-                    3: ['對看 5 秒 + 牽手 15 秒'],
-                    5: ['對看 5 秒 + 牽手 15 秒', '抱抱 15 秒']
-                }
-            },
-            { 
-                name: '妘霏', handle: '@minicat', 
-                img: 'https://public.swag.live/campaigns/vip-offline-event/%E5%A6%98%E9%9D%9E.png', 
-                link: 'https://swag.live/user/5d3ff8a0290e25d7ee2315a4',
-                menu: {
-                    1: ['坐大腿抓手/抓奶/摸腿 30秒', '跨坐面向你對視讓你抓屁屁 30秒', '裸足或穿高跟鞋踩私密處 30秒'],
-                    3: ['牽手對視吃巧克力棒 30秒', '緊緊相擁親臉頰 15秒', '坐大腿扶奶扭腰上下擺動 15秒'],
-                    5: ['內衣拍照 3 張', '上空貼胸貼拍照 3 張', '波浪洗面奶 15秒']
-                }
-            },
-            { 
-                name: '糖騎羊🐑', handle: '@belene.', 
-                img: 'https://public.swag.live/campaigns/vip-offline-event/IMG_2780%20-%20Feeze.jpeg', 
-                link: 'https://swag.live/user/671bcccf0f86853f534cc65e',
-                menu: {
-                    1: ['聊天 10 分鐘 + 合照一張'],
-                    3: ['對看 5 秒 + 合照一張'],
-                    5: ['大擁抱 3 秒']
-                }
-            }
+            { name: '粿粿', handle: '@guoguo777', img: 'https://public.swag.live/campaigns/vip-offline-event/guoguo777%20(1).jpeg', link: 'https://swag.live/user/624c360b06776928e476b11b', menu: { 1: ['對看 5 秒'], 3: ['對看 5 秒 + 牽手 15 秒'], 5: ['對看 5 秒 + 牽手 15 秒', '或 抱抱 15 秒'] } },
+            { name: '妘霏', handle: '@minicat', img: 'https://public.swag.live/campaigns/vip-offline-event/%E5%A6%98%E9%9D%9E.png', link: 'https://swag.live/user/5d3ff8a0290e25d7ee2315a4', menu: { 1: ['坐大腿抓手/抓奶/摸腿 30秒', '或 跨坐面向你對視讓你抓屁屁 30秒', '或 裸足或穿高跟鞋踩私密處 30秒'], 3: ['牽手對視吃巧克力棒 30秒', '或 緊緊相擁親臉頰 15秒', '或 坐大腿扶奶扭腰上下擺動 15秒'], 5: ['內衣拍照 3 張', '或 上空貼胸貼拍照 3 張', '或 波浪洗面奶 15秒'] } },
+            { name: '葡萄', handle: '@stellajs', img: 'https://public.swag.live/campaigns/vip-offline-event/IMG_3986%20-%20%E5%B0%8F%E8%8A%B1.jpeg', link: 'https://swag.live/user/6186407baf71d358d49be7de', menu: { 1: ['私訊福利影片', '或 High Five'], 3: ['秘密福利轉盤 1 次', '或 十指緊扣 10 秒'], 5: ['秘密福利轉盤 2 次', '或 擁抱 20 秒'] } },
+            { name: '凱希 77', handle: '@sugercathy', img: 'https://public.swag.live/campaigns/vip-offline-event/IMG_0201%20-%20%E9%A8%B7%E5%87%B1%E5%B8%8C.jpeg', link: 'https://swag.live/user/6049f47a9dff9d48464b1399', menu: { 1: ['男友背後抱 10 秒', '或 十指緊扣 10 秒', '或 現場免費玩轉盤一次'], 3: ['在耳邊說淫話 10 秒', '或 打奶 10 秒', '或 看奶頭 10 秒'], 5: ['女上搖 20 秒', '或 揉奶淫叫 20 秒', '或 洗面奶 20 秒'] } },
+            { name: '敬請期待', handle: 'Other Hosts', type: 'soon', menu: null }
         ];
 
         function initHosts() {
             const container = document.getElementById('carousel');
-            hostData.forEach(host => {
+            container.innerHTML = ''; 
+            const startSpacer = document.createElement('div'); startSpacer.className = 'carousel-spacer'; container.appendChild(startSpacer);
+            hostData.forEach((host) => {
                 const card = document.createElement('div');
-                card.className = 'host-card';
-                card.onclick = () => openModal(host);
-                card.innerHTML = `<img src="${host.img}" class="host-img"><div class="host-info"><p class="host-handle">${host.handle}</p><p class="host-name">${host.name}</p></div>`;
+                card.className = 'host-card' + (host.type === 'soon' ? ' coming-soon-card' : '');
+                if (host.type === 'soon') { card.innerHTML = `<div class="coming-soon-text">敬請期待<br>其他主播公布</div>`; }
+                else {
+                    card.innerHTML = `<img src="${host.img}" class="host-img"><div class="host-info"><p class="host-handle">${host.handle}</p><p class="host-name" style="font-weight:bold;">${host.name}</p></div>`;
+                    card.addEventListener('click', () => openModal(host));
+                }
                 container.appendChild(card);
             });
-            const spacer = document.createElement('div');
-            spacer.className = 'carousel-spacer';
-            container.appendChild(spacer);
+            const endSpacer = document.createElement('div'); endSpacer.className = 'carousel-spacer'; container.appendChild(endSpacer);
         }
 
         function openModal(host) {
+            const modal = document.getElementById('host-modal');
             document.getElementById('modal-img').src = host.img;
             document.getElementById('modal-name').innerText = host.name;
             document.getElementById('modal-handle').innerText = host.handle;
             document.getElementById('modal-link').href = host.link;
-            
-            const container = document.getElementById('modal-menu-container');
-            container.innerHTML = '';
-
+            const menuContainer = document.getElementById('modal-menu-container');
+            menuContainer.innerHTML = '';
             [1, 3, 5].forEach(ticket => {
-                const cat = document.createElement('div');
-                cat.className = 'menu-category';
                 const items = host.menu[ticket];
-                
-                let itemsHtml = items.map((it, idx) => {
-                    return `<div class="menu-item">${it}</div>` + (idx < items.length - 1 ? `<div class="or-divider">—— OR ——</div>` : '');
-                }).join('');
-
-                cat.innerHTML = `
-                    <div class="category-header">
-                        <span class="ticket-badge">${ticket} 張券</span>
-                        <span class="category-title">專屬互動項目</span>
-                    </div>
-                    <div class="menu-list">${itemsHtml}</div>
-                `;
-                container.appendChild(cat);
+                const cat = document.createElement('div'); cat.className = 'menu-category';
+                const itemsHtml = items.map((it, idx) => `<div class="menu-item">${it}</div>` + (idx < items.length - 1 ? `<div class="or-divider">—— OR ——</div>` : '')).join('');
+                cat.innerHTML = `<div class="category-header"><span class="ticket-badge">${ticket} 張券</span><span class="category-title">專屬互動</span></div><div class="menu-list">${itemsHtml}</div>`;
+                menuContainer.appendChild(cat);
             });
-            
-            document.getElementById('host-modal').classList.add('active');
+            modal.classList.add('active');
         }
 
-        function closeModal() { document.getElementById('host-modal').classList.remove('active'); }
+        document.getElementById('modal-close-btn').onclick = () => document.getElementById('host-modal').classList.remove('active');
+        document.getElementById('host-modal').onclick = (e) => { if (e.target.id === 'host-modal') document.getElementById('host-modal').classList.remove('active'); };
 
-        const observerOptions = { root: document.getElementById('carousel'), threshold: 0.7 };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('active');
-                else entry.target.classList.remove('active');
+        function initTilt() {
+            const elements = document.querySelectorAll('.tilt-effect');
+            elements.forEach(el => {
+                el.addEventListener('mousemove', (e) => {
+                    const rect = el.getBoundingClientRect();
+                    const rotateX = (e.clientY - rect.top - rect.height / 2) / 8;
+                    const rotateY = (rect.width / 2 - (e.clientX - rect.left)) / 8;
+                    el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+                });
+                el.addEventListener('mouseleave', () => el.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`);
             });
-        }, observerOptions);
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { entry.isIntersecting ? entry.target.classList.add('active') : entry.target.classList.remove('active'); });
+        }, { root: document.getElementById('carousel'), threshold: 0.6 });
 
         window.onload = () => {
-            initHosts();
+            initHosts(); initTilt();
             setTimeout(() => {
                 document.querySelectorAll('.host-card').forEach(card => observer.observe(card));
-                const carousel = document.getElementById('carousel');
-                const firstCard = document.querySelectorAll('.host-card')[0];
-                carousel.scrollLeft = firstCard.offsetLeft - (carousel.offsetWidth - firstCard.offsetWidth) / 2;
-            }, 100);
+                const carousel = document.getElementById('carousel'); const cards = document.querySelectorAll('.host-card');
+                carousel.scrollLeft = cards[0].offsetLeft - (carousel.offsetWidth - cards[0].offsetWidth) / 2;
+            }, 300);
         };
     </script>
 </body>
