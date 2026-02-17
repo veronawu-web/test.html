@@ -206,10 +206,9 @@
         </div>
     </div>
 
-    <div class="cta-container">
-        <!-- 連結至指定 Google 表單 -->
-        <button class="main-btn" onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSdvjDWBwBhT37z7a8CK5rH5dXzIxJeKhWokhNK79OY8LCdjTA/viewform?usp=dialog', '_blank')">立即報名參加盛典</button>
-    </div>
+   <div class="cta-container">
+    <button id="main-enroll-btn" class="main-btn">立即報名參加盛典</button>
+</div>
 
     <script>
         const hostData = [
@@ -290,11 +289,31 @@
         }, { root: document.getElementById('carousel'), threshold: 0.6 });
 
         window.onload = () => {
-            initHosts(); initTilt();
+            initHosts(); 
+            initTilt();
+            
+            // --- 新增：追蹤與跳轉邏輯 ---
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbzEsYmYnJOHUJmEzcuyDNBaZUt2j1kaKsLebjsqTZ1zKi3JYy4dFKZ9bmd4FfWyb41x/exec';
+            const formURL = 'https://docs.google.com/forms/d/e/1FAIpQLSdvjDWBwBhT37z7a8CK5rH5dXzIxJeKhWokhNK79OY8LCdjTA/viewform?usp=dialog';
+
+            const mainBtn = document.getElementById('main-enroll-btn');
+            if (mainBtn) {
+                mainBtn.addEventListener('click', function() {
+                    // 發送紀錄到 Google Sheets (不等待回傳，直接跳轉以保證順暢)
+                    fetch(scriptURL, { method: 'GET', mode: 'no-cors' });
+                    // 開啟表單
+                    window.open(formURL, '_blank');
+                });
+            }
+            // ------------------------
+
             setTimeout(() => {
                 document.querySelectorAll('.host-card').forEach(card => observer.observe(card));
-                const carousel = document.getElementById('carousel'); const cards = document.querySelectorAll('.host-card');
-                carousel.scrollLeft = cards[0].offsetLeft - (carousel.offsetWidth - cards[0].offsetWidth) / 2;
+                const carousel = document.getElementById('carousel'); 
+                const cards = document.querySelectorAll('.host-card');
+                if (cards.length > 0) {
+                    carousel.scrollLeft = cards[0].offsetLeft - (carousel.offsetWidth - cards[0].offsetWidth) / 2;
+                }
             }, 300);
         };
     </script>
