@@ -316,6 +316,32 @@
                 }
             }, 300);
         };
+        .cta-container {
+  position: fixed;        /* 改為 fixed，相對於螢幕視窗固定 */
+    bottom: 0;             /* 貼齊底部 */
+    left: 50%;             /* 搭配 transform 置中 */
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 600px;      /* 保持與主容器寬度一致 */
+    padding: 15px 20px calc(15px + env(safe-area-inset-bottom)); /* 自動適應 iPhone 底部橫條 */
+    background: linear-gradient(to top, var(--bg-dark) 80%, transparent 100%); /* 背景漸層：讓按鈕後方不會被文字干擾 */
+    z-index: 1000;         /* 確保在最上層 */
+    box-sizing: border-box;
+}
+
+.main-btn {
+    width: 100%;
+    padding: 18px;
+    border-radius: 50px;
+    border: none;
+    background: var(--gold-gradient);
+    color: black;
+    font-size: 18px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4); /* 加強陰影讓它浮起來 */
+    display: block;
+}
     </script>
 </body>
 </html>
