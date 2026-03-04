@@ -15,6 +15,7 @@
             --glass-border: rgba(212, 175, 55, 0.2); 
             --text-dim: rgba(255, 255, 255, 0.6);
             --brand-pink: #ff2d78;
+            --brand-cyan: #00f2ff;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', 'Noto Sans TC', sans-serif; }
@@ -38,13 +39,20 @@
         }
         .info-item { display: flex; align-items: center; gap: 12px; font-size: 14px; }
         .info-icon { width: 32px; height: 32px; background: rgba(212, 175, 55, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gold-light); border: 1px solid var(--glass-border); }
+        
+        /* 倒數計時 */
+        .countdown-display { display: flex; gap: 8px; margin-top: 5px; }
+        .timer-unit { background: rgba(212, 175, 55, 0.1); padding: 4px 8px; border-radius: 8px; border: 1px solid var(--glass-border); text-align: center; min-width: 45px; }
+        .timer-val { display: block; font-size: 16px; font-weight: 800; color: var(--brand-gold); }
+        .timer-lab { display: block; font-size: 8px; color: var(--text-dim); }
 
-        /* --- 主播輪播區 --- */
-        .host-section { margin-bottom: 30px; position: relative; width: 100%; }
+        /* 主播輪播 */
+        .host-section { margin-bottom: 30px; position: relative; width: 100%; overflow: visible; }
         .carousel-wrapper {
             display: flex; overflow-x: auto; gap: 0;
             scroll-snap-type: x mandatory; padding: 30px 0;
             scrollbar-width: none; -ms-overflow-style: none;
+            position: relative; z-index: 5;
         }
         .carousel-wrapper::-webkit-scrollbar { display: none; }
         .host-card {
@@ -52,23 +60,24 @@
             position: relative; border-radius: 30px; overflow: hidden;
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
             transform: scale(0.85); opacity: 0.3;
-            filter: blur(2px) grayscale(40%); border: 1px solid var(--glass-border); aspect-ratio: 4/5; cursor: pointer;
+            filter: blur(2px) grayscale(40%); border: 1px solid var(--glass-border); aspect-ratio: 4/5; 
+            cursor: pointer; pointer-events: auto !important; z-index: 10;
         }
-        .host-card.active { transform: scale(1.05); opacity: 1; filter: blur(0) grayscale(0); border-color: var(--brand-gold); box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2); z-index: 2; }
-        .coming-soon-card { background: linear-gradient(135deg, #1a1a2e 0%, #05050a 100%) !important; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px; }
-        .coming-soon-text { font-size: 1.2rem; font-weight: 800; color: var(--text-dim); }
+        .host-card.active { transform: scale(1.05); opacity: 1; filter: blur(0) grayscale(0); border-color: var(--brand-gold); box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2); z-index: 20; }
+        
         .host-img { width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
         .host-info { position: absolute; bottom: 0; left: 0; width: 100%; padding: 20px; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); text-align: center; pointer-events: none; }
-        .carousel-spacer { flex: 0 0 15%; }
+        .carousel-spacer { flex: 0 0 15%; pointer-events: none; }
 
+        /* 互動流程 */
         .interaction-flow { margin: 0 20px 40px; padding: 25px 15px; border-radius: 24px; background: var(--glass); border: 1px solid var(--glass-border); text-align: center; }
         .flow-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 15px; }
         .flow-icon { width: 45px; height: 45px; background: rgba(212, 175, 55, 0.1); border: 1px solid var(--brand-gold); border-radius: 50%; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; color: var(--brand-gold); }
 
+        /* 尊榮分級 */
         .tiers-header { padding: 0 20px; margin-bottom: 20px; color: var(--gold-light); font-size: 1.2rem; font-weight: 800; text-align: center; letter-spacing: 2px; }
         .tier-cards-stack { display: flex; flex-direction: column; gap: 15px; margin: 0 20px 40px; }
         .tier-card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 24px; padding: 24px; position: relative; overflow: hidden; transform-style: preserve-3d; transition: transform 0.1s ease-out; }
-        
         .tier-standard { border-color: rgba(255, 45, 120, 0.3); background: linear-gradient(145deg, rgba(255, 45, 120, 0.05), transparent); }
         .tier-standard .tier-title { color: #ff80ab; }
         .tier-silver { border-color: #5d9193; background: linear-gradient(145deg, rgba(93, 145, 147, 0.1), rgba(0,0,0,0.6)); }
@@ -80,222 +89,246 @@
         .tier-content-list li { font-size: 13px; color: #eee; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
         .tier-content-list li::before { content: '✦'; font-size: 10px; color: inherit; opacity: 0.6; }
 
+        /* 獎勵與進度條 */
         .reward-group { margin: 0 20px 40px; border-radius: 24px; background: var(--glass); border: 1px solid var(--glass-border); overflow: hidden; }
         .reward-table { padding: 15px 20px; }
         .reward-row { display: grid; grid-template-columns: 85px 1fr; border-bottom: 1px solid var(--glass-border); padding: 10px 0; }
         .row-head { font-size: 11px; font-weight: bold; color: var(--brand-gold); }
         .row-body { font-size: 13px; color: #fff; line-height: 1.4; }
         .lv30-banner { background: linear-gradient(90deg, #1e1e2e, #0a0a14); padding: 15px; border-top: 1px solid var(--brand-gold); text-align: center; }
+        
+        .signup-progress-wrap { padding: 0 20px 15px; }
+        .progress-label { display: flex; justify-content: space-between; font-size: 11px; color: var(--brand-cyan); margin-bottom: 8px; font-weight: bold; }
+        .progress-track { height: 8px; background: rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden; }
+        .progress-fill { height: 100%; width: 0%; background: var(--gold-gradient); transition: width 1.5s ease-out; }
 
-        /* --- Modal --- */
+        /* 底部按鈕 */
+        .cta-container {
+            position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 600px;
+            padding: 15px 20px calc(15px + env(safe-area-inset-bottom)); background: linear-gradient(to top, var(--bg-dark) 80%, transparent 100%); z-index: 1000;
+        }
+        .main-btn {
+            width: 100%; padding: 18px; border-radius: 50px; border: none; background: var(--gold-gradient);
+            color: black; font-size: 18px; font-weight: 800; cursor: pointer; display: block;
+        }
+        .skeleton { animation: pulse 1.5s infinite; background: #333 !important; color: transparent !important; pointer-events: none; }
+        @keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
+
+        /* Modal 彈窗 */
         .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.96); backdrop-filter: blur(20px); z-index: 9999; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: 0.3s; }
         .modal.active { opacity: 1; pointer-events: auto; }
         .modal-content { background: #0a0a14; border: 1px solid var(--glass-border); width: 90%; max-width: 420px; height: 85vh; border-radius: 30px; overflow-y: auto; position: relative; }
-        .modal-close { position: absolute; top: 15px; right: 15px; background: rgba(212, 175, 55, 0.2); border: none; color: var(--gold-light); width: 35px; height: 35px; border-radius: 50%; cursor: pointer; font-size: 20px; }
+        .modal-close { position: absolute; top: 15px; right: 15px; background: rgba(212, 175, 55, 0.2); border: none; color: var(--gold-light); width: 35px; height: 35px; border-radius: 50%; cursor: pointer; font-size: 20px; z-index: 10000; }
         .modal-img { width: 100%; height: 320px; object-fit: cover; }
         .modal-body { padding: 25px; }
         .ticket-badge { background: var(--gold-gradient); color: black; font-size: 10px; padding: 2px 8px; border-radius: 4px; font-weight: 800; margin-right: 8px; }
-        .or-divider { font-size: 10px; color: var(--brand-pink); font-weight: bold; margin: 6px 0; text-align: center; }
-        .btn-profile { display: block; width: 100%; padding: 16px; border-radius: 15px; background: var(--gold-gradient); color: black; font-weight: bold; text-decoration: none; margin-top: 25px; text-align: center; }
-
-        /* --- 底部按鈕修正：改為 Fixed 固定於視窗 --- */
-        .cta-container {
-            position: fixed;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100%;
-            max-width: 600px;
-            padding: 15px 20px calc(15px + env(safe-area-inset-bottom));
-            background: linear-gradient(to top, var(--bg-dark) 80%, transparent 100%);
-            z-index: 1000;
-            box-sizing: border-box;
-        }
-        .main-btn {
-            width: 100%;
-            padding: 18px;
-            border-radius: 50px;
-            border: none;
-            background: var(--gold-gradient);
-            color: black;
-            font-size: 18px;
-            font-weight: 800;
-            cursor: pointer;
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
-            display: block;
-        }
     </style>
 </head>
 <body>
 
     <div class="container">
         <header class="hero-banner">
-            <img src="https://public.swag.live/campaigns/vip-offline-event/%E8%B3%87%E7%94%A2%201.png" class="hero-image" alt="2026 VIP GALA">
+            <img src="https://public.swag.live/campaigns/vip-offline-event/%E8%B3%87%E7%94%A2%201.png" class="hero-image">
         </header>
 
         <section class="basic-info-box">
-            <div class="info-item"><div class="info-icon">📅</div><div><p style="font-size: 10px; opacity: 0.6;">活動時間</p><p style="font-weight: bold; font-size: 13px; color: var(--gold-light);">2026/03/29 (週日) 13:00 - 17:00</p></div></div>
+            <div class="info-item">
+                <div class="info-icon">📅</div>
+                <div>
+                    <p style="font-size: 10px; opacity: 0.6;">活動倒數與時間</p>
+                    <p style="font-weight: bold; font-size: 13px; color: var(--gold-light);">2026/03/29 (週日) 13:00</p>
+                    <div class="countdown-display">
+                        <div class="timer-unit"><span class="timer-val" id="days">00</span><span class="timer-lab">DAYS</span></div>
+                        <div class="timer-unit"><span class="timer-val" id="hours">00</span><span class="timer-lab">HRS</span></div>
+                        <div class="timer-unit"><span class="timer-val" id="mins">00</span><span class="timer-lab">MINS</span></div>
+                        <div class="timer-unit"><span class="timer-val" id="secs">00</span><span class="timer-lab">SECS</span></div>
+                    </div>
+                </div>
+            </div>
             <div class="info-item"><div class="info-icon">📍</div><div><p style="font-size: 10px; opacity: 0.6;">活動地點</p><p style="font-weight: bold; font-size: 13px; color: var(--gold-light);">台北市大直區 (3/23私訊行前通知)</p></div></div>
         </section>
 
-        <!-- 主播輪播區塊 -->
+        <!-- 主播輪播 -->
         <section class="host-section">
             <div class="carousel-wrapper" id="carousel"></div>
-            <p style="text-align: center; font-size: 15px; color: var(--brand-gold); margin-top: 15px; letter-spacing: 1px;">✦ 點擊卡片查看 1/3/5 張券互動詳情 ✦</p>
-            <p style="text-align: center; font-size: 15px; color: var(--brand-gold); margin-top: 15px; letter-spacing: 1px;">✦ 主播輪播為隨機顯示 ✦</p>
+            <p style="text-align: center; font-size: 14px; color: var(--brand-gold); margin-top: 15px; font-weight: bold;">✦ 點擊卡片查看互動詳情 ✦</p>
+            <p style="text-align: center; font-size: 12px; color: var(--brand-gold); margin-top: 5px; opacity: 0.8;">✦ 主播顯示順序為隨機顯示 ✦</p>
         </section>
 
         <section class="interaction-flow">
             <h3 style="font-size: 15px; color: var(--brand-gold); letter-spacing: 2px;">✦ 活動互動流程 ✦</h3>
             <div class="flow-grid">
-                <div class="flow-step"><div class="flow-icon">🎟️</div><p style="font-size:11px;font-weight:bold;">購買互動券</p></div>
-                <div class="flow-step"><div class="flow-icon">🥂</div><p style="font-size:11px;font-weight:bold;">尋找心儀主播</p></div>
-                <div class="flow-step"><div class="flow-icon">💖</div><p style="font-size:11px;font-weight:bold;">一對一包廂</p></div>
+                <div><div class="flow-icon">🎟️</div><p style="font-size:11px;font-weight:bold;">購買互動券</p></div>
+                <div><div class="flow-icon">🥂</div><p style="font-size:11px;font-weight:bold;">尋找心儀主播</p></div>
+                <div><div class="flow-icon">💖</div><p style="font-size:11px;font-weight:bold;">一對一包廂</p></div>
             </div>
         </section>
 
-        <!-- 4. 尊榮分級全整合區 -->
         <div class="tiers-header">👑 報到福利與階級特權</div>
         <section class="tier-cards-stack">
-            
-            <div class="tier-card tier-standard tilt-effect">
-                <span class="tier-title">LV 1 + 報到福利</span>
-                <ul class="tier-content-list">
-                    <li>報到鑽石</li>
-                    <li>限量精緻茶點供應（數量有限先到先領！）</li>
-                    <li>抽鑽石大獎</li>
-                </ul>
-            </div>
-
-            <div class="tier-card tier-silver tilt-effect">
-                <span class="tier-title">VIP LV 30 +</span>
-                <ul class="tier-content-list">
-                    <li style="color:#a8caba; font-weight:bold;">加碼抽獎 (見下方詳情)</li>
-                    <li>依照等級發放互動卷</li>
-                </ul>
-            </div>
-
-            <div class="tier-card tier-gold tilt-effect">
-                <span class="tier-title">VIP LV 50 +</span>
-                <ul class="tier-content-list">
-                    <li>酒水餐點</li>
-                    <li>獨立休息室</li>
-                    <li>依照等級發放互動卷</li>
-                </ul>
-            </div>
+            <div class="tier-card tier-standard"><span class="tier-title">LV 1 + 報到福利</span><ul class="tier-content-list"><li>報到鑽石</li><li>限量精緻茶點供應</li><li>抽鑽石大獎</li></ul></div>
+            <div class="tier-card tier-silver"><span class="tier-title">VIP LV 30 +</span><ul class="tier-content-list"><li style="color:#a8caba; font-weight:bold;">加碼抽獎</li><li>依照等級發放互動卷</li></ul></div>
+            <div class="tier-card tier-gold"><span class="tier-title">VIP LV 50 +</span><ul class="tier-content-list"><li>酒水餐點</li><li>獨立休息室</li><li>依照等級發放互動卷</li></ul></div>
         </section>
     
         <section class="reward-group">
-            <div style="padding: 20px 20px 5px; color: #00f2ff; font-size: 1.1rem; font-weight: 800;">💎 數十萬鑽石大獎</div>
-            <div class="reward-table">
-                <div class="reward-row"><div class="row-head">出席20人 達成</div><div class="row-body">200,000 鑽石（1位）</div></div>
-                <div class="reward-row"><div class="row-head">出席30人 達成</div><div class="row-body">300,000 鑽石（1位） / 100,000 鑽石（1位）</div></div>
-                <div class="reward-row"><div class="row-head">出席50人 達成</div><div class="row-body">400,000 鑽石（1位） / 200,000 鑽石（2位）</div></div>
+            <div style="padding: 20px 20px 10px; color: #00f2ff; font-size: 1.1rem; font-weight: 800;">💎 數十萬鑽石大獎</div>
+            <div class="signup-progress-wrap">
+                <div class="progress-label"><span>目前報名：<span id="signup-count">...</span> / 50 人</span></div>
+                <div class="progress-track"><div class="progress-fill" id="progress-bar"></div></div>
             </div>
-            <div class="lv30-banner"><span style="color:var(--brand-gold); font-size:20px; font-weight:bold;">🔥 VIP LV30+ 限定加抽：100,000 鑽石（1位）</span></div>
+            <div class="reward-table">
+                <div class="reward-row"><div class="row-head">20人 出席達成</div><div class="row-body">200,000 鑽石（1位）</div></div>
+                <div class="reward-row"><div class="row-head">30人 出席達成</div><div class="row-body">300,000 鑽石（1位） / 100,000 鑽石（1位）</div></div>
+                <div class="reward-row"><div class="row-head">50人 出席達成</div><div class="row-body">400,000 鑽石（1位） / 200,000 鑽石（2位）</div></div>
+            </div>
+            <div class="lv30-banner"><span style="color:var(--brand-gold); font-size:18px; font-weight:bold;">🔥 VIP LV30+ 限定加抽 10萬鑽</span></div>
         </section>
 
         <footer style="text-align: center; font-size: 10px; color: var(--text-dim); padding-bottom: 150px;">* 活動最終解釋權歸本平台所有</footer>
     </div>
 
-    <!-- 底部固定按鈕 -->
+    <!-- 底部按鈕 -->
     <div class="cta-container">
-        <button id="main-enroll-btn" class="main-btn">立即報名參加同樂會</button>
+        <button id="main-enroll-btn" class="main-btn skeleton" disabled>Loading...</button>
     </div>
 
-    <!-- Modal -->
+    <!-- 詳情彈窗 -->
     <div class="modal" id="host-modal">
         <div class="modal-content">
             <button class="modal-close" id="modal-close-btn">×</button>
             <img id="modal-img" src="" class="modal-img">
             <div class="modal-body">
-                <h2 id="modal-name" style="color: white; margin-bottom: 5px;"></h2>
-                <p id="modal-handle" style="color: var(--brand-gold); font-size: 14px; font-weight: bold;"></p>
+                <h2 id="modal-name"></h2>
+                <p id="modal-handle" style="color: var(--brand-gold); font-weight: bold;"></p>
                 <div id="modal-menu-container"></div>
-                <a id="modal-link" href="#" target="_blank" class="btn-profile">前往主播主頁</a>
+                <a id="modal-link" href="#" target="_blank" style="display: block; width: 100%; padding: 16px; border-radius: 15px; background: var(--gold-gradient); color: black; font-weight: bold; text-decoration: none; margin-top: 25px; text-align: center;">前往主播主頁</a>
             </div>
         </div>
     </div>
 
     <script>
-     const hostData = [
-            { name: '粿粿', handle: '@guoguo777', img: 'https://public.swag.live/campaigns/vip-offline-event/image.png', link: 'https://swag.live/user/624c360b06776928e476b11b', menu: { 1: ['對看 5 秒'], 3: ['對看 5 秒 + 牽手 15 秒'], 5: ['對看 5 秒 + 牽手 15 秒', '或 抱抱 15 秒'] } },
-            { name: '妘霏', handle: '@minicat', img: 'https://public.swag.live/campaigns/vip-offline-event/%E5%A6%98%E9%9D%9E.png', link: 'https://swag.live/user/5d3ff8a0290e25d7ee2315a4', menu: { 1: ['坐大腿抓手/抓奶/摸腿 30秒', '或 跨坐面向你對視讓你抓屁屁 30秒', '或 裸足或穿高跟鞋踩私密處 30秒'], 3: ['牽手對視吃巧克力棒 30秒', '或 緊緊相擁親臉頰 15秒', '或 坐大腿扶奶扭腰上下擺動 15秒'], 5: ['內衣拍照 3 張', '或 上空貼胸貼拍照 3 張', '或 波浪洗面奶 15秒'] } },
-            { name: '葡萄', handle: '@stellajs', img: 'https://public.swag.live/campaigns/vip-offline-event/IMG_3986%20-%20%E5%B0%8F%E8%8A%B1.jpeg', link: 'https://swag.live/user/6186407baf71d358d49be7de', menu: { 1: ['私訊福利影片', '或 High Five'], 3: ['秘密福利轉盤 1 次', '或 十指緊扣 10 秒'], 5: ['秘密福利轉盤 2 次', '或 擁抱 20 秒'] } },
-            { name: '凱希 77', handle: '@sugercathy', img: 'https://public.swag.live/campaigns/vip-offline-event/IMG_0201%20-%20%E9%A8%B7%E5%87%B1%E5%B8%8C.jpeg', link: 'https://swag.live/user/6049f47a9dff9d48464b1399', menu: { 1: ['男友背後抱 10 秒', '或 十指緊扣 10 秒', '或 現場免費玩轉盤一次'], 3: ['在耳邊說淫話 10 秒', '或 打奶 10 秒', '或 看奶頭 10 秒'], 5: ['女上搖 20 秒', '或 揉奶淫叫 20 秒', '或 洗面奶 20 秒'] } },
-            { name: '糖騎羊🐑', handle: '@belene.', img: 'https://public.swag.live/campaigns/vip-offline-event/belene_%E7%B3%96%E9%A8%8E%E7%BE%8A%F0%9F%90%91.jpeg', link: 'https://swag.live/user/671bcccf0f86853f534cc65e', menu: { 1: ['聊天3分鐘+合照一張'], 3: ['對看5秒+合照一張'], 5: ['大擁抱3秒'] } },
-            { name: '金金', handle: '@chinchin1010', img: 'https://public.swag.live/campaigns/vip-offline-event/chinchin1010_%E9%87%91%E9%87%91.jpeg', link: 'https://swag.live/user/67ee5ea8b8ccbeb66ca67f78', menu: { 1: ['對看10秒 + 小拇指勾勾手10秒'], 3: ['聞頭髮5秒+勾手臂10秒'], 5: ['磨鼻子10秒'] } },
-            { name: '蜘蛛網', handle: '@wasteful', img: 'https://public.swag.live/campaigns/vip-offline-event/wasteful_%E8%9C%98%E8%9B%9B%E7%B6%B2.jpeg', link: 'https://swag.live/user/68d3ad7efdbd3e34bbc924da', menu: { 1: ['貼額頭30秒', '或  對看+牽手30秒', '或 躺懷抱抱30秒'], 3: ['浪漫華爾滋雙人舞30秒', '或 親額頭或臉頰30秒', '或 撫摸一個部位10秒'], 5: ['性感熱舞脫衣全裸秀60秒', '或 全裸自慰淫叫表演秀60秒', '或 黑白配遊戲輸了脫一件衣服60秒'] } },
-            { name: '魚美人', handle: '@woolice42', img: 'https://public.swag.live/campaigns/vip-offline-event/woolice42_%E9%AD%9A%E7%BE%8E%E4%BA%BA.JPG', link: 'https://swag.live/user/69815f42cd46ac834e55c177', menu: { 1: ['牽手20秒'], 3: ['牽手10秒+對視10秒'], 5: ['抱抱15秒'] } },
-       ];
-        function shuffleHosts(array) {
-            const actualHosts = array.filter(h => h.type !== 'soon');
-            const soonCard = array.filter(h => h.type === 'soon');
-            for (let i = actualHosts.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [actualHosts[i], actualHosts[j]] = [actualHosts[j], actualHosts[i]];
-            }
-            return [...actualHosts, ...soonCard];
-        }
+        const API_USER = "https://swag-user-info-api-905468082258.asia-east1.run.app/api/badges";
+        const API_COUNT = 'https://script.google.com/macros/s/AKfycbykgl0986hNP1s2rXSQP0_L7y52lM3Tfx-AYt99xp6mYhRWitGEdh4fTOjffLhrditr/exec';
+        const RECHARGE_URL = "https://swag.live/settings/vvip";
+        const FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdvjDWBwBhT37z7a8CK5rH5dXzIxJeKhWokhNK79OY8LCdjTA/viewform";
+        const targetDate = new Date("2026-03-29T13:00:00").getTime();
 
-        function initHosts() {
-            const container = document.getElementById('carousel');
-            if(!container) return;
-            container.innerHTML = ''; 
-            const startSpacer = document.createElement('div'); startSpacer.className = 'carousel-spacer'; container.appendChild(startSpacer);
-            
-            const randomizedData = shuffleHosts(hostData);
-            randomizedData.forEach((host) => {
-                const card = document.createElement('div');
-                card.className = 'host-card' + (host.type === 'soon' ? ' coming-soon-card' : '');
-                if (host.type === 'soon') { card.innerHTML = `<div class="coming-soon-text">敬請期待<br>其他主播公布</div>`; }
-                else {
-                    card.innerHTML = `<img src="${host.img}" class="host-img"><div class="host-info"><p class="host-handle">${host.handle}</p><p class="host-name" style="font-weight:bold;">${host.name}</p></div>`;
-                    card.addEventListener('click', () => openModal(host));
-                }
-                container.appendChild(card);
-            });
-            const endSpacer = document.createElement('div'); endSpacer.className = 'carousel-spacer'; container.appendChild(endSpacer);
-        }
+        const hostData = [
+            { id: 0, name: '粿粿', handle: '@guoguo777', img: 'https://public.swag.live/campaigns/vip-offline-event/image.png', link: 'https://swag.live/user/624c360b06776928e476b11b', menu: { 1: ['對看 5 秒'], 3: ['對看 5 秒 + 牽手 15 秒'], 5: ['對看 5 秒 + 牽手 15 秒', '或 抱抱 15 秒'] } },
+            { id: 1, name: '妘霏', handle: '@minicat', img: 'https://public.swag.live/campaigns/vip-offline-event/%E5%A6%98%E9%9D%9E.png', link: 'https://swag.live/user/5d3ff8a0290e25d7ee2315a4', menu: { 1: ['坐大腿抓手 30秒'], 3: ['緊緊相擁 15秒'], 5: ['波浪洗面奶 15秒'] } },
+            { id: 2, name: '葡萄', handle: '@stellajs', img: 'https://public.swag.live/campaigns/vip-offline-event/IMG_3986%20-%20%E5%B0%8F%E8%8A%B1.jpeg', link: 'https://swag.live/user/6186407baf71d358d49be7de', menu: { 1: ['High Five'], 3: ['十指緊扣 10 秒'], 5: ['擁抱 20 秒'] } },
+            { id: 3, name: '凱希 77', handle: '@sugercathy', img: 'https://public.swag.live/campaigns/vip-offline-event/IMG_0201%20-%20%E9%A8%B7%E5%87%B1%E5%B8%8C.jpeg', link: 'https://swag.live/user/6049f47a9dff9d48464b1399', menu: { 1: ['十指緊扣 10 秒'], 3: ['看奶頭 10 秒'], 5: ['洗面奶 20 秒'] } },
+            { id: 4, name: '糖騎羊🐑', handle: '@belene.', img: 'https://public.swag.live/campaigns/vip-offline-event/belene_%E7%B3%96%E9%A8%8E%E7%BE%8A%F0%9F%90%91.jpeg', link: 'https://swag.live/user/671bcccf0f86853f534cc65e', menu: { 1: ['聊天3分鐘'], 3: ['對看5秒'], 5: ['大擁抱3秒'] } },
+            { id: 5, name: '金金', handle: '@chinchin1010', img: 'https://public.swag.live/campaigns/vip-offline-event/chinchin1010_%E9%87%91%E9%87%91.jpeg', link: 'https://swag.live/user/67ee5ea8b8ccbeb66ca67f78', menu: { 1: ['小拇指勾勾手10秒'], 3: ['勾手臂10秒'], 5: ['磨鼻子10秒'] } },
+            { id: 6, name: '蜘蛛網', handle: '@wasteful', img: 'https://public.swag.live/campaigns/vip-offline-event/wasteful_%E8%9C%98%E8%9B%9B%E7%B6%B2.jpeg', link: 'https://swag.live/user/68d3ad7efdbd3e34bbc924da', menu: { 1: ['牽手30秒'], 3: ['親臉頰30秒'], 5: ['性感熱舞脫衣秀60秒'] } },
+            { id: 7, name: '魚美人', handle: '@woolice42', img: 'https://public.swag.live/campaigns/vip-offline-event/woolice42_%E9%AD%9A%E7%BE%8E%E4%BA%BA.JPG', link: 'https://swag.live/user/69815f42cd46ac834e55c177', menu: { 1: ['牽手20秒'], 3: ['對視10秒'], 5: ['抱抱15秒'] } }
+        ];
 
-        function openModal(host) {
+        // 彈窗開啟邏輯
+        window.showDetail = function(index) {
+            const host = hostData.find(h => h.id === index);
+            if (!host) return;
+
             const modal = document.getElementById('host-modal');
             document.getElementById('modal-img').src = host.img;
             document.getElementById('modal-name').innerText = host.name;
             document.getElementById('modal-handle').innerText = host.handle;
             document.getElementById('modal-link').href = host.link;
-            const menuContainer = document.getElementById('modal-menu-container');
-            menuContainer.innerHTML = '';
-            [1, 3, 5].forEach(ticket => {
-                const items = host.menu[ticket];
-                const cat = document.createElement('div'); cat.className = 'menu-category';
-                const itemsHtml = items.map((it, idx) => `<div class="menu-item" style="color:white; font-size:14px; margin-bottom:5px;">${it}</div>`).join('');
-                cat.innerHTML = `<div style="margin:15px 0 5px;"><span class="ticket-badge">${ticket} 張券</span></div><div>${itemsHtml}</div>`;
-                menuContainer.appendChild(cat);
+            
+            const container = document.getElementById('modal-menu-container'); 
+            container.innerHTML = '';
+            [1, 3, 5].forEach(t => {
+                const items = host.menu[t].map(i => `<div style="color:white; font-size:14px; margin-bottom:5px;">✦ ${i}</div>`).join('');
+                container.innerHTML += `<div style="margin:15px 0 5px;"><span class="ticket-badge">${t} 張券</span></div>${items}`;
             });
+            
             modal.classList.add('active');
+        };
+
+        async function checkUserLevel() {
+            const btn = document.getElementById('main-enroll-btn');
+            const urlParams = new URLSearchParams(window.location.search);
+            const userId = urlParams.get('user_id') || "693d121965e1e17a7f081d74";
+
+            try {
+                const res = await fetch(`${API_USER}?user_id=${userId}`);
+                const data = await res.json();
+                const level = data.level || 0;
+
+                btn.classList.remove('skeleton');
+                btn.disabled = false;
+
+                if (level >= 1) { 
+                    btn.innerText = "立即報名參加同樂會";
+                    btn.style.background = "var(--gold-gradient)";
+                    btn.style.color = "black";
+                    btn.onclick = () => window.open(FORM_URL, '_blank');
+                } else {
+                    btn.innerText = "儲值 10000 鑽石即可報名";
+                    btn.style.background = "linear-gradient(135deg, #444, #222)";
+                    btn.style.border = "1px solid var(--brand-pink)";
+                    btn.style.color = "white"; 
+                    btn.onclick = () => window.open(RECHARGE_URL, '_blank');
+                }
+            } catch (e) { btn.innerText = "載入失敗"; }
+        }
+
+        function updateCountdown() {
+            const gap = targetDate - new Date().getTime();
+            const s=1000, m=s*60, h=m*60, d=h*24;
+            document.getElementById('days').innerText = Math.floor(gap / d).toString().padStart(2, '0');
+            document.getElementById('hours').innerText = Math.floor((gap % d) / h).toString().padStart(2, '0');
+            document.getElementById('mins').innerText = Math.floor((gap % h) / m).toString().padStart(2, '0');
+            document.getElementById('secs').innerText = Math.floor((gap % m) / s).toString().padStart(2, '0');
+        }
+
+        async function fetchSignupData() {
+            try {
+                const res = await fetch(API_COUNT);
+                const data = await res.json();
+                const count = data.count || 0;
+                document.getElementById('signup-count').innerText = count;
+                document.getElementById('progress-bar').style.width = Math.min((count / 50) * 100, 100) + '%';
+            } catch (e) { document.getElementById('signup-count').innerText = "--"; }
+        }
+
+        function initHosts() {
+            const container = document.getElementById('carousel');
+            container.innerHTML = '<div class="carousel-spacer"></div>';
+            
+            const shuffled = [...hostData].sort(() => Math.random() - 0.5);
+            
+            shuffled.forEach(host => {
+                const card = document.createElement('div');
+                card.className = 'host-card';
+                // 核心修復：直接將 onclick 綁定在內聯 HTML
+                card.setAttribute('onclick', `showDetail(${host.id})`);
+                card.innerHTML = `
+                    <img src="${host.img}" class="host-img">
+                    <div class="host-info">
+                        <p style="color:var(--brand-gold); font-size:12px;">${host.handle}</p>
+                        <p style="font-weight:bold;">${host.name}</p>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+            container.innerHTML += '<div class="carousel-spacer"></div>';
+            
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(en => en.target.classList.toggle('active', en.isIntersecting));
+            }, { root: container, threshold: 0.6 });
+            document.querySelectorAll('.host-card').forEach(c => observer.observe(c));
         }
 
         document.getElementById('modal-close-btn').onclick = () => document.getElementById('host-modal').classList.remove('active');
 
         window.onload = () => {
-            initHosts(); 
-            
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbzEsYmYnJOHUJmEzcuyDNBaZUt2j1kaKsLebjsqTZ1zKi3JYy4dFKZ9bmd4FfWyb41x/exec';
-            const formURL = 'https://docs.google.com/forms/d/e/1FAIpQLSdvjDWBwBhT37z7a8CK5rH5dXzIxJeKhWokhNK79OY8LCdjTA/viewform?usp=dialog';
-
-            document.getElementById('main-enroll-btn').onclick = function() {
-                fetch(scriptURL, { method: 'GET', mode: 'no-cors' });
-                window.open(formURL, '_blank');
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); else entry.target.classList.remove('active'); });
-            }, { root: document.getElementById('carousel'), threshold: 0.6 });
-
-            setTimeout(() => {
-                document.querySelectorAll('.host-card').forEach(card => observer.observe(card));
-            }, 300);
+            initHosts();
+            fetchSignupData();
+            checkUserLevel(); 
+            setInterval(updateCountdown, 1000); 
+            updateCountdown();
         };
     </script>
 </body>
