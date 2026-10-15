@@ -1,0 +1,12 @@
+    <sc-if value="{{ sheetLogin }}" hint-placeholder-val="{{ false }}">
+      <b style="font-size:18px;">登入 SWAG 帳號</b>
+      <p style="margin:6px 0 0; font-size:14px; line-height:1.6; color:#5E5653;">登入後會帶入帳號、暱稱與等級，並保留你已選的票種與邀約來源，回到原本的步驟。</p>
+      <div style="display:{{ loginAccShow }}; margin-top:14px; padding:14px 16px; border-radius:16px; background:#F7F7F2; border:1px solid #E4E3DC; align-items:center; gap:12px;">
+        <span style="width:40px; height:40px; border-radius:50%; background:#292322; color:#5CF5E2; font-family:'IBM Plex Mono'; font-size:12px; font-weight:600; display:flex; align-items:center; justify-content:center;">{{ accLvShort }}</span>
+        <span style="display:flex; flex-direction:column; gap:2px;"><b style="font-size:15px;">{{ accName }}</b><span style="font-size:12px; color:#6B625F;">{{ accLabel }}・等級由帳號資料取得</span></span>
+      </div>
+      <div style="display:{{ loginNoAccShow }}; margin-top:14px; padding:14px 16px; border-radius:16px; border:1px dashed #D6D5CD; background:#FBFBF8; font-size:13px; line-height:1.6; color:#6B625F;">原型示意：目前屬性設為「未登入」，沒有可登入的示意帳號。請在右上角屬性改選一個示意會員等級再登入。</div>
+      <button type="button" sc-camel-on-click="{{ doLogin }}" disabled="{{ loginDis }}" style="margin-top:14px; width:100%; height:50px; border-radius:14px; border:none; background:{{ loginBg }}; color:#F7F7F2; font-family:inherit; font-size:15px; font-weight:700; cursor:pointer;">以此帳號登入（模擬）</button>
+      <button type="button" sc-camel-on-click="{{ closeSheet }}" style="margin-top:8px; width:100%; height:44px; border-radius:14px; border:1px solid #E4E3DC; background:#fff; font-family:inherit; font-size:14px; font-weight:700; color:#292322; cursor:pointer;">稍後再說</button>
+    </sc-if>
+

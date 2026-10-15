@@ -1,0 +1,42 @@
+<div class="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-amb" aria-hidden="true"></div>
+  <div style="position:relative;">
+  <nav class="hero-nav">
+    <div class="hero-brand"><span class="hero-dot"></span><b>心動連線</b></div>
+    <div style="display:flex; gap:6px; align-items:center;"><button type="button" sc-camel-on-click="{{ goTickets }}" style="height:30px; padding:0 11px; border-radius:15px; border:1px solid #C9D3DC; background:rgba(255,255,255,.8); color:#172038; font-family:inherit; font-size:12px; font-weight:700; cursor:pointer;">票券</button><button type="button" sc-camel-on-click="{{ navAcct }}" style="height:30px; padding:0 12px; border-radius:15px; border:none; background:{{ memberChipBg }}; color:{{ memberChipFg }}; font-family:'IBM Plex Mono'; font-size:12px; font-weight:600; display:flex; align-items:center; cursor:pointer;">{{ navAcctLabel }}</button></div>
+  </nav>
+
+  <div class="ht-type"><span class="ht-type-dot"></span>主播實體見面會<span class="ht-type-sep">｜</span><span class="mono">2026.11.21（六）</span></div>
+
+  <!-- LED 應援燈牌 -->
+  <div class="sign-wrap">
+    <div class="sign" role="img" aria-label="VIP 同樂會">
+      <span class="sign-screw a"></span><span class="sign-screw b"></span><span class="sign-screw c"></span><span class="sign-screw d"></span>
+      <div class="sign-panel">
+        <div class="sign-glow" aria-hidden="true"><span class="sign-txt">VIP 同樂會</span></div>
+        <div class="sign-face"><span class="sign-txt">VIP 同樂會</span></div>
+        <div class="sign-strip" aria-hidden="true"><span class="s1">11.21 SAT・13:00–17:00</span><span class="s2">FAN MEET・TAIPEI</span></div>
+      </div>
+      <span class="sign-sheen" aria-hidden="true"></span>
+    </div>
+    <div class="sign-charm"><div ref="{{ setSlotA }}" style="width:46px; aspect-ratio:260 / 340;"></div></div>
+  </div>
+
+  <section class="hero-copy">
+    <p class="ht-slogan">這次，現場見。</p>
+    <p class="ht-intro">和喜歡的主播，把線上的陪伴變成面對面的相遇。</p>
+    <div class="ht-lineup"><span class="mono">LINEUP</span><span class="ht-lineup-line"></span><span>5 位主播・陣容即將公開</span></div>
+  </section>
+
+  <div class="hero-info">
+    <div><span class="mono lbl">DATE</span><b>11/21（六）13:00–17:00</b></div>
+    <div><span class="mono lbl">PLACE</span><b>台北市中山區建國北路一段 80 號 B1</b></div>
+  </div>
+
+  <div ref="{{ setHeroCta }}" class="hero-cta">
+    <button type="button" sc-camel-on-click="{{ heroPrimary }}" class="hero-btn">{{ heroPrimaryLabel }}<svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M4 10h11M11 5.5 15.5 10 11 14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <button type="button" sc-camel-on-click="{{ goIntro }}" class="hero-link">查看主播陣容 →</button>
+  </div>
+  </div>
+</div>

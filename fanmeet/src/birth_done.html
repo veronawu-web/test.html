@@ -1,0 +1,12 @@
+<sc-if value="{{ birthDone }}" hint-placeholder-val="{{ false }}">
+        <div style="display:{{ birthNoOrderShow }}; flex-direction:column; gap:8px; animation:fadeUp .3s ease-out both;">
+          <div style="text-align:center; font-size:15px; font-weight:800; color:#172038;">分身準備好了，接著看看活動票種。</div>
+          <button type="button" sc-camel-on-click="{{ goRegFromBirth }}" style="height:54px; border-radius:16px; border:none; background:#172038; color:#F7F7F2; font-family:inherit; font-size:16px; font-weight:700; cursor:pointer;">看活動票種</button>
+          <button type="button" sc-camel-on-click="{{ goDenFromBirth }}" style="height:46px; border-radius:14px; border:1px solid #E4E3DC; background:#fff; color:#292322; font-family:inherit; font-size:14px; font-weight:700; cursor:pointer;">先回安心小窩</button>
+        </div>
+        <div style="display:{{ birthHasOrderShow }}; flex-direction:column; gap:8px; animation:fadeUp .3s ease-out both;">
+          <div style="text-align:center; font-size:15px; font-weight:800; color:#172038;">{{ petName }}會陪你一起等 11/21。</div>
+          <button type="button" sc-camel-on-click="{{ goDenFromBirth }}" style="height:54px; border-radius:16px; border:none; background:#172038; color:#F7F7F2; font-family:inherit; font-size:16px; font-weight:700; cursor:pointer;">回安心小窩</button>
+          <button type="button" sc-camel-on-click="{{ goTickets }}" style="height:46px; border-radius:14px; border:1px solid #E4E3DC; background:#fff; color:#292322; font-family:inherit; font-size:14px; font-weight:700; cursor:pointer;">查看我的票券</button>
+        </div>
+      </sc-if>

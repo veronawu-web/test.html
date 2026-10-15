@@ -1,0 +1,12 @@
+    <div class="fl-card" style="display:{{ oetCardShow }};">
+      <div class="fl-card-t">我的券與鑽石（{{ oetEnvLabel }}）</div>
+      <div class="fl-st"><span>鑽石</span><b class="mono">{{ oetDiamonds }}</b></div>
+      <sc-for list="{{ oetBalRows }}" as="b" hint-placeholder-count="2"><div class="fl-st"><span>{{ b.name }}</span><b class="mono">{{ b.qty }} 張</b></div></sc-for>
+      <p class="fl-p" style="display:{{ oetBalEmptyShow }};">目前沒有券。</p>
+      <div class="fl-card-t" style="margin-top:6px;">票券夾（付券給主播後由主播核銷）</div>
+      <sc-for list="{{ oetPendingTix }}" as="t" hint-placeholder-count="1"><div class="fl-st"><span>{{ t.name }}<br><small style="color:#6B625F;">{{ t.sub }}・待核銷</small></span><button type="button" class="fl-ghost sm" sc-camel-on-click="{{ t.onRedeem }}" disabled="{{ oetBusy }}">完成核銷</button></div></sc-for>
+      <sc-for list="{{ oetRedeemedTix }}" as="t" hint-placeholder-count="1"><div class="fl-st"><span>{{ t.name }}<br><small style="color:#6B625F;">{{ t.sub }}</small></span><b class="chip chip-ok">已核銷</b></div></sc-for>
+      <p class="fl-p" style="display:{{ oetTixEmptyShow }};">還沒有票券。</p>
+      <span style="font-size:13px; color:#00665C; font-weight:700; min-height:18px;">{{ oetMsg }}</span>
+      <button type="button" class="fl-ghost sm" sc-camel-on-click="{{ oetLogout }}">登出序號</button>
+    </div>

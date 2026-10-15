@@ -1,0 +1,16 @@
+    <div class="fl-pay" style="display:{{ oetPayShow }};">
+      <div class="fl-pay-r"><span>應付鑽石</span><b class="mono">{{ oetSelPrice }}</b></div>
+      <div class="fl-pay-r"><span>我的鑽石</span><b class="mono">{{ oetDiamonds }}</b></div>
+      <div class="fl-pay-warn" style="display:{{ oetCheckinShow }};"><b>先確認進入活動</b><span>以 {{ oetWho }} 身份參加本場活動後才能購買。</span><div class="fl-pay-warn-b"><button type="button" class="fl-btn sm" sc-camel-on-click="{{ oetCheckin }}" disabled="{{ oetBusy }}">確認進入活動</button></div></div>
+      <div class="fl-pay-warn" style="display:{{ insufShow }};"><b>{{ oetPayMsg }}</b><span>訂單選擇已保留；儲值後回到這裡再付款。</span><div class="fl-pay-warn-b"><button type="button" class="fl-btn sm" sc-camel-on-click="{{ oetTopup }}">前往儲值</button><a href="{{ oetTopupUrl }}" target="_blank" rel="noopener" class="fl-link" style="display:{{ oetTopupUrlShow }}; align-self:center;">新分頁沒開？點這裡</a><button type="button" class="fl-ghost sm" sc-camel-on-click="{{ regToTier }}">修改票種</button></div></div>
+      <div class="fl-pay-warn" style="display:{{ oetUnknownShow }};"><b>{{ oetPayMsg }}</b><span>交易編號 <span class="mono">{{ oetTxnId }}</span>。請不要換一筆重買；按「查詢結果」用同一筆編號向伺服器確認。</span><div class="fl-pay-warn-b"><button type="button" class="fl-btn sm" sc-camel-on-click="{{ oetBuyAgain }}" disabled="{{ oetBusy }}">查詢結果</button></div></div>
+      <div class="fl-pay-warn" style="display:{{ oetNeedCheckinShow }};"><b>{{ oetPayMsg }}</b><span>請先按上方「確認進入活動」。</span></div>
+      <div class="fl-pay-warn" style="display:{{ oetClosedShow }};"><b>{{ oetPayMsg }}</b><span>活動目前狀態：{{ oetEventStatus }}。</span></div>
+      <div class="fl-pay-warn" style="display:{{ soldOutShow }};"><b>{{ oetPayMsg }}</b><span>商品不存在或已下架；資料已保留，請返回重新選擇。</span><div class="fl-pay-warn-b"><button type="button" class="fl-btn sm" sc-camel-on-click="{{ regToTier }}">返回選票</button></div></div>
+      <div class="fl-pay-warn err" style="display:{{ payFailShow }};"><b>{{ oetPayMsg }}</b><span>沒有扣款。資料已保留；再買會是新的一筆交易。</span></div>
+      <div class="fl-pay-warn" style="display:{{ confirmingShow }};"><b>確認付款結果中…</b><span>請稍候，不要重複送出。</span></div>
+      <div class="fl-check proto" style="display:{{ mockShow }}; gap:8px; flex-wrap:wrap;"><span>模擬後端測試：</span><button type="button" class="fl-link" sc-camel-on-click="{{ mockFail }}">下次扣鑽失敗</button><button type="button" class="fl-link" sc-camel-on-click="{{ mockUnknown }}">下次結果不明</button><button type="button" class="fl-link" sc-camel-on-click="{{ mockPoor }}">鑽石歸零</button></div>
+      <span style="font-size:13px; color:#00665C; font-weight:700; min-height:18px;">{{ oetMsg }}</span>
+      <button type="button" class="fl-btn" sc-camel-on-click="{{ oetBuy }}" disabled="{{ oetPayDis }}" style="background:{{ oetPayBg }};">{{ oetPayLabel }}</button>
+      <p class="fl-note">金額與餘額以伺服器為準；{{ oetEnvLabel }}會真的扣鑽。</p>
+    </div>

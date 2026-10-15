@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>OET SDK 範例</title>
+<link rel="icon" href="data:," />
+<!--
+  線下活動工具箱 SDK 的最小範例（oet-sdk.js 1.1.0，契約 v4.0）。
+  目的是「照抄就能接」：每一段都只示範一個 API，畫面不追求好看，換成你自己的 UI 即可。
+  ?env=mock（預設）不連網；?env=test 打測試沙盒（要用工作人員給的序號登入）。
+  mock 的序號：123456＝用戶、654321＝主播。要模擬故障在 Console 呼叫 OET.mock.failNext(...)（見 README 第 5 節）。
+  每次呼叫的結果印在 Console（console.info）。
+  規矩：不用 alert／confirm（iframe 沙箱不能用），要確認就在頁面上放「確定」按鈕；
+        數字（鑽石、張數、金額）一律顯示伺服器給的值，不自己加減。
+-->
+<style>
+  /* 全部樣式都在首屏，class 一律 ex- 開頭（避免撞到你頁面的全域樣式） */
+  body { margin: 0; font: 15px/1.5 -apple-system, "PingFang TC", "Noto Sans TC", sans-serif; color: #1d1d1f; background: #f4f4f6; }
+  .ex-wrap { max-width: 560px; margin: 0 auto; padding: 12px 14px 40px; }
+  .ex-top { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; padding: 10px 0; }
+  .ex-top h1 { font-size: 17px; margin: 0 auto 0 0; }
+  .ex-chip { display: inline-block; padding: 2px 8px; border-radius: 10px; background: #e3e3e8; font-size: 12px; }
+  .ex-card { background: #fff; border-radius: 12px; padding: 12px 14px; margin: 10px 0; border: 1px solid #e3e3e8; }
+  .ex-card h2 { font-size: 15px; margin: 0 0 8px; }
+  .ex-row { display: flex; align-items: center; gap: 8px; padding: 6px 0; border-top: 1px solid #f0f0f2; }
+  .ex-row:first-of-type { border-top: 0; }
+  .ex-grow { flex: 1; min-width: 0; }
+  .ex-sub { color: #6e6e73; font-size: 13px; }
+  .ex-btn { font: inherit; padding: 6px 12px; border-radius: 8px; border: 0; background: #007aff; color: #fff; cursor: pointer; }
+  .ex-btn[disabled] { opacity: .4; cursor: default; }
+  .ex-ghost { background: #e9e9ee; color: #1d1d1f; }
+  .ex-in { font: inherit; font-size: 16px; padding: 6px 10px; border: 1px solid #c7c7cc; border-radius: 8px; width: 9em; letter-spacing: .2em; }
+  .ex-qty { width: 2.2em; text-align: center; }
+  .ex-msg { min-height: 1.5em; margin-top: 6px; font-size: 14px; }
+  .ex-err { color: #c62828; }
+  .ex-ok { color: #1b7f3b; }
+  .ex-confirm { margin-top: 8px; padding: 8px 10px; border-radius: 8px; background: #fff7e0; border: 1px solid #f0d58a; }
+  .ex-big { font-size: 22px; font-weight: 600; }
+  .ex-erow { padding: 10px 0; border-top: 1px solid #f0f0f2; }
+  .ex-erow:first-child { border-top: 0; }
+  .ex-erow.ex-bad .ex-ein, .ex-erow.ex-bad .ex-esel, .ex-erow.ex-bad .ex-eqty { border-color: #c62828; }
+  .ex-ein { font: inherit; font-size: 16px; box-sizing: border-box; width: 100%; padding: 6px 10px; border: 1px solid #c7c7cc; border-radius: 8px; }
+  .ex-eline { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .ex-esel { font: inherit; font-size: 16px; padding: 5px 6px; border: 1px solid #c7c7cc; border-radius: 8px; background: #fff; max-width: 11em; }
+  .ex-eqty { font: inherit; font-size: 16px; width: 4em; padding: 5px 6px; border: 1px solid #c7c7cc; border-radius: 8px; }
+  .ex-lock { margin: 0 0 8px; padding: 6px 10px; border-radius: 8px; background: #fdecea; color: #c62828; font-size: 14px; }
+  .ex-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 10px; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<div class="ex-wrap">
+  <div class="ex-top">
+    <h1>OET SDK 範例</h1>
+    <span class="ex-chip" id="exEnv"></span>
+    <span class="ex-chip" id="exAuth">連線中</span>
+    <button class="ex-btn ex-ghost" id="exLogout" hidden>登出</button>
+  </div>
+
+  <!-- 1. 序號登入（不在 SWAG App 裡、或拿不到 SWAG 身份時） -->
+  <section class="ex-card" id="exLogin" hidden>
+    <h2>輸入序號</h2>
+    <input class="ex-in" id="exCode" type="text" inputmode="numeric" autocomplete="one-time-code" placeholder="6 位數字" />
+    <button class="ex-btn" id="exLoginBtn">進入</button>
+    <div class="ex-msg" id="exLoginMsg"></div>
+  </section>
+
+  <!-- 2. 報到 -->
+  <section class="ex-card" id="exCheckin" hidden>
+    <h2 id="exEventName1">活動</h2>
+    <button class="ex-btn" id="exCheckinBtn">確認進入</button>
+    <div class="ex-sub" id="exWho"></div>
+    <div class="ex-msg" id="exCheckinMsg"></div>
+  </section>
+
+  <!-- 3. 首頁：餘額、我的券、買券、付券 -->
+  <section id="exHome" hidden>
+    <div class="ex-card">
+      <h2><span id="exEventName2">活動</span> <span class="ex-chip" id="exStatus"></span></h2>
+      <div>鑽石 <span class="ex-big" id="exDiamonds">—</span></div>
+      <div class="ex-sub" id="exBalance"></div>
+    </div>
+
+    <div class="ex-card" id="exBuyCard">
+      <h2>買券</h2>
+      <div id="exProducts"></div>
+      <div id="exBuyConfirm" class="ex-confirm" hidden></div>
+      <div class="ex-msg" id="exBuyMsg"></div>
+    </div>
+
+    <div class="ex-card" id="exSpendCard">
+      <h2>找主播付券</h2>
+      <div id="exCreators"></div>
+      <div id="exSpendConfirm" class="ex-confirm" hidden></div>
+      <div class="ex-msg" id="exSpendMsg"></div>
+    </div>
+
+    <div class="ex-card">
+      <h2>票券夾 <button class="ex-btn ex-ghost" id="exTicketsBtn">打開</button></h2>
+      <div id="exTickets" class="ex-sub">（按「打開」）</div>
+      <div id="exRedeemConfirm" class="ex-confirm" hidden></div>
+      <div class="ex-msg" id="exTicketsMsg"></div>
+    </div>
+
+  </section>
+
+  <!-- 4. 主播端：自己的菜單＋收款（只有主播看得到） -->
+  <section id="exCreator" hidden>
+    <div class="ex-card">
+      <h2>我的菜單</h2>
+      <div id="exMyMenu"></div>
+      <button class="ex-btn" id="exMenuEditBtn" style="margin-top:8px">編輯菜單</button>
+      <div class="ex-msg" id="exMenuMsg"></div>
+    </div>
+    <div class="ex-card">
+      <h2>收款</h2>
+      <div id="exTally" class="ex-sub"></div>
+      <div id="exFeed"></div>
+    </div>
+  </section>
+
+  <!-- 5. 主播端：編輯菜單（整頁切換，不用浮層） -->
+  <section class="ex-card" id="exMenuEdit" hidden>
+    <h2>編輯菜單</h2>
+    <div class="ex-lock" id="exMenuLock" role="status" hidden>菜單已鎖定</div>
+    <div id="exMenuRows"></div>
+    <button class="ex-btn ex-ghost" id="exMenuAdd" style="margin-top:8px">新增品項</button>
+    <div class="ex-msg" id="exEditMsg"></div>
+    <div class="ex-actions">
+      <button class="ex-btn ex-ghost" id="exMenuCancel">取消</button>
+      <button class="ex-btn" id="exMenuSave">儲存</button>
+    </div>
+  </section>
+
+  <!-- 6. 結束總結（用戶、主播都有） -->
+  <section class="ex-card" id="exWrapCard" hidden>
+    <h2>結束總結 <button class="ex-btn ex-ghost" id="exWrapBtn">查看</button></h2>
+    <div id="exWrap" class="ex-sub"></div>
+  </section>
+</div>
+
+<script src="oet-sdk.js"></script>
+<script>
+(function () {
+  'use strict';
+  // ── 0. 小工具 ──────────────────────────────────────────────────────
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return '&#' + c.charCodeAt(0) + ';'; }); }
+  function show(id, on) { $(id).hidden = !on; }
+  function fmt(n) { return typeof n === 'number' && isFinite(n) ? String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ',') : '—'; }
+  function msg(id, text, kind) { var el = $(id); el.className = 'ex-msg' + (kind ? ' ex-' + kind : ''); el.innerHTML = text; }
+  function log(line) { if (window.console && console.info) console.info('[example] ' + line); }   // 紀錄只印在 Console，不佔畫面
+  function logResult(what, r) {
+    log(what + ' → ' + (r.ok ? 'ok ' : 'ok:false ') + r.state + (r.txnId ? '  txn=' + r.txnId : '') + (r.message ? '  「' + r.message + '」' : ''));
+  }
+  function creatorName(c) { return c.display_name || (c.username ? '@' + c.username : '主播'); }
+
+  // ── 1. 初始化（env 從網址讀，只有 mock／test 兩種；正式活動用 env:'live', eventId:'<活動代號>'）──
+  var env = /[?&]env=test(&|$)/.test(location.search) ? 'test' : 'mock';
+  $('exEnv').textContent = env === 'test' ? '測試沙盒' : '模擬';
+  OET.init({ env: env });
+
+  var last = null;          // 最後一次 state() 的資料（畫面都從這裡畫）
+  var editing = null;       // 菜單編輯中：{ items, products, editable, busy }。items 是編輯器自己的複本，輪詢不會蓋掉
+  var poller = null, feedPoller = null, feedCursor = null;
+
+  // ── 2. 身份 ──────────────────────────────────────────────────────
+  OET.on('auth', function (a) {
+    $('exAuth').textContent = a.state === 'ready' ? '已登入' + (a.via === 'code' ? '（序號）' : '（SWAG）') : a.state === 'need_code' ? '未登入' : '連線中';
+    show('exLogout', a.state === 'ready');
+    log('auth → ' + a.state + (a.reason ? '（' + a.reason + '）' : ''));
+    // 換人：上一個人的畫面內容不留
+    $('exWrap').innerHTML = ''; $('exTickets').innerHTML = '（按「打開」）';
+    ['exMenuMsg', 'exBuyMsg', 'exSpendMsg', 'exTicketsMsg', 'exCheckinMsg'].forEach(function (id) { msg(id, ''); });
+    if (poller) { poller.stop(); poller = null; }
+    if (feedPoller) { feedPoller.stop(); feedPoller = null; }
+    if (a.state === 'ready') {
+      show('exLogin', false);
+      poller = OET.poll(function () { return OET.state(); }, 10000);     // 每 10 秒重抓；切到背景自動暫停
+    } else {
+      last = null;
+      closeEditor();
+      show('exHome', false); show('exCheckin', false); show('exCreator', false); show('exWrapCard', false);
+      show('exLogin', a.state === 'need_code');
+      if (a.reason === 'session_invalid') msg('exLoginMsg', '請重新輸入序號', 'err');
+    }
+  });
+  $('exLoginBtn').onclick = function () {
+    var btn = this; btn.disabled = true;
+    OET.auth.login($('exCode').value).then(function (r) {
+      btn.disabled = false;
+      logResult('login', r);
+      if (r.ok) { $('exCode').value = ''; msg('exLoginMsg', ''); return; }
+      var t = r.message;
+      if (r.state === 'rate_limited' && r.data.retry_after_sec) t = '嘗試太多次，請 ' + Math.ceil(r.data.retry_after_sec / 60) + ' 分鐘後再試';
+      msg('exLoginMsg', esc(t), 'err');
+    });
+  };
+  $('exLogout').onclick = function () { OET.auth.logout(); };
+
+  // ── 3. 畫面：每次 state() 拿到新資料都會觸發（含買券、付券之後 SDK 自動重抓的那一次）──
+  OET.on('state', function (d) {
+    last = d;
+    var me = d.me || {}, ev = d.event || {};
+    $('exEventName1').textContent = ev.name || '活動';
+    $('exEventName2').textContent = ev.name || '活動';
+    $('exStatus').textContent = ev.status === 'live' ? '進行中' : ev.status === 'ended' ? '已結束' : '未開始';
+    // 還沒報到 → 先報到（=== false 才擋：沒帶這個欄位不擋）
+    var needCheckin = !me.is_creator && me.checked_in === false && ev.status === 'live';
+    show('exCheckin', needCheckin);
+    $('exWho').textContent = '以 ' + (me.username ? '@' + me.username : me.display_name || '') + ' 參加';
+    show('exHome', !needCheckin && !me.is_creator);
+    show('exCreator', !!me.is_creator && !editing);
+    show('exWrapCard', !needCheckin && !editing);
+    if (me.is_creator) return drawCreator(d);
+    if (needCheckin) return;
+    // 鑽石：伺服器給 null 就顯示「—」，不要顯示 0
+    $('exDiamonds').textContent = fmt(d.diamonds);
+    var bal = d.balance || {}, names = {}, parts = [];
+    (d.products || []).forEach(function (p) { names[p.id] = p.name; });
+    Object.keys(bal).forEach(function (pid) { parts.push((names[pid] || pid) + ' ' + bal[pid] + ' 張'); });
+    $('exBalance').textContent = '我的券：' + (parts.length ? parts.join('、') : '沒有');
+    var live = ev.status === 'live';
+    show('exBuyCard', live); show('exSpendCard', live);
+    if (!$('exBuyConfirm').hidden || !$('exSpendConfirm').hidden) return;   // 確認中不重畫清單
+    drawProducts(d.products || []);
+    drawCreators(d.creators || [], names);
+  });
+
+  $('exCheckinBtn').onclick = function () {
+    var btn = this; btn.disabled = true;
+    OET.checkin().then(function (r) {
+      btn.disabled = false;
+      logResult('checkin', r);
+      if (!r.ok) msg('exCheckinMsg', esc(r.message), 'err');      // 例：名單外、QR 過期、活動未開始
+      // 成功不用自己切畫面：SDK 會自動重抓 state，on('state') 會把首頁畫出來
+    });
+  };
+
+  // ── 4. 買券（兩段：選好 → 頁面上的「確定」→ OET.buy）──
+  var qty = {};
+  function drawProducts(ps) {
+    $('exProducts').innerHTML = ps.map(function (p) {
+      var q = qty[p.id] || 1;
+      return '<div class="ex-row"><div class="ex-grow">' + esc(p.name) + '<div class="ex-sub">' + fmt(p.price_diamonds) + ' 鑽／張</div></div>' +
+        '<button class="ex-btn ex-ghost" data-dec="' + esc(p.id) + '">−</button><span class="ex-qty">' + q + '</span>' +
+        '<button class="ex-btn ex-ghost" data-inc="' + esc(p.id) + '">＋</button>' +
+        '<button class="ex-btn" data-buy="' + esc(p.id) + '">購買</button></div>';
+    }).join('') || '<div class="ex-sub">目前沒有可購買的券</div>';
+  }
+  $('exProducts').onclick = function (e) {
+    var t = e.target, id;
+    if ((id = t.getAttribute('data-inc'))) { qty[id] = Math.min(20, (qty[id] || 1) + 1); return drawProducts(last.products); }
+    if ((id = t.getAttribute('data-dec'))) { qty[id] = Math.max(1, (qty[id] || 1) - 1); return drawProducts(last.products); }
+    if ((id = t.getAttribute('data-buy'))) {
+      var p = (last.products || []).filter(function (x) { return x.id === id; })[0], q = qty[id] || 1;
+      // 確認文字的金額只是顯示（單價 × 張數）；夠不夠、實際扣多少，以伺服器回應為準
+      $('exBuyConfirm').innerHTML = '買 ' + q + ' 張' + esc(p.name) + '，扣 ' + fmt(p.price_diamonds * q) + ' 鑽？ ' +
+        '<button class="ex-btn ex-ghost" id="exBuyNo">取消</button> <button class="ex-btn" id="exBuyYes">確定</button>';
+      show('exBuyConfirm', true);
+      $('exBuyNo').onclick = function () { show('exBuyConfirm', false); };
+      $('exBuyYes').onclick = function () { show('exBuyConfirm', false); doBuy(id, q); };
+    }
+  };
+  function doBuy(pid, q, txnId) {
+    msg('exBuyMsg', '處理中…');
+    OET.buy(pid, q, txnId ? { txnId: txnId } : undefined).then(function (r) {
+      logResult('buy', r);
+      if (r.ok) return msg('exBuyMsg', r.data.resumed ? '這筆已經完成了' : '購買完成', 'ok');
+      if (r.state === 'insufficient_diamonds') {
+        var shop = last && last.event && last.event.shop;
+        msg('exBuyMsg', '鑽石不足（需要 ' + fmt(r.data.need) + '，目前 ' + fmt(r.data.have) + '） ' +
+          '<button class="ex-btn" id="exTopup">儲值</button>' +
+          (shop && shop.enabled && shop.section_id ? ' <button class="ex-btn ex-ghost" id="exPack">' + esc(shop.title || '活動禮包') + '</button>' : ''), 'err');
+        $('exTopup').onclick = function () { OET.topup().then(openResult); };
+        if ($('exPack')) $('exPack').onclick = function () { OET.openPack().then(openResult); };
+        return;
+      }
+      if (r.state === 'pending' || r.state === 'unknown') {
+        // 結果不明：不要讓用戶換一筆重買。「查詢結果」用同一個 txnId 再問一次伺服器
+        msg('exBuyMsg', esc(r.message) + '<div class="ex-sub">交易編號 ' + esc(r.txnId) + '</div>' +
+          '<button class="ex-btn ex-ghost" id="exBuyAgain">查詢結果</button>', 'err');
+        $('exBuyAgain').onclick = function () { doBuy(pid, q, r.txnId); };
+        return;
+      }
+      msg('exBuyMsg', esc(r.message), 'err');     // 例：未報到、活動已結束、上一筆還在處理中
+    });
+  }
+  function openResult(r) {
+    logResult(r.data && r.data.via ? 'topup/openPack(' + r.data.via + ')' : 'topup/openPack', r);
+    if (r.state === 'popup_blocked') msg('exBuyMsg', '新分頁沒有打開 <a target="_blank" rel="noopener" href="' + esc(r.data.url) + '">前往 SWAG</a>', 'err');
+    else if (r.ok) msg('exBuyMsg', '完成購買後回到這裡', 'ok');
+    else msg('exBuyMsg', esc(r.message), 'err');
+  }
+
+  // ── 5. 付券給主播 ────────────────────────────────────────────────
+  function drawCreators(cs, names) {
+    $('exCreators').innerHTML = cs.map(function (c) {
+      var items = (c.menu || []).map(function (m) {
+        return '<div class="ex-row"><div class="ex-grow">' + esc(m.name) + '<div class="ex-sub">' + m.qty + ' 張' + esc(names[m.product_id] || m.product_id) + '</div></div>' +
+          '<button class="ex-btn" data-c="' + esc(c.user_id) + '" data-m="' + esc(m.id) + '">付券</button></div>';
+      }).join('');
+      return '<div style="margin:6px 0 2px;font-weight:600">' + esc(creatorName(c)) + '</div>' + (items || '<div class="ex-sub">還沒有菜單</div>');
+    }).join('') || '<div class="ex-sub">還沒有主播</div>';
+  }
+  $('exCreators').onclick = function (e) {
+    var cid = e.target.getAttribute('data-c'), mid = e.target.getAttribute('data-m');
+    if (!cid) return;
+    var c = last.creators.filter(function (x) { return x.user_id === cid; })[0];
+    var m = c.menu.filter(function (x) { return x.id === mid; })[0];
+    $('exSpendConfirm').innerHTML = '付 ' + m.qty + ' 張券給 ' + esc(creatorName(c)) + '（' + esc(m.name) + '）？ ' +
+      '<button class="ex-btn ex-ghost" id="exSpendNo">取消</button> <button class="ex-btn" id="exSpendYes">確定</button>';
+    show('exSpendConfirm', true);
+    $('exSpendNo').onclick = function () { show('exSpendConfirm', false); };
+    $('exSpendYes').onclick = function () { show('exSpendConfirm', false); doSpend(cid, mid); };
+  };
+  function doSpend(cid, mid, txnId) {
+    msg('exSpendMsg', '處理中…');
+    OET.spend(cid, mid, txnId ? { txnId: txnId } : undefined).then(function (r) {
+      logResult('spend', r);
+      if (r.ok) { msg('exSpendMsg', '已付券，請主播核銷', 'ok'); return openTickets(); }
+      if (r.state === 'unknown') {
+        msg('exSpendMsg', esc(r.message) + '<div class="ex-sub">交易編號 ' + esc(r.txnId) + '</div>' +
+          '<button class="ex-btn ex-ghost" id="exSpendAgain">查詢結果</button>', 'err');
+        $('exSpendAgain').onclick = function () { doSpend(cid, mid, r.txnId); };
+        return;
+      }
+      msg('exSpendMsg', esc(r.message), 'err');   // 例：券不夠
+    });
+  }
+
+  // ── 6. 票券夾＋核銷（核銷由主播在用戶手機上按）──────────────────────
+  $('exTicketsBtn').onclick = function () { openTickets(); };
+  function openTickets() {
+    return OET.tickets().then(function (r) {
+      if (!r.ok) return msg('exTicketsMsg', esc(r.message), 'err');
+      var h = r.data.pending.map(function (t) {
+        return '<div class="ex-row"><div class="ex-grow">' + esc(t.menu_item_name) + ' → ' + esc(t.creator_name || '主播') +
+          '<div class="ex-sub">' + t.qty + ' 張' + esc(t.product_name) + '　待核銷</div></div>' +
+          '<button class="ex-btn" data-r="' + esc(t.txn_id) + '">完成核銷</button></div>';
+      }).join('') + r.data.redeemed.map(function (t) {
+        return '<div class="ex-row"><div class="ex-grow">' + esc(t.menu_item_name) + ' → ' + esc(t.creator_name || '主播') +
+          '<div class="ex-sub">' + t.qty + ' 張' + esc(t.product_name) + '　已核銷</div></div></div>';
+      }).join('');
+      $('exTickets').innerHTML = h || '還沒有票券';
+    });
+  }
+  $('exTickets').onclick = function (e) {
+    var id = e.target.getAttribute('data-r');
+    if (!id) return;
+    $('exRedeemConfirm').innerHTML = '確定核銷？核銷後這張票就用掉了 ' +
+      '<button class="ex-btn ex-ghost" id="exRdNo">取消</button> <button class="ex-btn" id="exRdYes">確定</button>';
+    show('exRedeemConfirm', true);
+    $('exRdNo').onclick = function () { show('exRedeemConfirm', false); };
+    $('exRdYes').onclick = function () {
+      show('exRedeemConfirm', false);
+      OET.redeem(id).then(function (r) {
+        logResult('redeem', r);
+        msg('exTicketsMsg', r.ok ? '核銷完成' : esc(r.message), r.ok ? 'ok' : 'err');
+        openTickets();
+      });
+    };
+  };
+
+  // ── 7. 結束總結 ──────────────────────────────────────────────────
+  $('exWrapBtn').onclick = function () {
+    OET.wrapup().then(function (r) {
+      logResult('wrapup', r);
+      if (!r.ok) return ($('exWrap').textContent = r.message);         // 例：活動還沒結束
+      var d = r.data;
+      if (d.role === 'creator') {
+        $('exWrap').innerHTML = (d.lines || []).map(function (l) {
+          return esc(l.product_name) + '　' + l.qty + ' 張 × ' + fmt(l.rate) + ' ＝ ' + fmt(l.amount);
+        }).join('<br>') + '<br>合計 ' + fmt(d.total) + (d.pending_qty ? '<br>另有 ' + d.pending_qty + ' 張未核銷，不計入' : '');
+      } else {
+        $('exWrap').innerHTML = '<b>' + esc(d.title || '謝謝參加') + '</b><br>買了 ' + d.purchased_qty + ' 張（' + fmt(d.purchased_diamonds) +
+          ' 鑽）、付了 ' + d.spent_qty + ' 張、已核銷 ' + d.redeemed_qty + ' 張' +
+          (d.blocks || []).map(function (b) { return b.type === 'text' ? '<br>' + esc(b.text) : ''; }).join('');
+      }
+    });
+  };
+
+  // ── 8. 主播端：收款輪詢 ──────────────────────────────────────────
+  var feedRows = {};
+  function drawCreator(d) {
+    drawMyMenu(d);
+    if (editing) syncLock(d.event && d.event.menu_editable !== false);   // 編輯中：只更新鎖，不動正在改的內容
+    var t = (d.me && d.me.tally) || {};
+    $('exTally').textContent = '已核銷 ' + fmt(t.received_total) + ' 張、待核銷 ' + fmt(t.pending_total) + ' 張';
+    if (feedPoller) return;
+    feedCursor = null; feedRows = {};
+    feedPoller = OET.poll(function () {
+      return OET.creatorFeed(feedCursor).then(function (r) {
+        if (!r.ok) return;
+        feedCursor = r.data.next;                              // 下次從這裡接著拿
+        r.data.items.forEach(function (it) { feedRows[it.txn_id] = it; });
+        r.data.redeemed.forEach(function (x) { if (feedRows[x.txn_id]) feedRows[x.txn_id].redeem_state = 'redeemed'; });
+        var t2 = r.data.tally || {};
+        $('exTally').textContent = '已核銷 ' + fmt(t2.received_total) + ' 張、待核銷 ' + fmt(t2.pending_total) + ' 張';
+        $('exFeed').innerHTML = Object.keys(feedRows).reverse().map(function (k) {
+          var it = feedRows[k];
+          return '<div class="ex-row"><div class="ex-grow">' + esc(it.display_name) + '　' + esc(it.menu_item_name) +
+            '<div class="ex-sub">' + it.qty + ' 張　' + (it.redeem_state === 'redeemed' ? '已核銷' : '待核銷') + '</div></div></div>';
+        }).join('') || '<div class="ex-sub">還沒有人付券</div>';
+      });
+    }, 3000);
+  }
+
+  // ── 9. 主播端：我的菜單＋編輯菜單 ──────────────────────────────────
+  // 首頁清單畫 state() 裡自己那一筆（跟用戶看到的一樣）；編輯器用 OET.menu() 拿最新的一份，改完 OET.saveMenu() 整份送出。
+  function productNames(ps) { var n = {}; (ps || []).forEach(function (p) { n[p.id] = p.name; }); return n; }
+  function drawMyMenu(d) {
+    var me = d.me || {}, ev = d.event || {};
+    var mine = (d.creators || []).filter(function (c) { return String(c.user_id) === String(me.user_id); })[0];
+    var names = productNames(d.products), items = (mine && mine.menu) || [];
+    $('exMyMenu').innerHTML = items.map(function (m) {
+      return '<div class="ex-row"><div class="ex-grow">' + esc(m.name) + '<div class="ex-sub">' + esc(m.qty) + ' 張' +
+        esc(names[m.product_id] || m.product_id) + '</div></div></div>';
+    }).join('') || '<div class="ex-sub">還沒有品項</div>';
+    // 鎖住（=== false）→ 按鈕變灰；活動結束（BFF 會回 closed）→ 不給編輯
+    var locked = ev.menu_editable === false, btn = $('exMenuEditBtn');
+    show('exMenuEditBtn', ev.status !== 'ended');
+    btn.disabled = locked;
+    btn.textContent = locked ? '菜單已鎖定' : '編輯菜單';
+  }
+
+  $('exMenuEditBtn').onclick = function () {
+    var btn = this; btn.disabled = true; msg('exMenuMsg', '');
+    OET.menu().then(function (r) {
+      logResult('menu', r);
+      btn.disabled = false;
+      if (!r.ok) return msg('exMenuMsg', esc(r.message), 'err');
+      if (!r.data.editable) { btn.disabled = true; btn.textContent = '菜單已鎖定'; return; }
+      editing = {
+        items: r.data.items.map(function (m) {
+          return { id: m.id, name: m.name || '', product_id: m.product_id || '', qty: m.qty, description: m.description || '', active: m.active };   // active 原樣送回
+        }),
+        products: r.data.products, editable: true, busy: false
+      };
+      msg('exEditMsg', '');
+      show('exCreator', false); show('exWrapCard', false); show('exMenuEdit', true);
+      drawRows(); syncLock(true);
+    });
+  };
+  function closeEditor() {
+    editing = null;
+    show('exMenuEdit', false);
+    if (last && last.me && last.me.is_creator) { show('exCreator', true); show('exWrapCard', true); }
+  }
+  // 鎖的狀態只動提示條與「儲存」鈕，不重畫輸入框
+  function syncLock(editable) {
+    if (!editing) return;
+    editing.editable = editable;
+    show('exMenuLock', !editable);
+    $('exMenuSave').disabled = !editable || editing.busy;
+  }
+  function drawRows() {
+    var ps = editing.products;
+    $('exMenuRows').innerHTML = editing.items.map(function (m, i) {
+      var known = ps.some(function (p) { return p.id === m.product_id; });
+      var opts = (m.product_id ? '' : '<option value="" selected>選擇券</option>') + ps.map(function (p) {
+        return '<option value="' + esc(p.id) + '"' + (p.id === m.product_id ? ' selected' : '') + '>' + esc(p.name) + '</option>';
+      }).join('') + (m.product_id && !known ? '<option value="' + esc(m.product_id) + '" selected>（已下架的券）</option>' : '');
+      return '<div class="ex-erow' + (m.bad ? ' ex-bad' : '') + '" data-i="' + i + '">' +
+        '<input class="ex-ein" data-f="name" data-i="' + i + '" maxlength="60" placeholder="品項名稱" value="' + esc(m.name) + '" />' +
+        '<div class="ex-eline">' +
+          '<select class="ex-esel" data-f="product_id" data-i="' + i + '" aria-label="收哪種券">' + opts + '</select>' +
+          '<input class="ex-eqty" data-f="qty" data-i="' + i + '" type="number" inputmode="numeric" min="1" max="999" value="' + esc(m.qty) + '" aria-label="張數" />張' +
+          '<span class="ex-grow"></span>' +
+          '<button class="ex-btn ex-ghost" data-del="' + i + '">刪除</button>' +
+        '</div></div>';
+    }).join('') || '<div class="ex-sub">還沒有品項</div>';
+    $('exMenuAdd').disabled = !ps.length;
+  }
+  function onField(e) {
+    var t = e.target, f = t.getAttribute('data-f'), m = editing && editing.items[+t.getAttribute('data-i')];
+    if (!f || !m) return;
+    if (f === 'qty') m.qty = t.value === '' ? NaN : Number(t.value);   // 送出前才檢查；不偷偷改成別的數字
+    else m[f] = t.value;
+  }
+  $('exMenuRows').oninput = onField;
+  $('exMenuRows').onchange = onField;
+  $('exMenuRows').onclick = function (e) {
+    var i = e.target.getAttribute('data-del');
+    if (i == null || !editing) return;
+    editing.items.splice(+i, 1); msg('exEditMsg', ''); drawRows();
+  };
+  $('exMenuAdd').onclick = function () {
+    var ps = editing.products;
+    editing.items.push({ name: '', product_id: ps.length === 1 ? ps[0].id : '', qty: 1, description: '', active: true });   // 新品項不帶 id：伺服器產生
+    msg('exEditMsg', ''); drawRows();
+    var ins = $('exMenuRows').querySelectorAll('.ex-ein'); if (ins.length) ins[ins.length - 1].focus();
+  };
+  $('exMenuCancel').onclick = closeEditor;
+  $('exMenuSave').onclick = function () {
+    if (!editing || editing.busy || !editing.editable) return;
+    var bad = 0;
+    editing.items.forEach(function (m) {
+      m.bad = !String(m.name).replace(/^\s+|\s+$/g, '') || !m.product_id || !(m.qty % 1 === 0 && m.qty >= 1 && m.qty <= 999);
+      if (m.bad) bad++;
+    });
+    if (bad) { drawRows(); return msg('exEditMsg', '請補齊紅框品項', 'err'); }
+    var payload = editing.items.map(function (m) {
+      var o = { name: m.name, product_id: m.product_id, qty: m.qty, description: m.description };
+      if (m.active !== undefined) o.active = m.active;   // 既有品項原樣送回；不提供下架，要下架就刪除品項
+      if (m.id) o.id = m.id;        // 沿用舊 id（付過券的票靠它對品項）
+      return o;
+    });
+    editing.busy = true; syncLock(editing.editable); msg('exEditMsg', '儲存中…');
+    OET.saveMenu(payload).then(function (r) {
+      logResult('saveMenu', r);
+      if (!editing) return;
+      editing.busy = false;
+      if (r.ok) {
+        closeEditor();
+        $('exMyMenu').innerHTML = '<div class="ex-sub">更新中…</div>';   // SDK 會自動重抓 state，on('state') 畫伺服器存進去的那份
+        return msg('exMenuMsg', r.data.dropped ? '已儲存，有 ' + r.data.dropped + ' 個品項沒存進去' : '已儲存', r.data.dropped ? 'err' : 'ok');
+      }
+      if (r.state === 'menu_locked') { msg('exEditMsg', ''); return syncLock(false); }   // 內容留著，解鎖後可以再存
+      syncLock(editing.editable);
+      msg('exEditMsg', esc(r.message), 'err');     // 例：活動已結束、連線失敗
+    });
+  };
+}());
+</script>
+</body>
+</html>

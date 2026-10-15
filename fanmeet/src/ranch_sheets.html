@@ -1,0 +1,27 @@
+    <sc-if value="{{ sheetHouse }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; gap:14px; align-items:center;">
+        <span style="width:64px; height:64px; flex:none; border-radius:16px; background:linear-gradient(160deg,#FFF8EC,#E6F6EF); border:1px solid #E4E3DC; display:flex; align-items:center; justify-content:center;"><img src="{{ rpSrcHappy }}" alt="" style="width:44px; height:44px; image-rendering:pixelated;"></span>
+        <div style="display:flex; flex-direction:column; gap:3px; min-width:0;">
+          <span style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:.08em; color:#6B625F;">{{ houseTag }}</span>
+          <b style="font-size:18px;">{{ petName }}<span style="font-weight:400; color:#5E5653;">・{{ speciesName }}</span></b>
+          <span style="font-size:13px; color:#5E5653;">{{ houseWhere }}</span>
+        </div>
+      </div>
+      <div style="margin-top:16px; padding:14px 16px; border-radius:16px; background:#F7F7F2; display:flex; flex-direction:column; gap:10px;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline;"><b style="font-size:14px;">成長狀態</b><b style="font-family:'IBM Plex Mono'; font-size:13px;">Lv.{{ level }}・{{ stageName }}</b></div>
+        <div style="height:6px; border-radius:3px; background:#E4E3DC; overflow:hidden;"><div style="height:100%; width:{{ xpPct }}; background:#00D2BE; border-radius:3px;"></div></div>
+        <sc-for list="{{ stats }}" as="st" hint-placeholder-count="3">
+          <div style="display:grid; grid-template-columns:44px 1fr 36px; gap:10px; align-items:center; font-size:13px;"><span style="color:#5E5653;">{{ st.label }}</span><span style="height:6px; border-radius:3px; background:#E4E3DC; overflow:hidden; display:block;"><span style="display:block; height:100%; width:{{ st.pct }}; background:{{ st.color }}; border-radius:3px;"></span></span><b style="font-family:'IBM Plex Mono'; text-align:right;">{{ st.val }}</b></div>
+        </sc-for>
+      </div>
+      <button type="button" sc-camel-on-click="{{ goMachine }}" style="margin-top:14px; width:100%; height:50px; border-radius:14px; border:none; background:#292322; color:#F7F7F2; font-family:inherit; font-size:15px; font-weight:700; cursor:pointer;">看看我的寵物</button>
+    </sc-if>
+
+    <sc-if value="{{ sheetBoard }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; align-items:center; gap:10px;"><span style="width:10px; height:10px; border-radius:50%; background:#00D2BE;"></span><b style="font-size:18px;">主播 {{ ranchId }} 的牧場</b></div>
+      <p style="margin:10px 0 0; font-size:14px; line-height:1.7; color:#3F3836;">{{ ranchName }}是主播 {{ ranchId }} 的牧場。透過主播專屬連結購票的會員，可以帶寵物搬進來住；在這裡餵食、摸摸，成長都會和你的寵物機同步。</p>
+      <div style="margin-top:16px; display:flex; justify-content:space-between; align-items:baseline;"><b style="font-size:15px;">公告</b><span style="font-family:'IBM Plex Mono'; font-size:11px; color:#6B625F;">NOTICE</span></div>
+      <div style="margin-top:8px; padding:22px 16px; border-radius:16px; border:1px dashed #D6D5CD; background:#FBFBF8; text-align:center; font-size:14px; line-height:1.6; color:#6B625F;">目前還沒有公告。<br><span style="font-size:13px;">主播發布後會顯示在這裡。</span></div>
+      <button type="button" sc-camel-on-click="{{ closeSheet }}" style="margin-top:14px; width:100%; height:48px; border-radius:14px; border:1px solid #E4E3DC; background:#fff; font-family:inherit; font-size:14px; font-weight:700; color:#292322; cursor:pointer;">關閉</button>
+    </sc-if>
+
