@@ -45,7 +45,10 @@
     this.setState({ oetLoginBusy: true, oetLoginMsg: '' });
     OET.auth.login(code).then(r => {
       let m = '';
-      if (!r.ok) { m = r.message || '登入失敗'; if (r.state === 'rate_limited' && r.data && r.data.retry_after_sec) m = '嘗試太多次，請 ' + Math.ceil(r.data.retry_after_sec / 60) + ' 分鐘後再試'; }
+      if (!r.ok) { m = r.message || '登入失敗'; if (r.state === 'rate_limited' && r.data && r.data.retry_after_sec) m = '嘗試太多次，請 ' + Math.ceil(r.data.retry_after_sec / 60) + ' 分鐘後再試';
+        // 模擬後端只認 123456／654321；工作人員給的沙盒序號要在網址加 ?env=test
+        else if (r.state === 'bad_code' && this.oetEnv === 'mock') m = '目前是模擬後端，只接受測試序號 123456。工作人員給的沙盒序號請在網址加上 ?env=test 再登入';
+        else if (r.state === 'network' && this.oetEnv !== 'mock') m = '連不到活動伺服器。若是從 github.io 等未被允許的網域開啟，伺服器會拒絕連線，請改用 localhost 開啟或請後端加白名單'; }
       this.setState({ oetLoginBusy: false, oetLoginMsg: m, oetCode: r.ok ? '' : this.state.oetCode });
       if (r.ok) {
         const rr = this.state.reg || this.regDefault();
