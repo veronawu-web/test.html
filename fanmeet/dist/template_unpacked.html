@@ -6395,7 +6395,7 @@ class Component extends DCLogic {
   }
   flowVals(M, s, pet, scr) {
     const a = M.acc || this.account();
-    const r = s.reg || this.regDefault();
+    const r = s.reg ? Object.assign({ err: {} }, s.reg) : this.regDefault();
     let tier = r.tier ? this.TIERS.find(x => x.id === r.tier) : null;
     if (!tier && r.tier && this.oetOn()) { const pp = this.oetProducts().find(x => x.id === r.tier); if (pp) tier = { id: pp.key || 'basic', name: pp.name, price: pp.price, limited: pp.limited, charm: pp.charm, priceNum: pp.priceNum }; }
     const price = tier ? (tier.priceNum != null ? tier.priceNum : this.PRICE[tier.id]) : 0;
@@ -6403,7 +6403,8 @@ class Component extends DCLogic {
     const paid = !!(order && order.status === 'paid');
     const rs = this.ranchState(M, s, pet);
     const okC = ['#DDF7F3', '#00665C'], tbdC = ['#EEEDE6', '#5E5653'], drawC = ['#FFF0D6', '#8A5A00'];
-    const step = paid ? 'done' : r.step;
+    // 存檔裡的 reg 可能過期（例：模擬後端重整後訂單消失、票種 id 已不存在）→ 退回選票，不要停在空白的「完成」
+    const step = paid ? 'done' : (r.step === 'done' || (r.step !== 'tier' && !tier) ? 'tier' : r.step);
     const stepIdx = { tier: 1, form: 2, review: 3, done: 4 }[step] || 1;
     const stepVals = {};
     [1, 2, 3, 4].forEach(i => { const on = i === stepIdx, done = i < stepIdx; stepVals['st' + i + 'c'] = on || done ? '#172038' : '#9A9690'; stepVals['st' + i + 'b'] = on ? '#172038' : (done ? '#DDF7F3' : '#ECECE5'); stepVals['st' + i + 'f'] = on ? '#5CF5E2' : (done ? '#00665C' : '#9A9690'); });
@@ -6431,7 +6432,7 @@ class Component extends DCLogic {
       petNameOr: pet ? pet.name : '你的寵物', denOrAdopt: pet ? () => this.go('den') : () => this.go('adopt'), denOrAdoptLabel: pet ? '回安心小窩 →' : '先領養我的寵物 →',
       // ranch state
       ranchStateLabel: rs.label, ranchStateShort: rs.short, ranchStateSub: rs.sub, rsBg: rs.c[0], rsFg: rs.c[1], rsBd: rs.key === 'ok' ? '#00D2BE' : '#E4E3DC', rsRef: s.ranchInvite ? 'REF・' + s.ranchInvite.ref : (r.ref ? 'REF・' + r.ref + '（未購票）' : ''), rsRefId: s.ranchInvite ? s.ranchInvite.ref : '',
-      rq1m: q1[0], rq1b: q1[1], rq1f: q1[2], rq1s: paid ? `已購買${oTier.name}` : '任一票種皆可；尚未報名',
+      rq1m: q1[0], rq1b: q1[1], rq1f: q1[2], rq1s: paid ? `已購買${oTier ? oTier.name : '票券'}` : '任一票種皆可；尚未報名',
       rq2m: q2[0], rq2b: q2[1], rq2f: q2[2], rq2s: s.ranchInvite ? (s.ranchInvite.status === 'verified' ? `主播 ${s.ranchInvite.ref} 的邀約已驗證` : `主播 ${s.ranchInvite.ref} 的邀約驗證中`) : '需由主播專屬連結購票產生邀約',
       rq3m: q3[0], rq3b: q3[1], rq3f: q3[2], rq3s: s.ranch ? '已加入' : '符合前兩項後由你決定',
       rsBtnRegShow: rs.key === 'noTicket' ? 'block' : 'none', rsBtnVerifyShow: rs.key === 'pending' ? 'block' : 'none', rsBtnJoinShow: rs.key === 'ok' ? 'block' : 'none', simVerify: () => this.simVerify(),
@@ -6439,7 +6440,7 @@ class Component extends DCLogic {
       regHasOrderShow: paid && !s.justDone ? 'flex' : 'none', regTierShow: !paid && step === 'tier' ? 'block' : 'none', regFormShow: !paid && step === 'form' ? 'block' : 'none', regReviewShow: !paid && step === 'review' ? 'block' : 'none', regDoneShow: paid ? 'block' : 'none',
       regGuestLineShow: M.loggedIn ? 'none' : 'flex',
       regTiers: this.TIERS.map(t => { const on = r.tier === t.id; const so = t.limited && s.stock.ALL <= 0; return { id: t.id, name: t.name, price: t.price, perks: t.perks, charm: t.charm, checked: on ? 'true' : 'false', soldOut: so, op: so ? '.55' : '1', border: on ? '2px solid #00D2BE' : '1px solid #E4E3DC', rcText: '牧場：需另有主播邀約', rcBg: '#E2F0FA', rcFg: '#2A4A6B', stockText: t.limited ? (so ? '已售罄' : `剩 ${s.stock.ALL} 組（示意）`) : '供應中', stockColor: so ? '#B43A68' : '#00665C', limit: t.limitText, onPick: () => this.regSet({ tier: t.id, payState: null }) }; }),
-      regNext1: () => this.regNext1(), regNext1Dis: !r.tier, regNext1Bg: r.tier ? '#172038' : '#BDBCB4', regNext1Label: r.tier ? (M.loggedIn ? `下一步：填寫資料（${tier.name}）` : `登入並繼續（${tier.name}）`) : '請先選擇票種',
+      regNext1: () => this.regNext1(), regNext1Dis: !tier, regNext1Bg: tier ? '#172038' : '#BDBCB4', regNext1Label: tier ? (M.loggedIn ? `下一步：填寫資料（${tier.name}）` : `登入並繼續（${tier.name}）`) : '請先選擇票種',
       regTierName: tier ? tier.name : '—', regTierPrice: tier ? tier.price : '—', regToTier: () => this.regSet({ step: 'tier', payState: null }), regToForm: () => this.regSet({ step: 'form', payState: null }),
       rgName: r.name, onRgName: ev => this.regSet({ name: ev.target.value.slice(0, 20) }), rgNameInv: r.err.name ? 'true' : 'false', rgNameBd: r.err.name ? '#B43A68' : '#DDDCD4', rgNameErrShow: r.err.name ? 'block' : 'none',
       rgEmail: r.email, onRgEmail: ev => this.regSet({ email: ev.target.value.slice(0, 80) }), rgEmailInv: r.err.email ? 'true' : 'false', rgEmailBd: r.err.email ? '#B43A68' : '#DDDCD4', rgEmailErrShow: r.err.email ? 'block' : 'none',
