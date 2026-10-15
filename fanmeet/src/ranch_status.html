@@ -1,0 +1,24 @@
+    <sc-if value="{{ ranchNotJoined }}" hint-placeholder-val="{{ false }}">
+      <div class="fl" style="display:flex; flex-direction:column; gap:14px;">
+      <div class="fl-seg" role="tablist"><button type="button" sc-camel-on-click="{{ goDen }}">安心小窩</button><button type="button" class="on" aria-selected="true">主播牧場</button></div>
+      <div class="fl-ttl"><div class="eyebrow">RANCH</div><h2>主播牧場</h2><p>受主播邀約、經驗證並由你選擇加入後，{{ petNameOr }}會搬進主播的牧場；安心小窩永久保留。</p></div>
+
+      <div class="fl-rs" style="border-color:{{ rsBd }};">
+        <div class="fl-rs-h"><span class="chip" style="background:{{ rsBg }}; color:{{ rsFg }};">{{ ranchStateLabel }}</span><span class="mono">{{ rsRef }}</span></div>
+        <p>{{ ranchStateSub }}</p>
+        <div class="fl-rs-list">
+          <div><i style="background:{{ rq1b }}; color:{{ rq1f }};">{{ rq1m }}</i><span><b>符合資格的票種</b><small>{{ rq1s }}</small></span></div>
+          <div><i style="background:{{ rq2b }}; color:{{ rq2f }};">{{ rq2m }}</i><span><b>有效且經驗證的主播邀約</b><small>{{ rq2s }}</small></span></div>
+          <div><i style="background:{{ rq3b }}; color:{{ rq3f }};">{{ rq3m }}</i><span><b>由你選擇加入</b><small>{{ rq3s }}</small></span></div>
+        </div>
+        <div class="fl-rs-b">
+          <button type="button" class="fl-btn" sc-camel-on-click="{{ goReg }}" style="display:{{ rsBtnRegShow }};">查看票種並報名</button>
+          <button type="button" class="fl-btn" sc-camel-on-click="{{ simVerify }}" style="display:{{ rsBtnVerifyShow }};">模擬：主播端驗證通過</button>
+          <button type="button" class="fl-btn" sc-camel-on-click="{{ joinRanch }}" style="display:{{ rsBtnJoinShow }};">搬進主播 {{ rsRefId }} 的牧場</button>
+          <button type="button" class="fl-ghost" sc-camel-on-click="{{ goDen }}" style="display:{{ rsBtnJoinShow }};">暫不加入，保留邀請</button>
+        </div>
+      </div>
+      <p class="fl-note">不符合或暫不加入，都不影響你的安心小窩與已購票權益。邀約連結上的來源標記只記錄來源，需經驗證才算有效邀約。</p>
+      <div class="rc-foot"><div ref="{{ setSlot }}" style="width:64px; aspect-ratio:260 / 340; flex:none;"></div><button type="button" class="rc-back" sc-camel-on-click="{{ denOrAdopt }}">{{ denOrAdoptLabel }}<span>同一隻寵物，資料完全同步</span></button></div>
+      </div>
+    </sc-if>

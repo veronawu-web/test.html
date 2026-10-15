@@ -1,0 +1,12 @@
+    <div class="fl-tiers" style="display:{{ oetTiersShow }};">
+      <div class="fl-login-line" style="display:{{ oetNeedLoginShow }};"><span>票種與價格由活動伺服器提供，請先登入。</span><button type="button" class="fl-link" sc-camel-on-click="{{ openLogin }}">登入</button></div>
+      <p class="fl-note" style="display:{{ oetNoProductsShow }};">後台還沒建立票種商品；請在工作人員後台建立「入場票／心動套票／寵愛套票／簽名套票」後重新整理。</p>
+      <sc-for list="{{ oetProducts }}" as="t" hint-placeholder-count="4">
+        <button type="button" class="fl-tier" sc-camel-on-click="{{ t.onPick }}" aria-pressed="{{ t.checked }}" style="border:{{ t.border }};">
+          <span class="fl-tier-h"><b>{{ t.name }}</b><b class="mono">{{ t.price }}</b></span>
+          <span class="fl-tier-p">{{ t.perks }}</span>
+          <span class="fl-tier-row"><span class="chip chip-tbd">收藏：{{ t.charm }}</span><span class="chip" style="background:#E2F0FA; color:#2A4A6B;">牧場：需另有主播邀約</span></span>
+          <span class="fl-tier-row"><span class="fl-stock" style="color:#00665C;">價格以伺服器為準</span><span class="fl-limit">{{ t.limit }}</span></span>
+        </button>
+      </sc-for>
+    </div>

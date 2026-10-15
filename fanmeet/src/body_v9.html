@@ -1,0 +1,754 @@
+</helmet>
+
+<div style="min-height:100vh; background-color:#E7E0FF; background-image:radial-gradient(circle, rgba(255,255,255,.95) 1px, transparent 1.7px), radial-gradient(circle, rgba(255,255,255,.7) .8px, transparent 1.4px), linear-gradient(180deg, #A9DBFF 0%, #CFE6FF 20%, #E4E0FF 52%, #FFE3F2 82%, #FFF2EA 100%); background-size:96px 96px, 61px 61px, 100% 100%; background-position:12px 20px, 40px 7px, 0 0; color:#292322; font-family:'Noto Sans TC', sans-serif; overflow-x:clip;">
+<div style="max-width:430px; margin:0 auto; position:relative; min-height:100vh;">
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<div style="animation:fadeUp .4s ease-out both;">
+<div style="position:relative; overflow:hidden;">
+  <div aria-hidden="true" style="position:absolute; inset:0; pointer-events:none; background:repeating-conic-gradient(from 0deg at 50% 44%, rgba(255,255,255,.22) 0deg 5deg, rgba(255,255,255,0) 5deg 16deg); -webkit-mask:radial-gradient(60% 40% at 50% 44%, #000 0%, transparent 100%); mask:radial-gradient(60% 40% at 50% 44%, #000 0%, transparent 100%);"></div>
+  <div aria-hidden="true" style="position:absolute; inset:0; pointer-events:none; background:radial-gradient(34% 4% at 14% 30%, rgba(255,255,255,.95), rgba(255,255,255,0)), radial-gradient(24% 3.5% at 26% 28%, rgba(255,255,255,.9), rgba(255,255,255,0)), radial-gradient(38% 4.5% at 88% 22%, rgba(255,255,255,.95), rgba(255,255,255,0)), radial-gradient(26% 3.5% at 76% 20%, rgba(255,255,255,.85), rgba(255,255,255,0)), radial-gradient(36% 4% at 90% 70%, rgba(255,255,255,.8), rgba(255,255,255,0));"></div>
+  <div aria-hidden="true" style="position:absolute; left:-40%; right:-40%; top:300px; height:200px; pointer-events:none; background-image:conic-gradient(#A8CDFF 25%, #FFFFFF 0 50%, #A8CDFF 0 75%, #FFFFFF 0); background-size:44px 44px; transform:perspective(300px) rotateX(60deg); transform-origin:50% 100%; -webkit-mask:linear-gradient(to top, #000 5%, transparent 85%); mask:linear-gradient(to top, #000 5%, transparent 85%); opacity:.6;"></div>
+  <span aria-hidden="true" style="position:absolute; left:4%; top:58%; width:26px; height:26px; border-radius:50%; pointer-events:none; background:radial-gradient(circle at 32% 28%, rgba(255,255,255,.95) 0 12%, rgba(255,255,255,0) 24%), radial-gradient(circle, rgba(255,255,255,0) 56%, rgba(255,255,255,.8) 72%, rgba(196,170,255,.55) 100%); animation:bubble 7s ease-in-out 0s infinite;"></span>
+  <span aria-hidden="true" style="position:absolute; right:5%; top:52%; width:20px; height:20px; border-radius:50%; pointer-events:none; background:radial-gradient(circle at 32% 28%, rgba(255,255,255,.95) 0 12%, rgba(255,255,255,0) 24%), radial-gradient(circle, rgba(255,255,255,0) 56%, rgba(255,255,255,.8) 72%, rgba(255,170,220,.55) 100%); animation:bubble 6.2s ease-in-out 0.3s infinite;"></span>
+  <span aria-hidden="true" style="position:absolute; left:12%; top:16%; width:16px; height:16px; border-radius:50%; pointer-events:none; background:radial-gradient(circle at 32% 28%, rgba(255,255,255,.95) 0 12%, rgba(255,255,255,0) 24%), radial-gradient(circle, rgba(255,255,255,0) 56%, rgba(255,255,255,.8) 72%, rgba(160,210,255,.55) 100%); animation:bubble 5.5s ease-in-out 0.8s infinite;"></span>
+  <span aria-hidden="true" style="position:absolute; right:16%; top:76%; width:30px; height:30px; border-radius:50%; pointer-events:none; background:radial-gradient(circle at 32% 28%, rgba(255,255,255,.95) 0 12%, rgba(255,255,255,0) 24%), radial-gradient(circle, rgba(255,255,255,0) 56%, rgba(255,255,255,.8) 72%, rgba(160,210,255,.55) 100%); animation:bubble 8s ease-in-out 1.2s infinite;"></span>
+  <span aria-hidden="true" style="position:absolute; right:8%; top:150px; width:22px; height:22px; pointer-events:none; background:linear-gradient(135deg, #FFFFFF 0%, #C3CBCE 30%, #6E787C 50%, #F2F5F6 65%, #9BA5A9 85%, #FFFFFF 100%); clip-path:polygon(50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%, 40% 40%); animation:twinkle2 2.8s ease-in-out 0s infinite;"></span>
+  <span aria-hidden="true" style="position:absolute; left:6%; top:270px; width:16px; height:16px; pointer-events:none; background:linear-gradient(135deg, #FFFFFF 0%, #C3CBCE 30%, #6E787C 50%, #F2F5F6 65%, #9BA5A9 85%, #FFFFFF 100%); clip-path:polygon(50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%, 40% 40%); animation:twinkle2 3.2s ease-in-out 1s infinite;"></span>
+  <span aria-hidden="true" style="position:absolute; right:4%; top:300px; width:30px; height:26px; pointer-events:none; background:linear-gradient(135deg, #FFF0F8 0%, #FFB3DA 30%, #D0679F 52%, #FFE0F0 66%, #F59BCB 85%, #FFF6FB 100%); clip-path:path('M15 26 C15 26 0 16.38 0 7.8 C0 2.6 3.5999999999999996 0 7.5 0 C10.5 0 13.2 1.8200000000000003 15 4.42 C16.8 1.8200000000000003 19.5 0 22.5 0 C26.4 0 30 2.6 30 7.8 C30 16.38 15 26 15 26 Z'); animation:bubble 6s ease-in-out 0.5s infinite;"></span>
+  <span aria-hidden="true" style="position:absolute; left:3%; top:420px; width:22px; height:19px; pointer-events:none; background:linear-gradient(135deg, #F6F0FF 0%, #CDB6FF 30%, #8A68D6 52%, #EFE6FF 66%, #B79BF2 85%, #FFFFFF 100%); clip-path:path('M11 19 C11 19 0 11.97 0 5.7 C0 1.9000000000000001 2.6399999999999997 0 5.5 0 C7.699999999999999 0 9.68 1.33 11 3.2300000000000004 C12.32 1.33 14.3 0 16.5 0 C19.36 0 22 1.9000000000000001 22 5.7 C22 11.97 11 19 11 19 Z'); animation:bubble 7.4s ease-in-out 1.5s infinite;"></span>
+  <div aria-hidden="true" style="position:absolute; inset:0; pointer-events:none; background:radial-gradient(46% 30% at 50% 47%, rgba(255,255,255,.95), rgba(255,255,255,0)), radial-gradient(70% 22% at 50% 62%, rgba(170,215,245,.45), rgba(170,215,245,0));"></div>
+  <div aria-hidden="true" style="position:absolute; left:50%; top:30%; width:300px; height:330px; transform:translateX(-50%); pointer-events:none; background:linear-gradient(180deg, rgba(255,255,255,.75), rgba(255,255,255,0)); clip-path:polygon(38% 0, 62% 0, 100% 100%, 0 100%); opacity:.7;"></div>
+  <span aria-hidden="true" style="position:absolute; right:22px; top:96px; width:20px; height:20px; pointer-events:none; background:linear-gradient(135deg, #FFFFFF 0%, #C9D0D3 22%, #7D878B 42%, #F2F5F6 56%, #A4AEB2 76%, #FFFFFF 100%); clip-path:polygon(50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%, 40% 40%); animation:twinkle2 3s ease-in-out infinite;"></span>
+  <span aria-hidden="true" style="position:absolute; left:20px; top:300px; width:12px; height:12px; pointer-events:none; background:linear-gradient(135deg, #FFFFFF 0%, #C9D0D3 22%, #7D878B 42%, #F2F5F6 56%, #A4AEB2 76%, #FFFFFF 100%); clip-path:polygon(50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%, 40% 40%); animation:twinkle2 2.4s ease-in-out .8s infinite;"></span>
+  <div style="position:relative;">
+  <nav style="height:60px; display:flex; align-items:center; justify-content:space-between; padding:0 20px;">
+    <div style="display:flex; align-items:center; gap:10px;">
+      <span style="width:10px; height:10px; border-radius:50%; background:#00D2BE; box-shadow:inset 0 -1px 0 rgba(0,80,72,.35);"></span>
+      <b style="font-size:15px; font-weight:700; letter-spacing:.02em;">心動連線</b>
+      <span style="font-family:'IBM Plex Mono'; font-size:11px; color:#6B625F; letter-spacing:.06em;">VIP FAN MEET</span>
+    </div>
+    <span style="height:30px; padding:0 12px; border-radius:15px; background:{{ memberChipBg }}; color:{{ memberChipFg }}; font-family:'IBM Plex Mono'; font-size:12px; font-weight:600; display:flex; align-items:center;">{{ memberLv }}</span>
+  </nav>
+  <section style="padding:14px 22px 0; animation:fadeUp .5s ease-out .05s both;">
+    <div style="display:inline-flex; align-items:center; gap:8px; height:28px; padding:0 12px; border-radius:14px; background:rgba(255,255,255,.8); border:1px solid #fff; font-size:12px; font-weight:700; color:#2A3B66; white-space:nowrap;"><span style="width:7px; height:7px; flex:none; border-radius:50%; background:#00D2BE;"></span>VIP 同樂會<span style="color:#9AA4B8;">｜</span>主播實體見面會</div>
+    <h1 style="margin:14px 0 0; font-size:46px; line-height:1.12; font-weight:900; letter-spacing:-.02em; color:#172038;">這次，<br>現場見。</h1>
+    <p style="margin:10px 0 0; font-size:16px; line-height:1.65; color:#3F4A63; text-wrap:pretty;">和喜歡的主播，把線上的陪伴變成面對面的相遇。</p>
+  </section>
+  <div style="position:relative; height:262px; margin-top:14px; animation:fadeUp .6s ease-out .15s both;">
+    <div aria-hidden="true" style="position:absolute; left:50%; bottom:18px; width:300px; height:40px; transform:translateX(-50%); border-radius:50%; background:radial-gradient(closest-side, rgba(40,70,130,.22), rgba(40,70,130,0));"></div>
+        <div style="position:absolute; left:calc(50% - 196px); top:82px; width:84px; height:112px; transform:rotate(-10deg); z-index:1; padding:2.5px; border-radius:18px; background:linear-gradient(135deg, #FFFFFF 0%, #C9D0D3 22%, #7D878B 42%, #F2F5F6 56%, #A4AEB2 76%, #FFFFFF 100%); box-shadow:0 18px 28px -18px rgba(30,45,90,.6); box-sizing:border-box;">
+          <div style="position:relative; width:100%; height:100%; border-radius:15.5px; overflow:hidden; background:linear-gradient(170deg, #FFFFFF 0%, #E6F1FA 55%, #CFE2F2 100%);">
+            <span style="position:absolute; left:50%; top:22%; width:34%; aspect-ratio:1; transform:translateX(-50%); border-radius:50%; background:rgba(36,52,92,.22);"></span>
+            <span style="position:absolute; left:50%; top:52%; width:72%; height:44%; transform:translateX(-50%); border-radius:50% 50% 0 0 / 60% 60% 0 0; background:rgba(36,52,92,.22);"></span>
+            <span style="position:absolute; left:8px; bottom:7px; font-family:'IBM Plex Mono'; font-size:10px; font-weight:600; color:#1C2848;">D</span>
+            
+          </div>
+        </div>
+        <div style="position:absolute; left:calc(50% + 112px); top:82px; width:84px; height:112px; transform:rotate(10deg); z-index:1; padding:2.5px; border-radius:18px; background:linear-gradient(135deg, #FFFFFF 0%, #C9D0D3 22%, #7D878B 42%, #F2F5F6 56%, #A4AEB2 76%, #FFFFFF 100%); box-shadow:0 18px 28px -18px rgba(30,45,90,.6); box-sizing:border-box;">
+          <div style="position:relative; width:100%; height:100%; border-radius:15.5px; overflow:hidden; background:linear-gradient(170deg, #FFFFFF 0%, #E6F1FA 55%, #CFE2F2 100%);">
+            <span style="position:absolute; left:50%; top:22%; width:34%; aspect-ratio:1; transform:translateX(-50%); border-radius:50%; background:rgba(36,52,92,.22);"></span>
+            <span style="position:absolute; left:50%; top:52%; width:72%; height:44%; transform:translateX(-50%); border-radius:50% 50% 0 0 / 60% 60% 0 0; background:rgba(36,52,92,.22);"></span>
+            <span style="position:absolute; left:8px; bottom:7px; font-family:'IBM Plex Mono'; font-size:10px; font-weight:600; color:#1C2848;">E</span>
+            
+          </div>
+        </div>
+        <div style="position:absolute; left:calc(50% - 152px); top:46px; width:104px; height:138px; transform:rotate(-5deg); z-index:2; padding:2.5px; border-radius:18px; background:linear-gradient(135deg, #FFFFFF 0%, #C9D0D3 22%, #7D878B 42%, #F2F5F6 56%, #A4AEB2 76%, #FFFFFF 100%); box-shadow:0 18px 28px -18px rgba(30,45,90,.6); box-sizing:border-box;">
+          <div style="position:relative; width:100%; height:100%; border-radius:15.5px; overflow:hidden; background:linear-gradient(170deg, #FFFFFF 0%, #E6F1FA 55%, #CFE2F2 100%);">
+            <span style="position:absolute; left:50%; top:22%; width:34%; aspect-ratio:1; transform:translateX(-50%); border-radius:50%; background:rgba(36,52,92,.22);"></span>
+            <span style="position:absolute; left:50%; top:52%; width:72%; height:44%; transform:translateX(-50%); border-radius:50% 50% 0 0 / 60% 60% 0 0; background:rgba(36,52,92,.22);"></span>
+            <span style="position:absolute; left:8px; bottom:7px; font-family:'IBM Plex Mono'; font-size:10px; font-weight:600; color:#1C2848;">B</span>
+            
+          </div>
+        </div>
+        <div style="position:absolute; left:calc(50% + 48px); top:46px; width:104px; height:138px; transform:rotate(5deg); z-index:2; padding:2.5px; border-radius:18px; background:linear-gradient(135deg, #FFFFFF 0%, #C9D0D3 22%, #7D878B 42%, #F2F5F6 56%, #A4AEB2 76%, #FFFFFF 100%); box-shadow:0 18px 28px -18px rgba(30,45,90,.6); box-sizing:border-box;">
+          <div style="position:relative; width:100%; height:100%; border-radius:15.5px; overflow:hidden; background:linear-gradient(170deg, #FFFFFF 0%, #E6F1FA 55%, #CFE2F2 100%);">
+            <span style="position:absolute; left:50%; top:22%; width:34%; aspect-ratio:1; transform:translateX(-50%); border-radius:50%; background:rgba(36,52,92,.22);"></span>
+            <span style="position:absolute; left:50%; top:52%; width:72%; height:44%; transform:translateX(-50%); border-radius:50% 50% 0 0 / 60% 60% 0 0; background:rgba(36,52,92,.22);"></span>
+            <span style="position:absolute; left:8px; bottom:7px; font-family:'IBM Plex Mono'; font-size:10px; font-weight:600; color:#1C2848;">C</span>
+            
+          </div>
+        </div>
+        <div style="position:absolute; left:calc(50% - 66px); top:10px; width:132px; height:174px; transform:rotate(0deg); z-index:3; padding:2.5px; border-radius:18px; background:linear-gradient(135deg, #FFFFFF 0%, #C9D0D3 22%, #7D878B 42%, #F2F5F6 56%, #A4AEB2 76%, #FFFFFF 100%); box-shadow:0 18px 28px -18px rgba(30,45,90,.6); box-sizing:border-box;">
+          <div style="position:relative; width:100%; height:100%; border-radius:15.5px; overflow:hidden; background:linear-gradient(170deg, #FFFFFF 0%, #E6F1FA 55%, #CFE2F2 100%);">
+            <span style="position:absolute; left:50%; top:22%; width:34%; aspect-ratio:1; transform:translateX(-50%); border-radius:50%; background:rgba(36,52,92,.22);"></span>
+            <span style="position:absolute; left:50%; top:52%; width:72%; height:44%; transform:translateX(-50%); border-radius:50% 50% 0 0 / 60% 60% 0 0; background:rgba(36,52,92,.22);"></span>
+            <span style="position:absolute; left:8px; bottom:7px; font-family:'IBM Plex Mono'; font-size:12px; font-weight:600; color:#1C2848;">A</span>
+          </div>
+        </div>
+    <span style="position:absolute; left:50%; bottom:6px; transform:translateX(-50%); height:28px; padding:0 14px; border-radius:14px; background:#172038; color:#F7F7F2; font-size:12px; font-weight:700; display:flex; align-items:center; white-space:nowrap; box-shadow:0 8px 16px -10px rgba(23,32,56,.6);">主播陣容即將公開</span>
+  </div>
+  <div style="display:grid; grid-template-columns:minmax(0,1fr) 104px; gap:10px; align-items:center; padding:16px 22px 0;">
+    <div style="display:flex; flex-direction:column; gap:8px;">
+      <span style="display:flex; align-items:center; gap:10px; font-size:15px; font-weight:700;"><span style="width:10px; height:10px; flex:none; border-radius:50%; background:linear-gradient(135deg, #FFFFFF 0%, #C9D0D3 22%, #7D878B 42%, #F2F5F6 56%, #A4AEB2 76%, #FFFFFF 100%);"></span>主播現場見面</span>
+      <span style="display:flex; align-items:center; gap:10px; font-size:15px; font-weight:700;"><span style="width:10px; height:10px; flex:none; border-radius:50%; background:linear-gradient(135deg, #FFFFFF 0%, #C9D0D3 22%, #7D878B 42%, #F2F5F6 56%, #A4AEB2 76%, #FFFFFF 100%);"></span>現場互動</span>
+      <span style="display:flex; align-items:center; gap:10px; font-size:15px; font-weight:700;"><span style="width:10px; height:10px; flex:none; border-radius:50%; background:#00D2BE;"></span>限定數位收藏</span>
+    </div>
+    <div style="display:flex; flex-direction:column; align-items:center; gap:4px;"><div ref="{{ setSlotA }}" style="width:70px; aspect-ratio:260 / 340; margin-right:16px;"></div><span style="font-size:11px; color:#5E6680; white-space:nowrap;">限定收藏預告</span></div>
+  </div>
+  <div style="margin:16px 22px 0; display:grid; grid-template-columns:1.25fr 1fr .9fr; border-radius:18px; background:rgba(255,255,255,.85); border:1px solid #fff; box-shadow:0 10px 24px -20px rgba(30,45,90,.5);">
+    <div style="padding:12px 12px 12px 14px; display:flex; flex-direction:column; gap:3px;"><span style="font-family:'IBM Plex Mono'; font-size:10px; letter-spacing:.08em; color:#5E6680;">DATE</span><b style="font-size:14px; line-height:1.35;">11/21（六）<br>13:00–17:00</b></div>
+    <div style="padding:12px; border-left:1px solid #E6E9EF; display:flex; flex-direction:column; gap:3px;"><span style="font-family:'IBM Plex Mono'; font-size:10px; letter-spacing:.08em; color:#5E6680;">PLACE</span><b style="font-size:14px; line-height:1.35;">台北<br>建國北路</b></div>
+    <div style="padding:12px; border-left:1px solid #E6E9EF; display:flex; flex-direction:column; gap:3px;"><span style="font-family:'IBM Plex Mono'; font-size:10px; letter-spacing:.08em; color:#5E6680;">SESSION</span><b style="font-size:14px; line-height:1.35; color:#5E6680;">即將公布</b></div>
+  </div>
+  <div ref="{{ setHeroCta }}" style="padding:14px 22px 30px; display:flex; flex-direction:column; gap:4px;">
+    <button type="button" sc-camel-on-click="{{ heroPrimary }}" style="height:56px; border-radius:16px; border:none; background:#172038; color:#F7F7F2; font-family:inherit; font-size:16px; font-weight:700; display:flex; align-items:center; justify-content:center; gap:8px; cursor:pointer; box-shadow:0 1px 0 rgba(0,0,0,.2), 0 14px 24px -14px rgba(23,32,56,.7); transition:transform .16s ease, box-shadow .16s ease;" style-active="transform:scale(.97); box-shadow:0 1px 0 rgba(0,0,0,.2), 0 4px 10px -8px rgba(23,32,56,.5);">{{ heroPrimaryLabel }}<svg width="18" height="18" sc-camel-view-box="0 0 20 20" fill="none"><path d="M4 10h11M11 5.5 15.5 10 11 14.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+    <button type="button" sc-camel-on-click="{{ goIntro }}" style="height:44px; border:none; background:none; font-family:inherit; font-size:14px; font-weight:700; color:#2A3B66; cursor:pointer;">查看主播陣容 →</button>
+  </div>
+  </div>
+</div>
+
+  <section style="padding:56px 0 0;">
+    <div style="padding:0 24px;"><div style="display:inline-flex; align-items:center; gap:6px; font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:.12em; color:#3E4A6B;"><span style="color:#00A898;">✦</span>COLLECTIBLE PET</div><h2 style="margin:8px 0 0; font-size:28px; line-height:1.3; font-weight:900; color:#172038;">見面之前，<br>先養成一點期待。</h2><p style="margin:8px 0 0; font-size:14px; line-height:1.65; color:#5E5653;">專屬寵物機與數位鑰匙圈，是這場見面會的限定收藏。</p></div>
+    <div style="display:flex; flex-direction:column; align-items:center; gap:16px; padding:36px 0 8px;">
+      <div ref="{{ setSlotB }}" style="width:min(58vw, 228px); aspect-ratio:260 / 340;"></div>
+      <span style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:.04em; color:#4F5A5E;">{{ homeWhere }}</span>
+      <div style="display:flex; align-items:center; gap:10px;">
+        <button type="button" sc-camel-on-click="{{ rotLeft }}" aria-label="向左轉動寵物機" style="width:36px; height:36px; border-radius:50%; border:1px solid rgba(41,35,34,.12); background:#fff; color:#292322; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:transform .15s ease;" style-active="transform:scale(.9);"><svg width="16" height="16" sc-camel-view-box="0 0 20 20" fill="none"><path d="M12.5 4.5 7 10l5.5 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+        <span style="font-size:12px; color:#4F5A5E;">拖曳或點擊，轉動看看</span>
+        <button type="button" sc-camel-on-click="{{ rotRight }}" aria-label="向右轉動寵物機" style="width:36px; height:36px; border-radius:50%; border:1px solid rgba(41,35,34,.12); background:#fff; color:#292322; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:transform .15s ease;" style-active="transform:scale(.9);"><svg width="16" height="16" sc-camel-view-box="0 0 20 20" fill="none"><path d="M7.5 4.5 13 10l-5.5 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+      </div>
+    </div>
+    <div style="margin-top:12px; display:flex; gap:12px; overflow-x:auto; scroll-snap-type:x mandatory; padding:4px 24px 12px; scrollbar-width:none;">
+      <sc-for list="{{ howSteps }}" as="st" hint-placeholder-count="5">
+        <div style="flex:none; width:196px; scroll-snap-align:start; border-radius:22px; background:rgba(255,255,255,.88); border:1px solid rgba(255,255,255,.95); box-shadow:0 12px 24px -18px rgba(60,70,150,.5); padding:10px; display:flex; flex-direction:column; gap:12px;">
+          <div style="position:relative; height:128px; border-radius:16px; padding:3px; background:linear-gradient(135deg, #FFFFFF 0%, #C9D0D3 22%, #7D878B 42%, #F2F5F6 56%, #A4AEB2 76%, #FFFFFF 100%);">
+            <sc-if value="{{ st.isLed }}" hint-placeholder-val="{{ true }}">
+              <div style="position:relative; height:100%; border-radius:13px; overflow:hidden; background-color:#0A0E0E; background-image:radial-gradient(circle, rgba(255,255,255,.07) .8px, transparent 1.15px); background-size:3.5px 3.5px; box-shadow:inset 0 2px 6px rgba(0,0,0,.7); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; font-family:'Press Start 2P',monospace; font-size:7px; color:{{ ledText }}; text-shadow:{{ ledGlow }};">
+                <sc-if value="{{ st.hasFence }}" hint-placeholder-val="{{ false }}"><img src="{{ fenceSrc }}" alt="" style="position:absolute; left:0; bottom:6px; width:190px; height:17px;"></sc-if>
+                <img src="{{ st.src }}" alt="" style="position:relative; width:56px; height:56px;">
+                <span style="position:relative;">{{ st.led }}</span>
+              </div>
+            </sc-if>
+            <sc-if value="{{ st.isCharm }}" hint-placeholder-val="{{ false }}">
+              <div style="height:100%; border-radius:13px; background:linear-gradient(180deg, #D8EEFF, #EFE6FF); display:flex; align-items:center; justify-content:center; overflow:hidden;"><span style="width:56px; height:104px; flex:none; transform:scale(1.05);"><dc-import name="Keychain" kind="vip" letter="♥" hint-size="56px,104px"></dc-import></span></div>
+            </sc-if>
+            <span style="position:absolute; left:-4px; top:-6px; width:30px; height:30px; border-radius:50%; background:linear-gradient(135deg, #FFFFFF 0%, #C9D0D3 22%, #7D878B 42%, #F2F5F6 56%, #A4AEB2 76%, #FFFFFF 100%); box-shadow:0 2px 6px rgba(60,70,150,.35); display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono'; font-size:12px; font-weight:600; color:#1C2848;">{{ st.n }}</span>
+          </div>
+          <div style="padding:0 4px 4px; display:flex; flex-direction:column; gap:4px;"><b style="font-size:16px;">{{ st.title }}</b><span style="font-size:13px; line-height:1.55; color:#5E5653;">{{ st.desc }}</span></div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+
+  <div style="padding:18px 20px 0;">
+    <div style="background:#fff; border:1px solid #E4E3DC; border-radius:20px; padding:16px 18px; display:flex; flex-direction:column; gap:12px;">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:12px;">
+        <div style="display:flex; flex-direction:column; gap:3px;"><span style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:.06em; color:#6B625F;">已帶入會員資料</span><b style="font-size:17px;">歡迎回來，{{ memberName }}</b></div>
+        <span style="flex:none; height:26px; padding:0 10px; border-radius:13px; background:{{ memberChipBg }}; color:{{ memberChipFg }}; font-family:'IBM Plex Mono'; font-size:12px; font-weight:600; display:flex; align-items:center;">{{ memberLv }}</span>
+      </div>
+      <div style="font-size:14px; line-height:1.6;">可領養：<b>{{ adoptableText }}</b></div>
+      <div style="display:flex; flex-direction:column; border-top:1px solid #EEEDE6;">
+        <sc-for list="{{ perks }}" as="p" hint-placeholder-count="3">
+          <div style="display:flex; align-items:center; gap:10px; padding:10px 0; border-bottom:1px solid #EEEDE6; font-size:14px;">
+            <span style="width:8px; height:8px; flex:none; border-radius:50%; background:{{ p.dot }};"></span>
+            <span style="flex:1; color:{{ p.color }};">{{ p.text }}</span>
+            <span style="font-family:'IBM Plex Mono'; font-size:11px; color:#6B625F;">{{ p.tag }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <button type="button" sc-camel-on-click="{{ homeCta }}" style="height:48px; border-radius:14px; border:1.5px solid #00D2BE; background:#fff; color:#292322; font-family:inherit; font-size:15px; font-weight:700; cursor:pointer; transition:transform .16s ease;" style-active="transform:scale(.97);">{{ homeCtaLabel }}</button>
+    </div>
+  </div>
+
+  
+
+  <section ref="{{ setLineup }}" style="padding:52px 0 0; scroll-margin-top:12px;">
+    <div style="padding:0 24px; display:flex; justify-content:space-between; align-items:flex-end; gap:12px;">
+      <div><div style="display:inline-flex; align-items:center; gap:6px; font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:.12em; color:#3E4A6B;"><span style="color:#D0679F;">✦</span>LINEUP</div><h2 style="margin:8px 0 0; font-size:28px; line-height:1.25; font-weight:900; background:linear-gradient(180deg, #1C2848 0%, #34497A 42%, #9DB8EA 50%, #2A3B66 58%, #172038 100%); -webkit-background-clip:text; background-clip:text; color:transparent; filter:drop-shadow(0 2px 0 #fff);">主播陣容</h2></div>
+      <span style="font-size:12px; color:#3E4A6B; padding-bottom:4px;">1 大咖＋4 人氣・名單公布中</span>
+    </div>
+    <div style="margin-top:16px; display:flex; gap:14px; align-items:flex-end; overflow-x:auto; scroll-snap-type:x mandatory; padding:8px 24px 14px; scrollbar-width:none;">
+      <sc-for list="{{ lineup }}" as="l" hint-placeholder-count="5">
+        <div style="flex:none; width:{{ l.w }}; scroll-snap-align:start; padding:3px; border-radius:24px; background:linear-gradient(135deg, #FFFFFF 0%, #C9D0D3 22%, #7D878B 42%, #F2F5F6 56%, #A4AEB2 76%, #FFFFFF 100%); box-shadow:0 14px 26px -16px rgba(60,70,150,.55);">
+          <div style="border-radius:21px; overflow:hidden; background:#fff;">
+            <div style="position:relative; aspect-ratio:4 / 5; background:{{ l.bg }}; display:flex; align-items:center; justify-content:center;">
+              <span style="font-family:'IBM Plex Mono'; font-size:{{ l.fs }}; font-weight:600; line-height:1; background:linear-gradient(135deg, #FFFFFF 0%, #C9D0D3 22%, #7D878B 42%, #F2F5F6 56%, #A4AEB2 76%, #FFFFFF 100%); -webkit-background-clip:text; background-clip:text; color:transparent; filter:drop-shadow(0 2px 3px rgba(60,70,150,.35));">{{ l.id }}</span>
+              <span style="position:absolute; left:10px; top:10px; max-width:calc(100% - 46px); box-sizing:border-box; height:22px; padding:0 9px; border-radius:11px; background:{{ l.badgeBg }}; color:{{ l.badgeFg }}; font-size:10px; font-weight:700; display:flex; align-items:center; letter-spacing:.04em; white-space:nowrap; overflow:hidden;">{{ l.badge }}</span>
+              <span style="position:absolute; right:12px; top:12px; width:14px; height:14px; background:linear-gradient(135deg, #FFFFFF 0%, #C9D0D3 22%, #7D878B 42%, #F2F5F6 56%, #A4AEB2 76%, #FFFFFF 100%); clip-path:polygon(50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%, 40% 40%);"></span>
+              <span style="position:absolute; left:12px; bottom:10px; font-family:'IBM Plex Mono'; font-size:10px; letter-spacing:.08em; color:#4F5A7A;">PORTRAIT・即將公開</span>
+            </div>
+            <div style="padding:12px 14px 14px; display:flex; flex-direction:column; gap:3px;"><b style="font-size:{{ l.nameFs }};">主播 {{ l.id }}</b><span style="font-size:12px; color:#5E5653;">{{ l.ranch }}</span></div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="padding:52px 24px 0;">
+    <div style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:.1em; color:#6B625F;">HIGHLIGHTS</div>
+    <h2 style="margin:10px 0 0; font-size:24px; line-height:1.35; font-weight:700;">活動亮點</h2>
+    <div style="margin-top:16px; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px;">
+      <div style="padding:14px; border-radius:16px; background:#fff; border:1px solid #E4E3DC; display:flex; flex-direction:column; gap:10px;"><span style="width:40px; height:40px; border-radius:13px; padding:2px; box-sizing:border-box; background:linear-gradient(135deg, #FFFFFF 0%, #C9D0D3 22%, #7D878B 42%, #F2F5F6 56%, #A4AEB2 76%, #FFFFFF 100%); box-shadow:0 6px 12px -8px rgba(60,70,150,.6);"><span style="width:100%; height:100%; border-radius:11px; background:linear-gradient(160deg, #E3F4FF, #EFE6FF); color:#1C2848; display:flex; align-items:center; justify-content:center;"><svg width="22" height="22" sc-camel-view-box="0 0 22 22"><rect x="8" y="2.5" width="6" height="10" rx="3" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></rect><path d="M5 10a6 6 0 0 0 12 0M11 16v3.5M7.5 19.5h7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></span><span><b style="font-size:15px;">舞台活動</b><p style="margin:4px 0 0; font-size:13px; line-height:1.55; color:#5E5653;">快問快答、組隊遊戲、團體合照</p></span></div>
+      <div style="padding:14px; border-radius:16px; background:#fff; border:1px solid #E4E3DC; display:flex; flex-direction:column; gap:10px;"><span style="width:40px; height:40px; border-radius:13px; padding:2px; box-sizing:border-box; background:linear-gradient(135deg, #FFFFFF 0%, #C9D0D3 22%, #7D878B 42%, #F2F5F6 56%, #A4AEB2 76%, #FFFFFF 100%); box-shadow:0 6px 12px -8px rgba(60,70,150,.6);"><span style="width:100%; height:100%; border-radius:11px; background:linear-gradient(160deg, #E3F4FF, #EFE6FF); color:#1C2848; display:flex; align-items:center; justify-content:center;"><svg width="22" height="22" sc-camel-view-box="0 0 22 22"><path d="M4 19.5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v14.5M2.5 19.5h17" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path><path d="M11 9.2c-1-1.4-3.3-.9-3.3.9 0 1.6 3.3 3.6 3.3 3.6s3.3-2 3.3-3.6c0-1.8-2.3-2.3-3.3-.9Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></span><span><b style="font-size:15px;">互動時間</b><p style="margin:4px 0 0; font-size:13px; line-height:1.55; color:#5E5653;">用心動券、拍立得券和主播互動</p></span></div>
+      <div style="padding:14px; border-radius:16px; background:#fff; border:1px solid #E4E3DC; display:flex; flex-direction:column; gap:10px;"><span style="width:40px; height:40px; border-radius:13px; padding:2px; box-sizing:border-box; background:linear-gradient(135deg, #FFFFFF 0%, #C9D0D3 22%, #7D878B 42%, #F2F5F6 56%, #A4AEB2 76%, #FFFFFF 100%); box-shadow:0 6px 12px -8px rgba(60,70,150,.6);"><span style="width:100%; height:100%; border-radius:11px; background:linear-gradient(160deg, #E3F4FF, #EFE6FF); color:#1C2848; display:flex; align-items:center; justify-content:center;"><svg width="22" height="22" sc-camel-view-box="0 0 22 22"><rect x="3" y="3" width="16" height="16" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></rect><rect x="5.5" y="5.5" width="11" height="8" rx="1" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></rect><path d="M8 16.5h6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></span><span><b style="font-size:15px;">拍立得</b><p style="margin:4px 0 0; font-size:13px; line-height:1.55; color:#5E5653;">簽名時間現場簽上拍立得</p></span></div>
+      <div style="padding:14px; border-radius:16px; background:#fff; border:1px solid #E4E3DC; display:flex; flex-direction:column; gap:10px;"><span style="width:40px; height:40px; border-radius:13px; padding:2px; box-sizing:border-box; background:linear-gradient(135deg, #FFFFFF 0%, #C9D0D3 22%, #7D878B 42%, #F2F5F6 56%, #A4AEB2 76%, #FFFFFF 100%); box-shadow:0 6px 12px -8px rgba(60,70,150,.6);"><span style="width:100%; height:100%; border-radius:11px; background:linear-gradient(160deg, #E3F4FF, #EFE6FF); color:#1C2848; display:flex; align-items:center; justify-content:center;"><svg width="22" height="22" sc-camel-view-box="0 0 22 22"><path d="M11 2.8l2.4 5 5.4.7-4 3.7 1 5.3L11 15l-4.8 2.5 1-5.3-4-3.7 5.4-.7Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></span><span><b style="font-size:15px;">全員簽名會</b><p style="margin:4px 0 0; font-size:13px; line-height:1.55; color:#5E5653;">全員主播合簽簽名板，流水線經過</p></span></div>
+      <div style="padding:14px; border-radius:16px; background:#fff; border:1px solid #E4E3DC; display:flex; flex-direction:column; gap:10px;"><span style="width:40px; height:40px; border-radius:13px; padding:2px; box-sizing:border-box; background:linear-gradient(135deg, #FFFFFF 0%, #C9D0D3 22%, #7D878B 42%, #F2F5F6 56%, #A4AEB2 76%, #FFFFFF 100%); box-shadow:0 6px 12px -8px rgba(60,70,150,.6);"><span style="width:100%; height:100%; border-radius:11px; background:linear-gradient(160deg, #E3F4FF, #EFE6FF); color:#1C2848; display:flex; align-items:center; justify-content:center;"><svg width="22" height="22" sc-camel-view-box="0 0 22 22"><rect x="3" y="8" width="16" height="11" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></rect><path d="M2.5 8h17M11 8v11M11 8C9.5 4 6 4 6 6.2S9 8 11 8Zm0 0c1.5-4 5-4 5-1.8S13 8 11 8Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></span><span><b style="font-size:15px;">抽獎</b><p style="margin:4px 0 0; font-size:13px; line-height:1.55; color:#5E5653;">50,000 鑽，報到 QR 就是號碼</p></span></div>
+      <div style="padding:14px; border-radius:16px; background:#fff; border:1px solid #E4E3DC; display:flex; flex-direction:column; gap:10px;"><span style="width:40px; height:40px; border-radius:13px; padding:2px; box-sizing:border-box; background:linear-gradient(135deg, #FFFFFF 0%, #C9D0D3 22%, #7D878B 42%, #F2F5F6 56%, #A4AEB2 76%, #FFFFFF 100%); box-shadow:0 6px 12px -8px rgba(60,70,150,.6);"><span style="width:100%; height:100%; border-radius:11px; background:linear-gradient(160deg, #E3F4FF, #EFE6FF); color:#1C2848; display:flex; align-items:center; justify-content:center;"><svg width="22" height="22" sc-camel-view-box="0 0 22 22"><path d="M8 11V4.8a1.3 1.3 0 0 1 2.6 0V10M10.6 9.5V3.5a1.3 1.3 0 0 1 2.6 0v6.5M13.2 10V5a1.3 1.3 0 0 1 2.6 0v7.5c0 4-2.4 6.8-5.8 6.8-2.6 0-4-1.3-5.4-3.4L3 12.6a1.3 1.3 0 0 1 2-1.5L8 13.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></span><span><b style="font-size:15px;">Hi-Five 送客</b><p style="margin:4px 0 0; font-size:13px; line-height:1.55; color:#5E5653;">全體主播在出口送你離場</p></span></div>
+    </div>
+  </section>
+
+  <section style="padding:56px 24px 0;">
+    <div style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:.1em; color:#6B625F;">TICKETS</div>
+    <h2 style="margin:10px 0 0; font-size:24px; line-height:1.35; font-weight:700;">票種與專屬鑰匙圈</h2>
+    <p style="margin:6px 0 0; font-size:13px; line-height:1.6; color:#6B625F;">VIP 會員 10/24（六）優先購票・全票種 10/27（二）開賣。全票種合計上限 150 人，鑰匙圈為數位版，掛在你的寵物機上。</p>
+    <div style="margin-top:16px; display:flex; flex-direction:column; gap:10px;">
+      <sc-for list="{{ homeTiers }}" as="t" hint-placeholder-count="4">
+        <div style="display:grid; grid-template-columns:56px minmax(0,1fr); gap:14px; padding:12px 14px 12px 12px; border-radius:18px; background:#fff; border:1px solid #E4E3DC;">
+          <span style="width:56px; height:76px; border-radius:12px; background:#F1F1EC; display:flex; align-items:center; justify-content:center; overflow:hidden;"><span style="width:56px; height:104px; flex:none; transform:scale(.66);"><dc-import name="Keychain" kind="{{ t.id }}" letter="♥" serial="—/10" hint-size="56px,104px"></dc-import></span></span>
+          <span style="display:flex; flex-direction:column; gap:4px; min-width:0;">
+            <span style="display:flex; justify-content:space-between; gap:8px; align-items:baseline;"><b style="font-size:16px;">{{ t.name }}</b><b style="font-family:'IBM Plex Mono'; font-size:13px; white-space:nowrap;">{{ t.price }}</b></span>
+            <span style="font-size:13px; line-height:1.55; color:#5E5653;">{{ t.perks }}</span>
+            <span style="display:flex; justify-content:space-between; gap:8px; font-size:12px; color:#6B625F;"><span>鑰匙圈：{{ t.charm }}</span><span style="white-space:nowrap;">{{ t.limitText }}</span></span>
+          </span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="padding:56px 24px 0;">
+    <div style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:.1em; color:#6B625F;">SIGNING</div>
+    <h2 style="margin:10px 0 0; font-size:24px; line-height:1.35; font-weight:700;">簽名會名額</h2>
+    <p style="margin:6px 0 0; font-size:13px; line-height:1.6; color:#6B625F;">全員主播合簽簽名板，流水線依序經過每位主播。</p>
+    <div style="margin-top:14px; display:flex; flex-direction:column; border-top:1px solid #E4E3DC;">
+      <div style="display:flex; justify-content:space-between; gap:16px; padding:13px 0; border-bottom:1px solid #E4E3DC; font-size:14px; line-height:1.55;"><span style="flex:none;">簽名套票</span><b style="text-align:right;">10 組・45,000 鑽<br><span style="font-weight:400; font-size:12px; color:#6B625F;">先搶先得，11/18 截止</span></b></div>
+      <div style="display:flex; justify-content:space-between; gap:16px; padding:13px 0; border-bottom:1px solid #E4E3DC; font-size:14px; line-height:1.55;"><span style="flex:none;">預購抽籤</span><b style="text-align:right;">10 組<br><span style="font-weight:400; font-size:12px; color:#6B625F;">預購券 1 張＝1 次機會，每人最多中 1 次</span></b></div>
+      <div style="display:flex; justify-content:space-between; gap:16px; padding:13px 0; border-bottom:1px solid #E4E3DC; font-size:14px; line-height:1.55;"><span style="flex:none;">Lv.80 以上</span><b style="text-align:right;">有報名就能簽<br><span style="font-weight:400; font-size:12px; color:#6B625F;">11/7 前勾選，不佔上方名額</span></b></div>
+    </div>
+    <div style="margin-top:16px; padding:18px; border-radius:22px; background:rgba(255,255,255,.9); border:1px solid #fff; box-shadow:0 14px 26px -18px rgba(60,70,150,.55); display:grid; grid-template-columns:132px minmax(0,1fr); gap:16px; align-items:center;">
+      <div style="position:relative; width:132px; height:132px; border-radius:50%; padding:6px; box-sizing:border-box; background:conic-gradient(from 210deg, #FFFFFF, #8E989C, #F3F6F7, #6C767A, #E6EBED, #A4AEB2, #FFFFFF); box-shadow:0 10px 18px -10px rgba(40,50,110,.6);">
+        <div style="position:relative; width:100%; height:100%; border-radius:50%; overflow:hidden; background:linear-gradient(150deg, #D6EEFF 0%, #E4DAFF 45%, #FFE3F3 80%, #FFE9D6 100%); box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.9), inset 0 3px 8px rgba(60,70,150,.25); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px;">
+          <span style="position:absolute; left:14px; top:12px; width:38px; height:22px; border-radius:50%; background:rgba(255,255,255,.6); transform:rotate(-28deg);"></span>
+          <span style="position:relative; font-family:'IBM Plex Mono'; font-size:8px; font-weight:600; letter-spacing:.18em; color:#2A3B66;">ALL SIGNED</span>
+          <span style="position:relative; display:grid; grid-template-columns:repeat(3, 22px); gap:3px; justify-content:center;">
+            <span style="height:14px; border-bottom:1px dashed #4F5A7A; font-family:'IBM Plex Mono'; font-size:8px; color:#4F5A7A; display:flex; align-items:flex-end; justify-content:center;">A</span>
+            <span style="height:14px; border-bottom:1px dashed #4F5A7A; font-family:'IBM Plex Mono'; font-size:8px; color:#4F5A7A; display:flex; align-items:flex-end; justify-content:center;">B</span>
+            <span style="height:14px; border-bottom:1px dashed #4F5A7A; font-family:'IBM Plex Mono'; font-size:8px; color:#4F5A7A; display:flex; align-items:flex-end; justify-content:center;">C</span>
+          </span>
+          <span style="position:relative; display:grid; grid-template-columns:repeat(2, 22px); gap:3px; justify-content:center;">
+            <span style="height:14px; border-bottom:1px dashed #4F5A7A; font-family:'IBM Plex Mono'; font-size:8px; color:#4F5A7A; display:flex; align-items:flex-end; justify-content:center;">D</span>
+            <span style="height:14px; border-bottom:1px dashed #4F5A7A; font-family:'IBM Plex Mono'; font-size:8px; color:#4F5A7A; display:flex; align-items:flex-end; justify-content:center;">E</span>
+          </span>
+          <span style="position:relative; margin-top:2px; height:16px; padding:0 8px; border-radius:8px; background:#172038; color:#F7F7F2; font-family:'IBM Plex Mono'; font-size:8px; letter-spacing:.1em; display:flex; align-items:center;">11.21 FAN MEET</span>
+        </div>
+        <span style="position:absolute; right:2px; top:6px; width:16px; height:16px; background:conic-gradient(from 210deg, #FFFFFF, #8E989C, #F3F6F7, #6C767A, #FFFFFF); clip-path:polygon(50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%, 40% 40%);"></span>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:6px; min-width:0;">
+        <span style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:.08em; color:#D0679F;">SIGNED BADGE</span>
+        <b style="font-size:17px; line-height:1.35;">全員簽名徽章</b>
+        <span style="font-size:13px; line-height:1.6; color:#5E5653; text-wrap:pretty;">現場完成簽名會後，發到你的帳號，印著全員主播的簽名。</span>
+        <span style="font-size:12px; line-height:1.55; color:#6B625F;">簽名套票・中籤・Lv.80+ 勾選者皆可獲得</span>
+      </div>
+    </div>
+    <ul style="margin:14px 0 0; padding:0 0 0 18px; display:flex; flex-direction:column; gap:8px; font-size:13px; line-height:1.65; color:#3F3836;">
+      <li>多張預購 30 張享 9 折，每人限 1 次，11/16 截止。</li>
+      <li>預購券綁定帳號，不得轉售或轉給他人；未到場直接作廢，不退。</li>
+      <li>11/17 公布中籤，請於 11/18 12:00 前在網站按「確認參加」，未確認視同放棄。</li>
+    </ul>
+  </section>
+
+  <section style="padding:56px 24px 0;">
+    <div style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:.1em; color:#6B625F;">REWARDS</div>
+    <h2 style="margin:10px 0 0; font-size:24px; line-height:1.35; font-weight:700;">到場獎勵</h2>
+    <p style="margin:6px 0 0; font-size:13px; line-height:1.6; color:#6B625F;">買任一票種並完成現場報到即解鎖，未到場不發放。</p>
+    <div style="margin-top:14px; padding:14px 16px; border-radius:18px; background:#fff; border:1.5px solid #00D2BE; display:flex; justify-content:space-between; align-items:center; gap:12px;"><span style="display:flex; flex-direction:column; gap:2px;"><span style="font-size:12px; color:#5E5653;">你的報到鑽石</span><b style="font-family:'IBM Plex Mono'; font-size:20px;">{{ myCheckin }}</b></span><span style="font-family:'IBM Plex Mono'; font-size:12px; color:#00665C;">{{ memberLv }}</span></div>
+    <div style="margin-top:10px; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px;">
+      <div style="padding:8px 10px; border-radius:12px; background:#fff; border:1px solid #E4E3DC; display:flex; flex-direction:column; gap:2px;"><span style="font-family:'IBM Plex Mono'; font-size:11px; color:#6B625F;">Lv.0</span><b style="font-family:'IBM Plex Mono'; font-size:13px;">2,520</b></div>
+      <div style="padding:8px 10px; border-radius:12px; background:#fff; border:1px solid #E4E3DC; display:flex; flex-direction:column; gap:2px;"><span style="font-family:'IBM Plex Mono'; font-size:11px; color:#6B625F;">Lv.1–9</span><b style="font-family:'IBM Plex Mono'; font-size:13px;">3,150</b></div>
+      <div style="padding:8px 10px; border-radius:12px; background:#fff; border:1px solid #E4E3DC; display:flex; flex-direction:column; gap:2px;"><span style="font-family:'IBM Plex Mono'; font-size:11px; color:#6B625F;">Lv.10–19</span><b style="font-family:'IBM Plex Mono'; font-size:13px;">3,600</b></div>
+      <div style="padding:8px 10px; border-radius:12px; background:#fff; border:1px solid #E4E3DC; display:flex; flex-direction:column; gap:2px;"><span style="font-family:'IBM Plex Mono'; font-size:11px; color:#6B625F;">Lv.20–29</span><b style="font-family:'IBM Plex Mono'; font-size:13px;">4,050</b></div>
+      <div style="padding:8px 10px; border-radius:12px; background:#fff; border:1px solid #E4E3DC; display:flex; flex-direction:column; gap:2px;"><span style="font-family:'IBM Plex Mono'; font-size:11px; color:#6B625F;">Lv.30–39</span><b style="font-family:'IBM Plex Mono'; font-size:13px;">4,500</b></div>
+      <div style="padding:8px 10px; border-radius:12px; background:#fff; border:1px solid #E4E3DC; display:flex; flex-direction:column; gap:2px;"><span style="font-family:'IBM Plex Mono'; font-size:11px; color:#6B625F;">Lv.40–49</span><b style="font-family:'IBM Plex Mono'; font-size:13px;">6,300</b></div>
+      <div style="padding:8px 10px; border-radius:12px; background:#fff; border:1px solid #E4E3DC; display:flex; flex-direction:column; gap:2px;"><span style="font-family:'IBM Plex Mono'; font-size:11px; color:#6B625F;">Lv.50–59</span><b style="font-family:'IBM Plex Mono'; font-size:13px;">7,200</b></div>
+      <div style="padding:8px 10px; border-radius:12px; background:#fff; border:1px solid #E4E3DC; display:flex; flex-direction:column; gap:2px;"><span style="font-family:'IBM Plex Mono'; font-size:11px; color:#6B625F;">Lv.60–69</span><b style="font-family:'IBM Plex Mono'; font-size:13px;">8,100</b></div>
+      <div style="padding:8px 10px; border-radius:12px; background:#fff; border:1px solid #E4E3DC; display:flex; flex-direction:column; gap:2px;"><span style="font-family:'IBM Plex Mono'; font-size:11px; color:#6B625F;">Lv.70–79</span><b style="font-family:'IBM Plex Mono'; font-size:13px;">9,000</b></div>
+      <div style="padding:8px 10px; border-radius:12px; background:#fff; border:1px solid #E4E3DC; display:flex; flex-direction:column; gap:2px;"><span style="font-family:'IBM Plex Mono'; font-size:11px; color:#6B625F;">Lv.80–89</span><b style="font-family:'IBM Plex Mono'; font-size:13px;">9,900</b></div>
+      <div style="padding:8px 10px; border-radius:12px; background:#fff; border:1px solid #E4E3DC; display:flex; flex-direction:column; gap:2px;"><span style="font-family:'IBM Plex Mono'; font-size:11px; color:#6B625F;">Lv.90–100</span><b style="font-family:'IBM Plex Mono'; font-size:13px;">10,800</b></div>
+    </div>
+    <p style="margin:8px 0 0; font-size:12px; line-height:1.6; color:#6B625F;">2026 年參加過同樂會的 Lv.0–39 會員領 50%；Lv.40 以上領全額。</p>
+    <div style="margin-top:12px; display:flex; flex-direction:column; border-top:1px solid #E4E3DC;">
+      <div style="display:flex; justify-content:space-between; gap:16px; padding:13px 0; border-bottom:1px solid #E4E3DC; font-size:14px; line-height:1.55;"><span style="flex:none;">首次參加</span><b style="text-align:right;">4,666 鑽<br><span style="font-weight:400; font-size:12px; color:#6B625F;">加入 LINE@ 再加 2,000，最高 6,666；與報到鑽石取高</span></b></div>
+      <div style="display:flex; justify-content:space-between; gap:16px; padding:13px 0; border-bottom:1px solid #E4E3DC; font-size:14px; line-height:1.55;"><span style="flex:none;">揪感心加碼</span><b style="text-align:right;">3,000–10,000 鑽<br><span style="font-weight:400; font-size:12px; color:#6B625F;">依出發縣市，限量 15 名</span></b></div>
+      <div style="display:flex; justify-content:space-between; gap:16px; padding:13px 0; border-bottom:1px solid #E4E3DC; font-size:14px; line-height:1.55;"><span style="flex:none;">送券</span><b style="text-align:right;">Lv.30+ 1 張・Lv.50+ 再 1 張<br><span style="font-weight:400; font-size:12px; color:#6B625F;">心動券／互動券／鐵粉券任選</span></b></div>
+      <div style="display:flex; justify-content:space-between; gap:16px; padding:13px 0; border-bottom:1px solid #E4E3DC; font-size:14px; line-height:1.55;"><span style="flex:none;">Lv.70 以上</span><b style="text-align:right;">線下限定動態徽章<br><span style="font-weight:400; font-size:12px; color:#6B625F;">再抽訂製動態徽章乙次</span></b></div>
+      <div style="display:flex; justify-content:space-between; gap:16px; padding:13px 0; border-bottom:1px solid #E4E3DC; font-size:14px; line-height:1.55;"><span style="flex:none;">動物任務</span><b style="text-align:right;">總獎池 50,000 鑽<br><span style="font-weight:400; font-size:12px; color:#6B625F;">依線上測驗結果領任務，核驗後入帳</span></b></div>
+      <div style="display:flex; justify-content:space-between; gap:16px; padding:13px 0; border-bottom:1px solid #E4E3DC; font-size:14px; line-height:1.55;"><span style="flex:none;">當日儲值</span><b style="text-align:right;">回饋 5%<br><span style="font-weight:400; font-size:12px; color:#6B625F;">細則另行公布</span></b></div>
+    </div>
+  </section>
+
+  <section style="padding:56px 24px 0;">
+    <div style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:.1em; color:#6B625F;">DATES</div>
+    <h2 style="margin:10px 0 0; font-size:24px; line-height:1.35; font-weight:700;">重要日期</h2>
+    <div style="margin-top:14px; display:flex; flex-direction:column; border-top:1px solid #E4E3DC; font-size:14px;">
+      <div style="display:grid; grid-template-columns:64px 1fr; gap:12px; padding:12px 0; border-bottom:1px solid #E4E3DC;"><span style="font-family:'IBM Plex Mono'; font-size:13px; color:#6B625F;">10/24</span><span>VIP 會員優先購票</span></div>
+      <div style="display:grid; grid-template-columns:64px 1fr; gap:12px; padding:12px 0; border-bottom:1px solid #E4E3DC;"><span style="font-family:'IBM Plex Mono'; font-size:13px; font-weight:600; color:#00796D;">10/27</span><span>全票種開賣（含簽名套票）</span></div>
+      <div style="display:grid; grid-template-columns:64px 1fr; gap:12px; padding:12px 0; border-bottom:1px solid #E4E3DC;"><span style="font-family:'IBM Plex Mono'; font-size:13px; color:#6B625F;">11/7</span><span>Lv.80+ 簽名勾選截止</span></div>
+      <div style="display:grid; grid-template-columns:64px 1fr; gap:12px; padding:12px 0; border-bottom:1px solid #E4E3DC;"><span style="font-family:'IBM Plex Mono'; font-size:13px; color:#6B625F;">11/16</span><span>所有預購截止・抽籤名單鎖定</span></div>
+      <div style="display:grid; grid-template-columns:64px 1fr; gap:12px; padding:12px 0; border-bottom:1px solid #E4E3DC;"><span style="font-family:'IBM Plex Mono'; font-size:13px; color:#6B625F;">11/17</span><span>簽名抽籤公布</span></div>
+      <div style="display:grid; grid-template-columns:64px 1fr; gap:12px; padding:12px 0; border-bottom:1px solid #E4E3DC;"><span style="font-family:'IBM Plex Mono'; font-size:13px; color:#6B625F;">11/18</span><span>12:00 中籤確認截止・簽名套票與入場報名截止</span></div>
+      <div style="display:grid; grid-template-columns:64px 1fr; gap:12px; padding:12px 0; border-bottom:1px solid #E4E3DC;"><span style="font-family:'IBM Plex Mono'; font-size:13px; font-weight:600; color:#00796D;">11/21</span><span>見面會當天</span></div>
+    </div>
+  </section>
+
+  <section style="padding:56px 24px 0;">
+    <div style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:.1em; color:#6B625F;">SCHEDULE</div>
+    <h2 style="margin:10px 0 0; font-size:24px; line-height:1.35; font-weight:700;">當天流程</h2>
+    <div style="margin-top:16px; display:flex; flex-direction:column; border-top:1px solid #E4E3DC; font-size:14px;">
+      <div style="display:grid; grid-template-columns:56px 1fr; gap:12px; padding:12px 0; border-bottom:1px solid #E4E3DC;"><span style="font-family:'IBM Plex Mono'; font-size:13px; color:#6B625F;">12:15</span><span>開放排隊（依票種分區）</span></div>
+      <div style="display:grid; grid-template-columns:56px 1fr; gap:12px; padding:12px 0; border-bottom:1px solid #E4E3DC;"><span style="font-family:'IBM Plex Mono'; font-size:13px; color:#6B625F;">12:30</span><span>掃碼報到、領名牌與動物任務紙</span></div>
+      <div style="display:grid; grid-template-columns:56px 1fr; gap:12px; padding:12px 0; border-bottom:1px solid #E4E3DC;"><span style="font-family:'IBM Plex Mono'; font-size:13px; font-weight:600; color:#00796D;">13:00</span><span>開場表演・主播介紹</span></div>
+      <div style="display:grid; grid-template-columns:56px 1fr; gap:12px; padding:12px 0; border-bottom:1px solid #E4E3DC;"><span style="font-family:'IBM Plex Mono'; font-size:13px; color:#6B625F;">13:30</span><span>快問快答・舞台遊戲・團體合照</span></div>
+      <div style="display:grid; grid-template-columns:56px 1fr; gap:12px; padding:12px 0; border-bottom:1px solid #E4E3DC;"><span style="font-family:'IBM Plex Mono'; font-size:13px; color:#6B625F;">14:30</span><span>全員簽名會・拍立得簽名</span></div>
+      <div style="display:grid; grid-template-columns:56px 1fr; gap:12px; padding:12px 0; border-bottom:1px solid #E4E3DC;"><span style="font-family:'IBM Plex Mono'; font-size:13px; color:#6B625F;">15:00</span><span>互動時間</span></div>
+      <div style="display:grid; grid-template-columns:56px 1fr; gap:12px; padding:12px 0; border-bottom:1px solid #E4E3DC;"><span style="font-family:'IBM Plex Mono'; font-size:13px; color:#6B625F;">16:20</span><span>抽獎</span></div>
+      <div style="display:grid; grid-template-columns:56px 1fr; gap:12px; padding:12px 0; border-bottom:1px solid #E4E3DC;"><span style="font-family:'IBM Plex Mono'; font-size:13px; color:#6B625F;">16:40</span><span>Hi-Five 送客</span></div>
+    </div>
+  </section>
+
+  <section style="padding:56px 24px 0;">
+    <div style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:.1em; color:#6B625F;">INFO</div>
+    <div style="margin-top:14px; display:flex; flex-direction:column; border-top:1px solid #E4E3DC;">
+      <div style="display:flex; justify-content:space-between; gap:16px; padding:14px 0; border-bottom:1px solid #E4E3DC;"><span style="font-size:15px; flex:none;">日期</span><b style="font-size:15px; text-align:right;">2026/11/21（六）13:00–17:00</b></div>
+      <div style="display:flex; justify-content:space-between; gap:16px; padding:14px 0; border-bottom:1px solid #E4E3DC;"><span style="font-size:15px; flex:none;">地點</span><b style="font-size:15px; text-align:right;">台北市中山區<br>建國北路一段 80 號 B1</b></div>
+      <div style="display:flex; justify-content:space-between; gap:16px; padding:14px 0; border-bottom:1px solid #E4E3DC;"><span style="font-size:15px; flex:none;">名額</span><b style="font-size:15px; text-align:right;">上限 150 人</b></div>
+    </div>
+    <ul style="margin:16px 0 0; padding:0 0 0 18px; display:flex; flex-direction:column; gap:8px; font-size:13px; line-height:1.65; color:#3F3836;">
+      <li>現場經安檢後入場；寵愛套票設有專屬座位區。</li>
+      <li>所有互動的接觸範圍以主播意願為準，工作人員會事先說明。</li>
+      <li>現場餐點全票種皆有；心動券、拍立得券超過內含數量需另購。</li>
+    </ul>
+  </section>
+  <footer style="padding:56px 24px 120px; display:flex; justify-content:space-between; align-items:center; font-family:'IBM Plex Mono'; font-size:11px; color:#6B625F;">
+    <span>© 2026 VIP FAN MEET</span>
+    <sc-if value="{{ hasPet }}" hint-placeholder-val="{{ false }}"><button type="button" sc-camel-on-click="{{ resetAll }}" style="border:none; background:none; padding:8px 0; font:inherit; color:#6B625F; text-decoration:underline; cursor:pointer;">重新體驗</button></sc-if>
+  </footer>
+</div>
+</sc-if>
+
+<sc-if value="{{ showHeader }}" hint-placeholder-val="{{ false }}">
+<header style="position:sticky; top:0; z-index:30; background:rgba(255,255,255,.78); border-bottom:1px solid rgba(255,255,255,.9);">
+  <div style="height:60px; display:grid; grid-template-columns:76px 1fr 76px; align-items:center; padding:0 14px;">
+    <div style="display:flex;">
+      <sc-if value="{{ showBack }}" hint-placeholder-val="{{ true }}"><button type="button" sc-camel-on-click="{{ goBack }}" aria-label="返回" style="width:44px; height:44px; border-radius:50%; border:1px solid #E1E0D8; background:#fff; color:#292322; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:transform .15s ease;" style-active="transform:scale(.92);"><svg width="20" height="20" sc-camel-view-box="0 0 20 20" fill="none"><path d="M12.5 4.5 7 10l5.5 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></button></sc-if>
+    </div>
+    <div style="text-align:center; display:flex; flex-direction:column; gap:2px;"><span style="font-family:'IBM Plex Mono'; font-size:10px; letter-spacing:.1em; color:#6B625F;">{{ stepLabel }}</span><b style="font-size:16px; white-space:nowrap;">{{ headerTitle }}</b></div>
+    <div style="display:flex; justify-content:flex-end;">
+      <sc-if value="{{ showTicket }}" hint-placeholder-val="{{ false }}"><button type="button" sc-camel-on-click="{{ openTicket }}" style="height:36px; padding:0 12px; border-radius:18px; border:1px solid #D9D8D0; background:#fff; color:#292322; font-family:inherit; font-size:13px; font-weight:600; white-space:nowrap; cursor:pointer; transition:transform .15s ease;" style-active="transform:scale(.95);">票券</button></sc-if>
+    </div>
+  </div>
+</header>
+</sc-if>
+
+<sc-if value="{{ isAdopt }}" hint-placeholder-val="{{ false }}">
+<section style="padding:18px 0 48px; animation:fadeUp .38s ease-out .06s both;">
+  <div style="display:flex; justify-content:center;"><div ref="{{ setSlot }}" style="width:150px; aspect-ratio:260 / 340;"></div></div>
+  <sc-if value="{{ quizOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="padding:24px 20px 0; display:flex; flex-direction:column; gap:14px;">
+    <div style="display:flex; justify-content:space-between; align-items:baseline;"><span style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:.1em; color:#6B625F;">ANIMAL QUIZ</span><span style="font-family:'IBM Plex Mono'; font-size:12px; color:#6B625F;">{{ quizStepText }}</span></div>
+    <div><h2 style="margin:0; font-size:24px; line-height:1.35; font-weight:900; color:#172038;">你的應援動物是哪一種？</h2><p style="margin:6px 0 0; font-size:13px; line-height:1.6; color:#5E5653; text-wrap:pretty;">答 3 題孵出你的寵物。11/21 現場報到時，會依結果領取對應的動物任務。</p></div>
+    <div style="display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:6px;"><sc-for list="{{ quizBars }}" as="qb" hint-placeholder-count="3"><span style="height:4px; border-radius:2px; background:{{ qb.bg }}; transition:background-color .25s ease;"></span></sc-for></div>
+    <b style="font-size:18px;">{{ quizQ }}</b>
+    <div style="display:flex; flex-direction:column; gap:10px;">
+      <sc-for list="{{ quizOpts }}" as="o" hint-placeholder-count="4">
+        <button type="button" sc-camel-on-click="{{ o.onPick }}" style="display:flex; align-items:center; gap:14px; min-height:56px; padding:10px 16px 10px 10px; border-radius:16px; border:1px solid #E4E3DC; background:#fff; color:#292322; font-family:inherit; font-size:15px; font-weight:700; text-align:left; cursor:pointer; transition:transform .15s ease, border-color .2s ease;" style-hover="border-color:#00D2BE;" style-active="transform:scale(.98);"><span style="width:36px; height:36px; flex:none; border-radius:11px; padding:2px; box-sizing:border-box; background:linear-gradient(135deg, #FFFFFF 0%, #C9D0D3 22%, #7D878B 42%, #F2F5F6 56%, #A4AEB2 76%, #FFFFFF 100%);"><span style="width:100%; height:100%; border-radius:9px; background:linear-gradient(160deg, #E3F4FF, #EFE6FF); color:#1C2848; display:flex; align-items:center; justify-content:center; font-family:'IBM Plex Mono'; font-size:13px; font-weight:600;">{{ o.letter }}</span></span>{{ o.text }}</button>
+      </sc-for>
+    </div>
+  </div>
+  </sc-if>
+  <sc-if value="{{ quizDone }}" hint-placeholder-val="{{ true }}">
+  <div style="margin:20px 20px 0; padding:14px 16px; border-radius:18px; background:#fff; border:1.5px solid #00D2BE; display:flex; justify-content:space-between; align-items:center; gap:12px;"><span style="display:flex; flex-direction:column; gap:2px; min-width:0;"><span style="font-size:12px; color:#5E5653;">測驗結果・你的應援動物</span><b style="font-size:17px;">{{ quizName }}</b></span><button type="button" sc-camel-on-click="{{ retakeQuiz }}" style="flex:none; height:36px; padding:0 12px; border-radius:12px; border:1px solid #E4E3DC; background:#fff; font-family:inherit; font-size:13px; color:#3F3836; cursor:pointer;">重新測驗</button></div>
+  <p style="margin:14px 24px 0; text-align:center; font-size:14px; color:#5E5653;">{{ adoptHint }}</p>
+  <div ref="{{ setVp }}" sc-camel-tab-index="0" role="listbox" aria-label="寵物種類" sc-camel-on-pointer-down="{{ cDown }}" sc-camel-on-pointer-move="{{ cMove }}" sc-camel-on-pointer-up="{{ cUp }}" sc-camel-on-pointer-cancel="{{ cCancel }}" sc-camel-on-key-down="{{ cKey }}" style="margin-top:8px; overflow:hidden; touch-action:pan-y; user-select:none; -webkit-user-select:none; cursor:grab; padding:16px 0 18px; outline:none;">
+    <div ref="{{ setTrack }}" style="display:flex; gap:14px; width:max-content; will-change:transform;">
+      <sc-for list="{{ cards }}" as="c" hint-placeholder-count="3">
+        <div ref="{{ c.setRef }}" data-idx="{{ c.idx }}" role="option" aria-selected="{{ c.ariaSel }}" style="width:232px; flex:none; transform-origin:50% 60%;">
+          <div style="background:#fff; border-radius:22px; border:{{ c.border }}; box-shadow:0 12px 24px -20px rgba(41,35,34,.4); transition:border-color .2s ease; overflow:hidden; pointer-events:none;">
+            <div style="position:relative; height:168px; background:#EEEDE6; display:flex; align-items:center; justify-content:center;">
+              <div style="width:132px; height:100px; border-radius:14px; background-color:#0A0E0E; background-image:radial-gradient(circle, rgba(255,255,255,.07) .8px, transparent 1.15px); background-size:3.5px 3.5px; box-shadow:inset 0 2px 6px rgba(0,0,0,.7), 0 0 0 4px #D5DBDD, 0 0 0 5px #9AA4A8; display:flex; align-items:center; justify-content:center;"><img src="{{ c.petSrc }}" alt="" style="width:64px; height:64px; image-rendering:pixelated; opacity:{{ c.petOp }};"></div>
+              <span style="position:absolute; left:12px; top:12px; height:24px; padding:0 9px; border-radius:12px; background:{{ c.tagBg }}; color:{{ c.tagFg }}; font-size:11px; font-weight:700; display:flex; align-items:center;">{{ c.tag }}</span>
+            </div>
+            <div style="padding:14px 16px 16px; display:flex; flex-direction:column; gap:4px;">
+              <b style="font-size:19px;">{{ c.name }}</b>
+              <span style="font-size:13px; color:#5E5653;">{{ c.trait }}</span>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+  <div style="display:flex; align-items:center; justify-content:center; gap:16px;">
+    <button type="button" sc-camel-on-click="{{ prevCard }}" aria-label="上一個" style="width:40px; height:40px; border-radius:50%; border:1px solid #E1E0D8; background:#fff; color:#292322; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:transform .15s ease;" style-active="transform:scale(.92);"><svg width="18" height="18" sc-camel-view-box="0 0 20 20" fill="none"><path d="M12.5 4.5 7 10l5.5 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+    <div style="display:flex; gap:6px; align-items:center;"><sc-for list="{{ dots }}" as="d" hint-placeholder-count="6"><span style="height:6px; width:{{ d.w }}; border-radius:3px; background:{{ d.bg }}; transition:width .3s cubic-bezier(.2,.8,.2,1), background-color .2s ease;"></span></sc-for></div>
+    <button type="button" sc-camel-on-click="{{ nextCard }}" aria-label="下一個" style="width:40px; height:40px; border-radius:50%; border:1px solid #E1E0D8; background:#fff; color:#292322; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:transform .15s ease;" style-active="transform:scale(.92);"><svg width="18" height="18" sc-camel-view-box="0 0 20 20" fill="none"><path d="M7.5 4.5 13 10l-5.5 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+  </div>
+  <div style="padding:24px 20px 0; display:flex; flex-direction:column; gap:14px;">
+    <div>
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;"><label for="f-name" style="font-size:14px; font-weight:700;">幫牠取名字</label><span style="font-family:'IBM Plex Mono'; font-size:12px; color:#6B625F;">{{ nameCount }}/10</span></div>
+      <input id="f-name" ref="{{ setNameEl }}" value="{{ nameDraft }}" sc-camel-on-change="{{ onName }}" placeholder="例：小心心" aria-invalid="{{ nameInvalid }}" style="width:100%; box-sizing:border-box; height:52px; padding:0 16px; border-radius:14px; border:1px solid {{ nameBorder }}; background:#fff; font-family:inherit; font-size:16px; color:#292322; outline:none; transition:border-color .15s ease, box-shadow .15s ease;" style-focus="border-color:#00B3A2; box-shadow:0 0 0 3px rgba(0,210,190,.2);">
+      <sc-if value="{{ nameErr }}" hint-placeholder-val="{{ false }}"><p style="margin:8px 0 0; display:flex; align-items:center; gap:6px; font-size:13px; color:#B4361F;"><span style="width:16px; height:16px; border-radius:50%; background:#B4361F; color:#fff; font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center;">!</span>請替牠取個名字</p></sc-if>
+    </div>
+    <button type="button" sc-camel-on-click="{{ adoptBtn }}" disabled="{{ adoptLocked }}" style="height:56px; border-radius:16px; border:none; background:{{ adoptBg }}; color:#F7F7F2; font-family:inherit; font-size:16px; font-weight:700; cursor:pointer; transition:transform .16s ease, background-color .2s ease;" style-active="transform:scale(.97);">{{ adoptBtnLabel }}</button>
+    <sc-if value="{{ adoptLocked }}" hint-placeholder-val="{{ false }}"><p style="margin:0; text-align:center; font-size:13px; color:#6B625F;">測驗結果就是你的應援動物；Lv.40 以上 VIP 可自選其他動物，你目前為 {{ memberLv }}。</p></sc-if>
+  </div>
+  </sc-if>
+</section>
+</sc-if>
+
+<sc-if value="{{ isShop }}" hint-placeholder-val="{{ false }}">
+<section style="padding:18px 20px 48px; animation:fadeUp .38s ease-out .06s both;">
+  <div style="display:flex; justify-content:center;"><div ref="{{ setSlot }}" style="width:180px; aspect-ratio:260 / 340;"></div></div>
+  <p style="margin:26px 0 0; text-align:center; font-size:13px; color:#5E5653;">{{ previewNote }}</p>
+  <div style="margin-top:28px; display:flex; justify-content:space-between; align-items:baseline;"><b style="font-size:18px;">選擇票種</b><span style="font-size:12px; color:#6B625F;">10/27 全票種開賣</span></div>
+  <p style="margin:6px 0 0; font-size:12px; line-height:1.6; color:#6B625F;">{{ inviteLine }}</p>
+  <div role="radiogroup" aria-label="票種" style="margin-top:14px; display:flex; flex-direction:column; gap:10px;">
+    <sc-for list="{{ tiers }}" as="t" hint-placeholder-count="4">
+      <button type="button" role="radio" aria-checked="{{ t.checked }}" sc-camel-on-click="{{ t.onPick }}" style="display:grid; grid-template-columns:64px minmax(0,1fr); gap:14px; padding:12px 14px 12px 12px; border-radius:18px; background:#fff; border:{{ t.border }}; color:#292322; font-family:inherit; text-align:left; cursor:pointer; transition:border-color .2s ease, transform .15s ease;" style-active="transform:scale(.985);">
+        <span style="width:64px; height:84px; border-radius:12px; background:#F1F1EC; display:flex; align-items:center; justify-content:center; overflow:hidden;"><span style="width:56px; height:104px; flex:none; transform:scale(.74);"><dc-import name="Keychain" kind="{{ t.id }}" letter="{{ t.letter }}" serial="{{ t.serial }}" hint-size="56px,104px"></dc-import></span></span>
+        <span style="display:flex; flex-direction:column; gap:5px; min-width:0;">
+          <span style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;"><b style="font-size:16px;">{{ t.name }}</b><span style="font-size:11px; font-weight:700; padding:3px 8px; border-radius:10px; background:#E1F4F0; color:#00665C;">{{ t.limitText }}</span><sc-if value="{{ t.owned }}" hint-placeholder-val="{{ false }}"><span style="font-size:11px; font-weight:700; padding:3px 8px; border-radius:10px; background:#292322; color:#F7F7F2;">已購買</span></sc-if></span>
+          <span style="font-size:13px; line-height:1.55; color:#5E5653;">{{ t.perks }}</span>
+          <span style="font-size:13px;">專屬鑰匙圈：<b>{{ t.charm }}</b></span>
+          <span style="display:flex; justify-content:space-between; gap:8px; font-family:'IBM Plex Mono'; font-size:12px;"><span style="color:#5E5653;">{{ t.price }}</span><span style="color:{{ t.stockColor }};">{{ t.stockText }}</span></span>
+        </span>
+      </button>
+    </sc-for>
+  </div>
+  <sc-if value="{{ signedSel }}" hint-placeholder-val="{{ false }}">
+    <div style="margin-top:16px; padding:16px; border-radius:18px; background:#fff; border:1.5px solid #00D2BE; display:flex; flex-direction:column; gap:8px;">
+      <div style="display:flex; justify-content:space-between; align-items:baseline; gap:12px;"><b style="font-size:15px;">全員主播簽名會</b><span style="font-family:'IBM Plex Mono'; font-size:12px; color:#00665C;">剩 {{ signedLeft }}/10 組・示意</span></div>
+      <span style="font-size:13px; line-height:1.65; color:#5E5653;">全員主播合簽一張簽名板，流水線依序經過每位主播；TO 名字於現場互動時寫，報到時發簽名券。先搶先得，11/18 截止。</span>
+      <span style="font-size:12px; line-height:1.6; color:#6B625F;">11/17 抽籤中籤者帳號鎖定、不能再購買；抽籤放棄的名額會轉為簽名套票開賣。未到場不補不退。</span>
+    </div>
+  </sc-if>
+  <div style="margin-top:22px; display:flex; flex-direction:column; gap:10px;">
+    <button type="button" sc-camel-on-click="{{ onBuy }}" disabled="{{ buyDisabled }}" style="height:56px; border-radius:16px; border:none; background:{{ buyBg }}; color:#F7F7F2; font-family:inherit; font-size:16px; font-weight:700; cursor:pointer; transition:transform .16s ease, background-color .2s ease;" style-active="transform:scale(.97);">{{ buyLabel }}</button>
+    <p style="margin:0; text-align:center; font-size:12px; color:#6B625F;">原型以模擬付款展示解鎖流程，不會實際扣款。</p>
+  </div>
+</section>
+</sc-if>
+
+<sc-if value="{{ isRanch }}" hint-placeholder-val="{{ false }}">
+<section style="padding:18px 20px 48px; animation:fadeUp .38s ease-out .06s both;">
+  <div style="display:flex; justify-content:center;"><div ref="{{ setSlot }}" style="width:170px; aspect-ratio:260 / 340;"></div></div>
+  <div style="margin-top:28px; display:flex; flex-direction:column; gap:12px;">
+    <sc-if value="{{ ranchEligible }}" hint-placeholder-val="{{ false }}">
+      <div style="padding:18px; border-radius:20px; background:#fff; border:1.5px solid #00D2BE; display:flex; flex-direction:column; gap:6px;">
+        <span style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:.06em; color:#00665C;">你收到邀請</span>
+        <b style="font-size:20px;">主播 {{ refId }} 的牧場・{{ refRanch }}</b>
+        <p style="margin:0; font-size:14px; line-height:1.65; color:#5E5653;">你透過主播 {{ refId }} 的專屬連結購票，可以帶著{{ petName }}搬進牧場，由主播照顧牠。</p>
+      </div>
+      <button type="button" sc-camel-on-click="{{ joinRanch }}" style="height:56px; border-radius:16px; border:none; background:#292322; color:#F7F7F2; font-family:inherit; font-size:16px; font-weight:700; cursor:pointer; transition:transform .16s ease;" style-active="transform:scale(.97);">搬進主播 {{ refId }} 的牧場</button>
+      <button type="button" sc-camel-on-click="{{ goMachine }}" style="height:44px; border:none; background:none; font-family:inherit; font-size:14px; color:#5E5653; cursor:pointer;">先留在自己家</button>
+    </sc-if>
+    <sc-if value="{{ ranchJoined }}" hint-placeholder-val="{{ false }}">
+      <div style="padding:18px; border-radius:20px; background:#fff; border:1px solid #E4E3DC; display:flex; flex-direction:column; gap:6px;"><span style="font-family:'IBM Plex Mono'; font-size:11px; color:#6B625F;">已入住</span><b style="font-size:20px;">主播 {{ ranchId }} 的牧場</b><p style="margin:0; font-size:14px; line-height:1.65; color:#5E5653;">{{ petName }}現在住在{{ ranchName }}。</p></div>
+      <button type="button" sc-camel-on-click="{{ goMachine }}" style="height:56px; border-radius:16px; border:none; background:#292322; color:#F7F7F2; font-family:inherit; font-size:16px; font-weight:700; cursor:pointer;">回到我的寵物</button>
+    </sc-if>
+    <sc-if value="{{ ranchBlocked }}" hint-placeholder-val="{{ false }}">
+      <b style="font-size:20px;">加入主播牧場的條件</b>
+      <div style="display:flex; flex-direction:column; border-top:1px solid #E4E3DC;">
+        <sc-for list="{{ ranchReqs }}" as="rq" hint-placeholder-count="2">
+          <div style="display:flex; align-items:center; gap:12px; padding:14px 0; border-bottom:1px solid #E4E3DC;">
+            <span style="width:22px; height:22px; flex:none; border-radius:50%; background:{{ rq.bg }}; color:{{ rq.fg }}; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700;">{{ rq.mark }}</span>
+            <span style="flex:1; display:flex; flex-direction:column; gap:2px;"><b style="font-size:15px;">{{ rq.title }}</b><span style="font-size:13px; color:#5E5653;">{{ rq.sub }}</span></span>
+          </div>
+        </sc-for>
+      </div>
+      <p style="margin:0; font-size:13px; line-height:1.65; color:#5E5653;">沒有受邀也沒關係，{{ petName }}會住在自己家，一樣可以餵養與參加見面會。</p>
+      <button type="button" sc-camel-on-click="{{ ranchBlockedCta }}" style="height:56px; border-radius:16px; border:none; background:#292322; color:#F7F7F2; font-family:inherit; font-size:16px; font-weight:700; cursor:pointer;">{{ ranchBlockedLabel }}</button>
+    </sc-if>
+  </div>
+</section>
+</sc-if>
+
+<sc-if value="{{ isPetScreen }}" hint-placeholder-val="{{ false }}">
+<section style="padding:18px 20px 170px; display:flex; flex-direction:column; align-items:center;">
+  <sc-if value="{{ isMachine }}" hint-placeholder-val="{{ false }}">
+    <div style="width:100%; display:flex; flex-direction:column; gap:14px; animation:fadeUp .4s ease-out .12s both;">
+      <div style="display:flex; flex-direction:column; gap:7px;">
+        <div style="display:flex; justify-content:space-between; align-items:baseline;"><b style="font-size:15px;">{{ petName }}<span style="font-weight:400; color:#5E5653;">・{{ speciesName }}・{{ stageName }}</span></b><span style="display:flex; align-items:baseline; gap:6px;"><span style="font-family:'IBM Plex Mono'; font-size:12px; font-weight:600; color:#00796D; opacity:{{ xpFxOp }}; transition:opacity .25s ease;">{{ xpFxText }}</span><b style="font-family:'IBM Plex Mono'; font-size:13px;">Lv.{{ level }}</b></span></div>
+        <div style="height:6px; border-radius:3px; background:#E4E3DC; overflow:hidden;"><div style="height:100%; width:{{ xpPct }}; background:#00D2BE; border-radius:3px; transition:width .6s cubic-bezier(.2,.8,.2,1);"></div></div>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px;">
+        <sc-for list="{{ stats }}" as="st" hint-placeholder-count="3">
+          <div style="display:flex; flex-direction:column; gap:6px;">
+            <div style="display:flex; align-items:baseline; justify-content:space-between; gap:4px;"><span style="font-size:12px; color:#5E5653;">{{ st.label }}</span><span style="display:flex; align-items:baseline; gap:5px;"><span style="font-family:'IBM Plex Mono'; font-size:12px; font-weight:600; color:#00796D; opacity:{{ st.fxOp }}; transition:opacity .25s ease;">{{ st.fxText }}</span><b style="font-family:'IBM Plex Mono'; font-size:13px;">{{ st.val }}</b></span></div>
+            <div style="height:4px; border-radius:2px; background:#E4E3DC; overflow:hidden;"><div style="height:100%; width:{{ st.pct }}; background:{{ st.color }}; border-radius:2px; transition:width .6s cubic-bezier(.2,.8,.2,1);"></div></div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </sc-if>
+  <div ref="{{ setSlot }}" style="width:min(72vw, 280px); aspect-ratio:260 / 340; margin-top:{{ slotTop }};"></div>
+  <div aria-live="polite" style="margin-top:34px; min-height:52px; width:100%; text-align:center; display:flex; flex-direction:column; gap:5px; align-items:center;">
+    <sc-if value="{{ isMachine }}" hint-placeholder-val="{{ false }}"><p style="margin:0; font-size:16px; font-weight:700; text-wrap:balance;">{{ msgText }}</p><p style="margin:0; font-size:13px; color:#6B625F;">{{ msgSub }}</p></sc-if>
+    <sc-if value="{{ isBirth }}" hint-placeholder-val="{{ false }}"><h2 style="margin:0; font-size:22px; font-weight:700;">{{ birthTitle }}</h2><p style="margin:0; font-size:14px; color:#5E5653; text-wrap:balance;">{{ birthSub }}</p></sc-if>
+  </div>
+  <sc-if value="{{ isMachine }}" hint-placeholder-val="{{ false }}">
+    <sc-if value="{{ attaching }}" hint-placeholder-val="{{ false }}"><button type="button" sc-camel-on-click="{{ skipAttach }}" style="margin-top:4px; height:40px; border:none; background:none; font-family:inherit; font-size:14px; color:#5E5653; cursor:pointer;">略過動畫</button></sc-if>
+    <div style="margin-top:16px; width:100%; display:flex; flex-direction:column; border-radius:20px; background:#fff; border:1px solid #E4E3DC; overflow:hidden;">
+      <sc-for list="{{ actions }}" as="a" hint-placeholder-count="4">
+        <button type="button" sc-camel-on-click="{{ a.onClick }}" style="display:flex; align-items:center; gap:14px; padding:14px 16px; border:none; border-bottom:1px solid #EEEDE6; background:transparent; color:#292322; font-family:inherit; text-align:left; cursor:pointer; transition:background-color .15s ease;" style-active="background-color:#F3F3EE;">
+          <span style="width:10px; height:10px; flex:none; border-radius:50%; background:{{ a.dot }};"></span>
+          <span style="flex:1; min-width:0; display:flex; flex-direction:column; gap:2px;"><b style="font-size:15px;">{{ a.title }}</b><span style="font-size:13px; color:#5E5653;">{{ a.sub }}</span></span>
+          <span style="font-family:'IBM Plex Mono'; font-size:11px; color:#6B625F; white-space:nowrap;">{{ a.tag }}</span>
+        </button>
+      </sc-for>
+    </div>
+  </sc-if>
+  <sc-if value="{{ isBirth }}" hint-placeholder-val="{{ false }}">
+    <div style="width:100%; margin-top:18px; display:flex; flex-direction:column; gap:6px;">
+      <sc-if value="{{ birthDone }}" hint-placeholder-val="{{ false }}"><button type="button" sc-camel-on-click="{{ startCare }}" style="height:56px; border-radius:16px; border:none; background:#292322; color:#F7F7F2; font-family:inherit; font-size:16px; font-weight:700; cursor:pointer; animation:fadeUp .3s ease-out both; transition:transform .16s ease;" style-active="transform:scale(.97);">開始照顧{{ petName }}</button></sc-if>
+      <sc-if value="{{ birthPlaying }}" hint-placeholder-val="{{ true }}"><button type="button" sc-camel-on-click="{{ skipBirth }}" style="height:44px; border:none; background:none; font-family:inherit; font-size:14px; color:#5E5653; cursor:pointer;">略過動畫</button></sc-if>
+    </div>
+  </sc-if>
+</section>
+</sc-if>
+</div>
+
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed; left:0; right:0; bottom:0; z-index:45; display:flex; justify-content:center; pointer-events:none; transform:translateY({{ buyBarY }}); opacity:{{ buyBarOp }}; transition:transform .35s cubic-bezier(.2,.8,.2,1), opacity .25s ease;">
+  <div style="width:100%; max-width:430px; box-sizing:border-box; padding:10px 14px calc(12px + env(safe-area-inset-bottom)); pointer-events:{{ buyBarPE }};">
+    <div style="display:flex; align-items:center; gap:12px; padding:10px 10px 10px 16px; border-radius:20px; background:rgba(255,255,255,.94); border:1px solid #fff; box-shadow:0 14px 30px -16px rgba(23,32,56,.55);">
+      <div style="flex:1; min-width:0; display:flex; flex-direction:column; gap:1px;"><b style="font-size:14px; white-space:nowrap;">VIP 同樂會・主播見面會</b><span style="font-size:12px; color:#5E6680; white-space:nowrap;">11/21（六）13:00・台北建國北路</span></div>
+      <button type="button" sc-camel-on-click="{{ heroPrimary }}" style="flex:none; height:44px; padding:0 18px; border-radius:14px; border:none; background:#172038; color:#F7F7F2; font-family:inherit; font-size:15px; font-weight:700; cursor:pointer; transition:transform .15s ease;" style-active="transform:scale(.96);">{{ barLabel }}</button>
+    </div>
+  </div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isMachine }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed; left:0; right:0; bottom:0; z-index:40; display:flex; justify-content:center; pointer-events:none;">
+  <div style="width:100%; max-width:430px; box-sizing:border-box; padding:18px 16px calc(14px + env(safe-area-inset-bottom)); background:linear-gradient(to top, rgba(255,236,246,.97) 70%, rgba(255,236,246,0)); display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; pointer-events:auto; animation:dockIn .45s cubic-bezier(.2,.8,.2,1) .15s both;">
+    <button type="button" sc-camel-on-click="{{ onFeedBtn }}" style="position:relative; height:68px; border-radius:18px; background:#fff; border:1px solid {{ dockFeedBorder }}; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; color:#292322; font-family:inherit; font-size:14px; font-weight:700; cursor:pointer; box-shadow:0 1px 0 rgba(41,35,34,.04), 0 8px 16px -10px rgba(41,35,34,.3); transition:transform .15s ease, box-shadow .15s ease, border-color .2s ease;" style-active="transform:scale(.95); box-shadow:0 1px 2px rgba(41,35,34,.12);"><span style="position:absolute; top:7px; right:9px; min-width:20px; height:18px; padding:0 5px; box-sizing:border-box; border-radius:9px; background:{{ feedBadgeBg }}; color:{{ feedBadgeFg }}; font-family:'IBM Plex Mono'; font-size:11px; font-weight:600; display:flex; align-items:center; justify-content:center;">{{ feed }}</span><img src="{{ iconFeed }}" alt="" style="width:22px; height:22px; image-rendering:pixelated;">餵食</button>
+    <button type="button" sc-camel-on-click="{{ onPlayBtn }}" style="height:68px; border-radius:18px; background:#fff; border:1px solid {{ dockPlayBorder }}; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; color:#292322; font-family:inherit; font-size:14px; font-weight:700; cursor:pointer; box-shadow:0 1px 0 rgba(41,35,34,.04), 0 8px 16px -10px rgba(41,35,34,.3); transition:transform .15s ease, box-shadow .15s ease, border-color .2s ease;" style-active="transform:scale(.95); box-shadow:0 1px 2px rgba(41,35,34,.12);"><img src="{{ iconPlay }}" alt="" style="width:22px; height:22px; image-rendering:pixelated;">{{ dockPlayLabel }}</button>
+    <button type="button" sc-camel-on-click="{{ onPetBtn }}" style="height:68px; border-radius:18px; background:#fff; border:1px solid #E1E0D8; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; color:#292322; font-family:inherit; font-size:14px; font-weight:700; cursor:pointer; box-shadow:0 1px 0 rgba(41,35,34,.04), 0 8px 16px -10px rgba(41,35,34,.3); transition:transform .15s ease, box-shadow .15s ease;" style-active="transform:scale(.95); box-shadow:0 1px 2px rgba(41,35,34,.12);"><img src="{{ iconPet }}" alt="" style="width:22px; height:22px; image-rendering:pixelated;">摸摸</button>
+  </div>
+</div>
+</sc-if>
+
+<div ref="{{ setMachine }}" role="group" aria-label="電子寵物機" style="position:fixed; left:0; top:0; width:260px; height:340px; z-index:20; transform-origin:0 0; opacity:0; will-change:transform; perspective:1000px;">
+  <sc-if value="{{ fullFx }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" style="position:absolute; inset:-60px; border-radius:50%; background:radial-gradient(closest-side, rgba(0,210,190,.42), rgba(0,210,190,0)); opacity:{{ glowOp }}; transition:opacity .8s ease; pointer-events:none;"></div></sc-if>
+  <div aria-hidden="true" style="position:absolute; left:30px; right:30px; bottom:-28px; height:38px; background:radial-gradient(closest-side, rgba(20,60,70,.34), rgba(20,60,70,0)); pointer-events:none;"></div>
+  <div ref="{{ setRot }}" style="position:absolute; inset:0; transform-style:preserve-3d; will-change:transform;">
+    <div aria-hidden="true" style="position:absolute; inset:0; border-radius:112px 112px 104px 104px / 120px 120px 140px 140px; background:linear-gradient(160deg, #00A898, #007A6F); transform:translateZ(-18px);"></div>
+    <sc-for list="{{ sideLayers }}" as="sl" hint-placeholder-count="5"><div aria-hidden="true" style="position:absolute; inset:0; box-sizing:border-box; border-radius:112px 112px 104px 104px / 120px 120px 140px 140px; border:3px solid {{ sl.c }}; transform:translateZ({{ sl.z }});"></div></sc-for>
+    <div aria-hidden="true" style="position:absolute; inset:14px; border-radius:98px 98px 90px 90px / 106px 106px 126px 126px; background-color:#00A493; background-image:linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px), linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px); background-size:14px 14px; transform:translateZ(-10px);">
+      <span style="position:absolute; left:26px; top:206px; width:30px; height:16px; border-radius:3px; background:#00796D;"></span>
+      <span style="position:absolute; right:26px; top:206px; width:22px; height:22px; border-radius:3px; background:#00796D;"></span>
+      <span style="position:absolute; left:84px; top:238px; width:62px; height:62px; border-radius:50%; background:radial-gradient(circle at 40% 35%, #E3E8EA, #8E989C); opacity:.5;"></span>
+      <span style="position:absolute; left:30px; top:252px; width:40px; height:2px; background:rgba(255,255,255,.18);"></span>
+    </div>
+    <div aria-hidden="true" style="position:absolute; left:226px; top:19px; width:22px; height:22px; border-radius:50%; background:conic-gradient(from 210deg, #FFFFFF, #8E989C, #F3F6F7, #6C767A, #E6EBED, #FFFFFF); -webkit-mask:radial-gradient(circle, transparent 5.5px, #000 6px); mask:radial-gradient(circle, transparent 5.5px, #000 6px); transform:translateZ(-9px);"></div>
+    <div aria-hidden="true" style="position:absolute; left:110px; top:-18px; width:40px; height:32px; box-sizing:border-box; border-radius:20px 20px 0 0; border:5px solid #C9D0D3; border-bottom:none; border-top-color:#F6F9FA; border-left-color:#9AA4A8; transform:translateZ(-9px);"></div>
+    <div sc-camel-on-pointer-down="{{ mDown }}" sc-camel-on-pointer-move="{{ mMove }}" sc-camel-on-pointer-up="{{ mUp }}" sc-camel-on-pointer-cancel="{{ mUp }}" style="touch-action:pan-y; position:absolute; inset:0; border-radius:112px 112px 104px 104px / 120px 120px 140px 140px; background:linear-gradient(165deg, rgba(110,245,230,.62) 0%, rgba(0,210,190,.58) 38%, rgba(0,176,160,.74) 100%); box-shadow:inset 0 2px 1px rgba(255,255,255,.75), inset 0 -8px 16px rgba(0,80,72,.28), inset 10px 0 18px rgba(255,255,255,.14), inset 0 0 0 1px rgba(255,255,255,.28);">
+      <sc-if value="{{ fullFx }}" hint-placeholder-val="{{ true }}">
+        <div aria-hidden="true" style="position:absolute; inset:0; border-radius:112px 112px 104px 104px / 120px 120px 140px 140px; background-image:radial-gradient(circle, rgba(255,255,255,.6) .6px, transparent 1px), radial-gradient(circle, rgba(255,255,255,.4) .5px, transparent .9px); background-size:23px 19px, 31px 27px; background-position:3px 5px, 11px 2px; opacity:.45; pointer-events:none;"></div>
+        <div ref="{{ setSpec }}" aria-hidden="true" style="position:absolute; left:20px; top:10px; width:136px; height:68px; border-radius:50%; background:radial-gradient(closest-side, rgba(255,255,255,.75), rgba(255,255,255,0)); pointer-events:none; will-change:transform;"></div>
+        <div aria-hidden="true" style="position:absolute; right:18px; bottom:40px; width:20px; height:120px; border-radius:50%; background:radial-gradient(closest-side, rgba(255,255,255,.35), rgba(255,255,255,0)); transform:rotate(-12deg); pointer-events:none;"></div>
+        <div ref="{{ setSpark }}" aria-hidden="true" style="position:absolute; left:44px; top:26px; width:18px; height:18px; opacity:0; pointer-events:none;"><span style="position:absolute; left:8px; top:0; width:2px; height:18px; border-radius:1px; background:linear-gradient(transparent, #fff, transparent);"></span><span style="position:absolute; left:0; top:8px; width:18px; height:2px; border-radius:1px; background:linear-gradient(90deg, transparent, #fff, transparent);"></span></div>
+      </sc-if>
+      <div aria-hidden="true" style="position:absolute; inset:8px; border-radius:104px 104px 96px 96px / 112px 112px 132px 132px; box-shadow:inset 0 0 0 1px rgba(0,92,82,.22), 0 0 0 1px rgba(255,255,255,.2); pointer-events:none;"></div>
+      <span style="position:absolute; left:0; right:0; top:22px; text-align:center; font-family:'IBM Plex Mono'; font-size:8px; font-weight:600; letter-spacing:.24em; color:#00473F;">HL—01</span>
+      <div aria-hidden="true" style="position:absolute; top:14px; left:46px; width:24px; height:24px; border-radius:50%; background:radial-gradient(circle at 35% 30%, #FFFFFF 0%, #DDE3E5 35%, #8E989C 75%, #C9D0D3 100%); box-shadow:0 1px 2px rgba(0,50,45,.35); display:flex; align-items:center; justify-content:center;"><img src="{{ pinSrc }}" alt="" style="width:15px; height:15px; image-rendering:pixelated; opacity:.75;"></div>
+      <div style="position:absolute; left:32px; top:44px; width:196px; height:170px; border-radius:36px; background:linear-gradient(145deg, #F6F9FA 0%, #B9C2C5 30%, #6F797D 55%, #DDE3E5 75%, #9AA4A8 100%); box-shadow:0 2px 4px rgba(0,60,55,.3), inset 0 1px 0 #fff;">
+        <div style="position:absolute; inset:5px; border-radius:31px; background:#1A1F1F; box-shadow:inset 0 2px 4px rgba(0,0,0,.6), inset 0 0 0 1px rgba(255,255,255,.06);">
+          <span aria-hidden="true" style="position:absolute; left:16px; bottom:6px; width:5px; height:5px; border-radius:50%; background:{{ ledBg }}; box-shadow:0 0 4px {{ ledBg }}; transition:background-color .4s ease;"></span>
+          <span aria-hidden="true" style="position:absolute; right:16px; bottom:4px; font-family:'IBM Plex Mono'; font-size:6px; letter-spacing:.15em; color:#7A807E;">DOT LED</span>
+          <div style="position:absolute; left:14px; right:14px; top:14px; bottom:18px; border-radius:10px; overflow:hidden; background-color:{{ lcdBg }}; background-image:radial-gradient(circle, rgba(255,255,255,.07) .8px, transparent 1.15px); background-size:3.5px 3.5px; transition:background-color .6s ease; box-shadow:inset 0 2px 6px rgba(0,0,0,.7); font-family:'Press Start 2P','Noto Sans TC',monospace; color:{{ ledText }}; text-shadow:{{ ledGlow }};">
+            <div style="position:absolute; inset:0; display:flex; flex-direction:column; opacity:{{ lcdContentOp }}; transition:opacity .35s ease;">
+              <div style="display:flex; justify-content:space-between; gap:6px; padding:8px 9px 0; font-size:7px; line-height:1; white-space:nowrap;"><span>{{ lcdTopL }}</span><span>{{ lcdTopR }}</span></div>
+              <div style="flex:1; position:relative; display:flex; align-items:flex-end; justify-content:center; padding-bottom:9px;">
+                <sc-if value="{{ sceneHome }}" hint-placeholder-val="{{ true }}">
+                  <img src="{{ houseSrc }}" alt="" style="position:absolute; left:10px; bottom:6px; width:24px; height:22px;">
+                  <span style="position:absolute; left:0; right:0; bottom:6px; height:2px; background:{{ ledText }}; opacity:.35;"></span>
+                </sc-if>
+                <sc-if value="{{ sceneRanch }}" hint-placeholder-val="{{ false }}">
+                  <img src="{{ fenceSrc }}" alt="" style="position:absolute; left:0; bottom:4px; width:156px; height:14px;">
+                  <span style="position:absolute; right:10px; bottom:18px; font-size:7px; padding:2px 3px; border:1px solid currentColor;">{{ ranchFlag }}</span>
+                </sc-if>
+                <sc-if value="{{ lcdShowPet }}" hint-placeholder-val="{{ true }}">
+                  <span style="position:relative; display:flex; transform:{{ petShift }};">
+                    <button type="button" sc-camel-on-click="{{ petTap }}" aria-label="{{ petTapLabel }}" style="position:relative; width:68px; height:68px; padding:0; border:none; background:transparent; cursor:pointer; display:flex; align-items:flex-end; justify-content:center; transform:{{ petBob }};">
+                      <span style="position:relative; display:flex; flex-direction:column; align-items:center; animation:{{ petAnim }}; pointer-events:none;">
+                        <sc-if value="{{ hasAcc }}" hint-placeholder-val="{{ false }}"><img src="{{ accSrc }}" alt="" style="width:{{ accW }}; margin-bottom:-3px;"></sc-if>
+                        <img src="{{ lcdPetSrc }}" alt="" style="width:{{ petPx }}; height:{{ petPx }}; opacity:{{ lcdPetOp }}; transition:width .4s ease, height .4s ease;">
+                      </span>
+                    </button>
+                  </span>
+                </sc-if>
+                <sc-if value="{{ isSleeping }}" hint-placeholder-val="{{ false }}"><span style="position:absolute; right:30%; top:6%; font-size:8px; animation:blink 1.4s steps(1) infinite;">Zz</span></sc-if>
+                <sc-if value="{{ levelFlash }}" hint-placeholder-val="{{ false }}"><span style="position:absolute; left:0; right:0; top:8%; text-align:center; font-size:8px; animation:blink .5s steps(1) 4;">LEVEL UP!</span></sc-if>
+                <sc-for list="{{ particles }}" as="pt" hint-placeholder-count="0"><img src="{{ pt.src }}" alt="" style="position:absolute; left:{{ pt.left }}; top:{{ pt.top }}; width:{{ pt.size }}; pointer-events:none; animation:{{ pt.anim }};"></sc-for>
+                <sc-if value="{{ starVisible }}" hint-placeholder-val="{{ false }}"><button type="button" sc-camel-on-click="{{ catchStar }}" aria-label="抓星星" style="position:absolute; left:{{ starX }}; top:{{ starY }}; width:40px; height:40px; margin:-20px 0 0 -20px; border:none; background:transparent; padding:0; cursor:pointer; display:flex; align-items:center; justify-content:center;"><img src="{{ starSrc }}" alt="" style="width:22px; animation:twinkle .8s ease-in-out infinite;"></button></sc-if>
+              </div>
+              <div style="padding:0 9px 8px; font-size:10px; line-height:1.2; text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">{{ lcdBottom }}</div>
+            </div>
+            <div ref="{{ setGlass }}" aria-hidden="true" style="position:absolute; inset:0; background:linear-gradient(115deg, rgba(255,255,255,0) 35%, rgba(255,255,255,.1) 47%, rgba(255,255,255,0) 58%); background-size:240% 100%; background-position:50% 0; pointer-events:none;"></div>
+          </div>
+        </div>
+      </div>
+      <span style="position:absolute; left:42px; top:222px; white-space:nowrap; font-family:'IBM Plex Mono'; font-size:8px; font-weight:600; letter-spacing:.12em; color:#00473F;">{{ mNo }}</span>
+      <span style="position:absolute; right:42px; top:222px; white-space:nowrap; font-family:'IBM Plex Mono'; font-size:8px; font-weight:600; letter-spacing:.12em; color:#00473F;">FAN MEET</span>
+      <span aria-hidden="true" style="position:absolute; left:47px; top:236px; width:54px; height:52px; border-radius:19px; background:rgba(0,120,108,.32); box-shadow:inset 0 2px 4px rgba(0,60,55,.45), 0 1px 0 rgba(255,255,255,.35);"></span>
+      <button type="button" sc-camel-on-click="{{ mFeed }}" aria-label="{{ mLabel1 }}" style="position:absolute; left:52px; top:240px; width:44px; height:42px; border-radius:15px; border:none; padding:0; cursor:pointer; background:linear-gradient(180deg, #FFFFFF 0%, #EEF1F1 55%, #D9DFE0 100%); box-shadow:{{ bSh1 }}; transform:{{ bTf1 }}; transition:transform .1s ease, box-shadow .1s ease;" style-active="transform:translateY(3px); box-shadow:inset 0 1px 0 #fff, 0 1px 0 #A3ACAE, 0 2px 3px rgba(0,60,55,.3);"><span style="position:absolute; left:6px; right:6px; top:4px; height:16px; border-radius:10px; background:linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,255,255,0)); pointer-events:none;"></span></button>
+      <span aria-hidden="true" style="position:absolute; left:103px; top:246px; width:54px; height:52px; border-radius:19px; background:rgba(0,120,108,.32); box-shadow:inset 0 2px 4px rgba(0,60,55,.45), 0 1px 0 rgba(255,255,255,.35);"></span>
+      <button type="button" sc-camel-on-click="{{ mPlay }}" aria-label="{{ mLabel2 }}" style="position:absolute; left:108px; top:250px; width:44px; height:42px; border-radius:15px; border:none; padding:0; cursor:pointer; background:linear-gradient(180deg, #FFFFFF 0%, #EEF1F1 55%, #D9DFE0 100%); box-shadow:{{ bSh2 }}; transform:{{ bTf2 }}; transition:transform .1s ease, box-shadow .1s ease;" style-active="transform:translateY(3px); box-shadow:inset 0 1px 0 #fff, 0 1px 0 #A3ACAE, 0 2px 3px rgba(0,60,55,.3);"><span style="position:absolute; left:6px; right:6px; top:4px; height:16px; border-radius:10px; background:linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,255,255,0)); pointer-events:none;"></span></button>
+      <span aria-hidden="true" style="position:absolute; left:159px; top:236px; width:54px; height:52px; border-radius:19px; background:rgba(0,120,108,.32); box-shadow:inset 0 2px 4px rgba(0,60,55,.45), 0 1px 0 rgba(255,255,255,.35);"></span>
+      <button type="button" sc-camel-on-click="{{ mPet }}" aria-label="{{ mLabel3 }}" style="position:absolute; left:164px; top:240px; width:44px; height:42px; border-radius:15px; border:none; padding:0; cursor:pointer; background:linear-gradient(180deg, #FFFFFF 0%, #EEF1F1 55%, #D9DFE0 100%); box-shadow:{{ bSh3 }}; transform:{{ bTf3 }}; transition:transform .1s ease, box-shadow .1s ease;" style-active="transform:translateY(3px); box-shadow:inset 0 1px 0 #fff, 0 1px 0 #A3ACAE, 0 2px 3px rgba(0,60,55,.3);"><span style="position:absolute; left:6px; right:6px; top:4px; height:16px; border-radius:10px; background:linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,255,255,0)); pointer-events:none;"></span></button>
+      <span style="position:absolute; left:48px; top:292px; width:52px; text-align:center; font-size:9px; font-weight:700; letter-spacing:.06em; color:#00473F;">{{ mLabel1 }}</span>
+      <span style="position:absolute; left:104px; top:302px; width:52px; text-align:center; font-size:9px; font-weight:700; letter-spacing:.06em; color:#00473F;">{{ mLabel2 }}</span>
+      <span style="position:absolute; left:160px; top:292px; width:52px; text-align:center; font-size:9px; font-weight:700; letter-spacing:.06em; color:#00473F;">{{ mLabel3 }}</span>
+      <span aria-hidden="true" style="position:absolute; left:110px; top:324px; width:40px; height:5px; border-radius:3px; background:repeating-linear-gradient(90deg, rgba(0,72,64,.4) 0 3px, transparent 3px 7px);"></span>
+    </div>
+    <sc-if value="{{ showCharm }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute; left:210px; top:22px; width:56px; height:104px; opacity:{{ charmOp }}; transform:translateZ(3px) {{ charmSlide }}; transition:opacity .35s ease, transform .5s cubic-bezier(.2,.8,.2,1);">
+        <div ref="{{ setCharm }}" sc-camel-on-click="{{ openCharm }}" role="button" aria-label="查看鑰匙圈" style="width:56px; height:104px; transform-origin:28px 8px; cursor:pointer;">
+          <dc-import name="Keychain" kind="{{ charmKind }}" letter="{{ charmLetter }}" serial="{{ charmSerial }}" ghost="{{ charmGhost }}" open="{{ charmOpen }}" hint-size="56px,104px"></dc-import>
+        </div>
+      </div>
+    </sc-if>
+  </div>
+</div>
+
+<div style="position:fixed; inset:0; z-index:60; pointer-events:{{ sheetPE }};">
+  <div sc-camel-on-click="{{ closeSheet }}" style="position:absolute; inset:0; background:rgba(41,35,34,.36); opacity:{{ sheetOp }}; transition:opacity .3s ease;"></div>
+  <div role="dialog" aria-modal="true" style="position:absolute; left:50%; bottom:0; width:100%; max-width:430px; max-height:88vh; overflow-y:auto; box-sizing:border-box; transform:translate(-50%, {{ sheetY }}); transition:transform .4s cubic-bezier(.2,.8,.2,1); background:#fff; border-radius:24px 24px 0 0; padding:10px 20px calc(24px + env(safe-area-inset-bottom)); box-shadow:0 -10px 30px -20px rgba(41,35,34,.4);">
+    <div style="width:36px; height:4px; border-radius:2px; background:#DDDCD4; margin:0 auto 18px;"></div>
+
+    <sc-if value="{{ sheetFeed }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; justify-content:space-between; align-items:baseline;"><b style="font-size:18px;">選一份飼料</b><span style="font-family:'IBM Plex Mono'; font-size:12px; color:#6B625F;">剩 {{ feed }} 份</span></div>
+      <div style="margin-top:16px; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px;">
+        <sc-for list="{{ snacks }}" as="sn" hint-placeholder-count="3">
+          <button type="button" sc-camel-on-click="{{ sn.onPick }}" style="padding:14px 8px 12px; border-radius:18px; border:1px solid #E4E3DC; background:#F7F7F2; display:flex; flex-direction:column; align-items:center; gap:8px; font-family:inherit; color:#292322; cursor:pointer; transition:transform .15s ease;" style-active="transform:scale(.95);">
+            <span style="width:52px; height:52px; border-radius:12px; background-color:#0A0E0E; background-image:radial-gradient(circle, rgba(255,255,255,.07) .8px, transparent 1.15px); background-size:3.5px 3.5px; box-shadow:inset 0 2px 5px rgba(0,0,0,.7); display:flex; align-items:center; justify-content:center;"><img src="{{ sn.src }}" alt="" style="width:32px; height:32px; image-rendering:pixelated;"></span>
+            <span style="font-size:14px; font-weight:700;">{{ sn.name }}</span>
+            <span style="font-family:'IBM Plex Mono'; font-size:11px; color:#00796D;">飽足+{{ sn.val }} 成長+{{ sn.xp }}</span>
+          </button>
+        </sc-for>
+      </div>
+      <button type="button" sc-camel-on-click="{{ openCoupons }}" style="margin-top:14px; width:100%; height:48px; border-radius:14px; border:1px solid #E4E3DC; background:#fff; font-family:inherit; font-size:14px; font-weight:700; color:#292322; cursor:pointer;">購買互動券補充飼料</button>
+    </sc-if>
+
+    <sc-if value="{{ sheetNoFeed }}" hint-placeholder-val="{{ false }}">
+      <b style="font-size:18px;">飼料用完了</b>
+      <p style="margin:8px 0 0; font-size:14px; line-height:1.65; color:#5E5653;">購買互動券就能獲得飼料，讓{{ petName }}繼續長大。</p>
+      <button type="button" sc-camel-on-click="{{ openCoupons }}" style="margin-top:16px; width:100%; height:52px; border-radius:16px; border:none; background:#292322; color:#F7F7F2; font-family:inherit; font-size:15px; font-weight:700; cursor:pointer;">購買互動券</button>
+      <button type="button" sc-camel-on-click="{{ closeSheet }}" style="margin-top:6px; width:100%; height:44px; border:none; background:none; font-family:inherit; font-size:14px; color:#5E5653; cursor:pointer;">晚點再說</button>
+    </sc-if>
+
+    <sc-if value="{{ sheetMission }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; justify-content:space-between; align-items:baseline; gap:12px;"><b style="font-size:18px;">現場動物任務</b><span style="font-family:'IBM Plex Mono'; font-size:12px; color:#00665C;">{{ missionState }}</span></div>
+      <p style="margin:6px 0 0; font-size:13px; line-height:1.6; color:#5E5653; text-wrap:pretty;">報到時工作人員依你的應援動物發任務紙；等候互動時自由完成，服務台核驗後獎勵入帳。</p>
+      <div style="margin-top:14px; display:grid; grid-template-columns:84px minmax(0,1fr); gap:14px; align-items:center; padding:12px; border-radius:18px; background:#F3F3EE;">
+        <div style="width:84px; height:84px; border-radius:14px; background-color:#0A0E0E; background-image:radial-gradient(circle, rgba(255,255,255,.07) .8px, transparent 1.15px); background-size:3.5px 3.5px; box-shadow:inset 0 2px 6px rgba(0,0,0,.7); display:flex; align-items:center; justify-content:center;"><img src="{{ missionPetSrc }}" alt="" style="width:52px; height:52px; image-rendering:pixelated;"></div>
+        <div style="display:flex; flex-direction:column; gap:4px; min-width:0;"><span style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:.06em; color:#6B625F;">{{ missionAnimal }}</span><b style="font-size:15px; line-height:1.5;">{{ missionText }}</b><span style="font-size:12px; color:#5E5653;">核驗：{{ missionCheck }}</span></div>
+      </div>
+      <div style="margin-top:12px; display:flex; flex-direction:column; border-top:1px solid #E4E3DC;">
+        <div style="display:flex; justify-content:space-between; gap:12px; padding:13px 0; border-bottom:1px solid #E4E3DC; font-size:14px;"><span style="color:#5E5653;">現場獎勵</span><b style="text-align:right;">鑽石・總獎池 50,000 鑽</b></div>
+        <div style="display:flex; justify-content:space-between; gap:12px; padding:13px 0; border-bottom:1px solid #E4E3DC; font-size:14px;"><span style="color:#5E5653;">寵物獎勵</span><b style="text-align:right;">親密 +20・飼料 +3</b></div>
+      </div>
+      <button type="button" sc-camel-on-click="{{ missionAction }}" disabled="{{ missionDone }}" style="margin-top:16px; width:100%; height:52px; border-radius:16px; border:none; background:{{ missionBtnBg }}; color:#F7F7F2; font-family:inherit; font-size:15px; font-weight:700; cursor:pointer; transition:transform .16s ease;" style-active="transform:scale(.97);">{{ missionBtnLabel }}</button>
+      <p style="margin:10px 0 0; text-align:center; font-size:12px; color:#6B625F;">每人鑽石數量與兌換時限待公布。</p>
+    </sc-if>
+
+    <sc-if value="{{ sheetCoupons }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; justify-content:space-between; align-items:baseline;"><b style="font-size:18px;">互動券</b><span style="font-family:'IBM Plex Mono'; font-size:12px; color:#6B625F;">持有 {{ coupons }} 張</span></div>
+      <p style="margin:6px 0 0; font-size:13px; line-height:1.6; color:#5E5653;">每張互動券附 3 份飼料；互動券本身可在現場預約包廂（5 分鐘 1 張、10 分鐘 2 張）。</p>
+      <div style="margin-top:14px; display:flex; flex-direction:column; gap:10px;">
+        <sc-for list="{{ packs }}" as="pk" hint-placeholder-count="3">
+          <button type="button" sc-camel-on-click="{{ pk.onBuy }}" style="display:flex; align-items:center; justify-content:space-between; gap:12px; padding:14px 16px; border-radius:16px; border:1px solid #E4E3DC; background:#F7F7F2; font-family:inherit; color:#292322; text-align:left; cursor:pointer; transition:transform .15s ease;" style-active="transform:scale(.98);">
+            <span style="display:flex; flex-direction:column; gap:2px;"><b style="font-size:15px;">互動券 × {{ pk.n }}</b><span style="font-size:12px; color:#5E5653;">獲得飼料 {{ pk.feed }} 份</span></span>
+            <span style="font-family:'IBM Plex Mono'; font-size:12px; color:#6B625F;">售價待公布</span>
+          </button>
+        </sc-for>
+      </div>
+      <sc-if value="{{ buyingCoupons }}" hint-placeholder-val="{{ false }}"><p style="margin:12px 0 0; text-align:center; font-size:13px; color:#00665C;">模擬付款中…</p></sc-if>
+      <p style="margin:12px 0 0; font-size:12px; color:#6B625F;">原型以模擬付款展示，不會實際扣款。</p>
+    </sc-if>
+
+    <sc-if value="{{ sheetMessage }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; justify-content:space-between; align-items:baseline;"><b style="font-size:18px;">留言給主播</b><span style="font-family:'IBM Plex Mono'; font-size:12px; color:#6B625F;">VIP・{{ msgLeft }}/3</span></div>
+      <p style="margin:6px 0 0; font-size:13px; line-height:1.6; color:#5E5653;">主播會在後台閱讀你的留言。</p>
+      <div style="margin-top:12px; display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:8px;">
+        <sc-for list="{{ msgTargets }}" as="mt" hint-placeholder-count="5">
+          <button type="button" sc-camel-on-click="{{ mt.onPick }}" aria-pressed="{{ mt.pressed }}" style="height:44px; border-radius:12px; border:{{ mt.border }}; background:#fff; font-family:inherit; font-size:14px; font-weight:700; color:#292322; cursor:pointer;">{{ mt.id }}</button>
+        </sc-for>
+      </div>
+      <textarea value="{{ msgDraft }}" sc-camel-on-change="{{ onMsgDraft }}" rows="3" placeholder="想對主播說的話" style="margin-top:10px; width:100%; box-sizing:border-box; padding:14px 16px; border-radius:14px; border:1px solid #DDDCD4; background:#fff; font-family:inherit; font-size:16px; line-height:1.6; color:#292322; outline:none; resize:none;" style-focus="border-color:#00B3A2; box-shadow:0 0 0 3px rgba(0,210,190,.2);"></textarea>
+      <div style="display:flex; justify-content:space-between; margin-top:6px; font-size:12px; color:#6B625F;"><span>給主播 {{ msgTo }}</span><span style="font-family:'IBM Plex Mono';">{{ msgDraftCount }}/100</span></div>
+      <button type="button" sc-camel-on-click="{{ sendMsg }}" disabled="{{ msgDisabled }}" style="margin-top:12px; width:100%; height:52px; border-radius:16px; border:none; background:{{ msgBtnBg }}; color:#F7F7F2; font-family:inherit; font-size:15px; font-weight:700; cursor:pointer; transition:transform .16s ease;" style-active="transform:scale(.97);">送出留言</button>
+      <sc-if value="{{ hasMessages }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-top:16px; display:flex; flex-direction:column; border-top:1px solid #E4E3DC;">
+          <sc-for list="{{ messages }}" as="m" hint-placeholder-count="0">
+            <div style="padding:12px 0; border-bottom:1px solid #E4E3DC; display:flex; flex-direction:column; gap:4px;"><span style="display:flex; justify-content:space-between; font-size:12px; color:#6B625F;"><span>給主播 {{ m.to }}</span><span style="color:#00665C; font-weight:700;">已送達・主播後台可讀</span></span><span style="font-size:14px; line-height:1.6;">{{ m.text }}</span></div>
+          </sc-for>
+        </div>
+      </sc-if>
+    </sc-if>
+
+    <sc-if value="{{ sheetTicket }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; justify-content:space-between; align-items:baseline;"><b style="font-size:18px;">我的票券</b><span style="font-family:'IBM Plex Mono'; font-size:12px; color:#6B625F;">{{ purOrderId }}</span></div>
+      <sc-if value="{{ hasPurchase }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-top:14px; padding:18px; border-radius:20px; background:#292322; color:#F7F7F2; display:grid; grid-template-columns:minmax(0,1fr) 84px; gap:14px; align-items:center;">
+          <div style="display:flex; flex-direction:column; gap:4px; min-width:0;">
+            <span style="font-family:'IBM Plex Mono'; font-size:10px; letter-spacing:.12em; color:#B9B3AF;">ADMIT ONE</span>
+            <b style="font-size:20px;">{{ purTierName }}</b>
+            <span style="font-size:13px; color:#D9D4D0;">{{ memberName }}・{{ memberLv }}</span>
+            <span style="font-size:12px; line-height:1.6; color:#D9D4D0;">11/21（六）12:30 開始報到<br>建國北路一段 80 號 B1</span>
+          </div>
+          <div style="width:84px; height:84px; border-radius:12px; background:#F7F7F2; color:#6B625F; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; box-sizing:border-box; border:1px dashed #BDBCB4;"><span style="font-family:'IBM Plex Mono'; font-size:13px; font-weight:600;">QR</span><span style="font-size:10px;">入場碼</span></div>
+        </div>
+        <div style="margin-top:12px; display:flex; flex-direction:column; border-top:1px solid #E4E3DC;">
+          <div style="display:flex; justify-content:space-between; padding:13px 0; border-bottom:1px solid #E4E3DC; font-size:14px;"><span style="color:#5E5653;">訂單狀態</span><b style="color:#00665C;">已付款（模擬）</b></div>
+          <div style="display:flex; justify-content:space-between; padding:13px 0; border-bottom:1px solid #E4E3DC; font-size:14px;"><span style="color:#5E5653;">報到</span><b>{{ checkInText }}</b></div>
+          <div style="display:flex; justify-content:space-between; gap:12px; padding:13px 0; border-bottom:1px solid #E4E3DC; font-size:14px;"><span style="color:#5E5653;">到場獎勵</span><b style="text-align:right;">{{ redeemText }}</b></div>
+          <sc-if value="{{ purSigned }}" hint-placeholder-val="{{ false }}"><div style="display:flex; justify-content:space-between; gap:12px; padding:13px 0; border-bottom:1px solid #E4E3DC; font-size:14px;"><span style="color:#5E5653;">全員簽名徽章</span><b style="text-align:right;">{{ badgeText }}</b></div></sc-if>
+          <div style="display:flex; justify-content:space-between; padding:13px 0; border-bottom:1px solid #E4E3DC; font-size:14px;"><span style="color:#5E5653;">邀約來源</span><b>{{ purRefText }}</b></div>
+        </div>
+        <div style="margin-top:16px; display:flex; flex-direction:column; gap:6px;">
+          <button type="button" sc-camel-on-click="{{ passAction }}" disabled="{{ passDone }}" style="height:52px; border-radius:16px; border:none; background:{{ passBg }}; color:#F7F7F2; font-family:inherit; font-size:15px; font-weight:700; cursor:pointer; transition:transform .16s ease;" style-active="transform:scale(.97);">{{ passLabel }}</button>
+          <button type="button" sc-camel-on-click="{{ closeSheet }}" style="height:44px; border:none; background:none; font-family:inherit; font-size:14px; color:#5E5653; cursor:pointer;">關閉</button>
+        </div>
+        <p style="margin:4px 0 0; text-align:center; font-size:12px; color:#6B625F;">鑰匙圈為數位收藏，掛在你的寵物機上；現場報到後解鎖到場獎勵。</p>
+      </sc-if>
+      <sc-if value="{{ noPurchase }}" hint-placeholder-val="{{ true }}">
+        <div style="margin-top:14px; padding:16px; border-radius:18px; background:#F3F3EE; display:flex; flex-direction:column; gap:4px;"><b style="font-size:15px;">尚未購票</b><span style="font-size:13px; line-height:1.6; color:#5E5653;">購票後解鎖對應的專屬鑰匙圈領取資格與電子入場憑證。</span></div>
+        <button type="button" sc-camel-on-click="{{ goShop }}" style="margin-top:14px; width:100%; height:52px; border-radius:16px; border:none; background:#292322; color:#F7F7F2; font-family:inherit; font-size:15px; font-weight:700; cursor:pointer;">選擇票種</button>
+      </sc-if>
+      <button type="button" sc-camel-on-click="{{ resetAll }}" style="margin-top:6px; width:100%; height:36px; border:none; background:none; font-family:inherit; font-size:12px; color:#6B625F; text-decoration:underline; cursor:pointer;">清除進度，重新體驗</button>
+    </sc-if>
+
+    <sc-if value="{{ sheetPay }}" hint-placeholder-val="{{ false }}">
+      <b style="font-size:18px;">確認訂單</b>
+      <div style="margin-top:14px; display:flex; flex-direction:column; border-top:1px solid #E4E3DC;">
+        <div style="display:flex; justify-content:space-between; padding:13px 0; border-bottom:1px solid #E4E3DC; font-size:14px;"><span style="color:#5E5653;">票種</span><b>{{ selTierName }}</b></div>
+        <div style="display:flex; justify-content:space-between; padding:13px 0; border-bottom:1px solid #E4E3DC; font-size:14px;"><span style="color:#5E5653;">專屬鑰匙圈</span><b>{{ selCharmName }}</b></div>
+        <div style="display:flex; justify-content:space-between; padding:13px 0; border-bottom:1px solid #E4E3DC; font-size:14px;"><span style="color:#5E5653;">售價</span><b>{{ selPrice }}</b></div>
+        <div style="display:flex; justify-content:space-between; padding:13px 0; border-bottom:1px solid #E4E3DC; font-size:14px;"><span style="color:#5E5653;">邀約來源</span><b>{{ refText }}</b></div>
+      </div>
+      <p style="margin:14px 0 0; padding:12px 14px; border-radius:14px; background:#F3F3EE; font-size:13px; line-height:1.6; color:#3F3836;">這是原型展示。按下後會模擬付款成功，不會進行真實扣款。</p>
+      <div style="margin-top:16px; display:flex; flex-direction:column; gap:6px;">
+        <button type="button" sc-camel-on-click="{{ pay }}" style="height:52px; border-radius:16px; border:none; background:#292322; color:#F7F7F2; font-family:inherit; font-size:15px; font-weight:700; display:flex; align-items:center; justify-content:center; gap:10px; cursor:pointer; transition:transform .16s ease;" style-active="transform:scale(.97);"><sc-if value="{{ paying }}" hint-placeholder-val="{{ false }}"><span style="width:16px; height:16px; border-radius:50%; border:2px solid rgba(247,247,242,.3); border-top-color:#00D2BE; animation:spin .8s linear infinite;"></span></sc-if>{{ payLabel }}</button>
+        <button type="button" sc-camel-on-click="{{ closeSheet }}" style="height:44px; border:none; background:none; font-family:inherit; font-size:14px; color:#5E5653; cursor:pointer;">取消</button>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ sheetCharm }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; gap:18px; align-items:center;">
+        <span style="width:120px; height:172px; flex:none; border-radius:18px; background:#F1F1EC; display:flex; align-items:center; justify-content:center; overflow:hidden;"><span style="width:56px; height:104px; flex:none; transform:scale(1.55);"><dc-import name="Keychain" kind="{{ purTier }}" letter="{{ purLetter }}" serial="{{ purSerial }}" hint-size="56px,104px"></dc-import></span></span>
+        <div style="flex:1; min-width:0; display:flex; flex-direction:column; gap:6px;">
+          <span style="font-family:'IBM Plex Mono'; font-size:11px; letter-spacing:.1em; color:#6B625F;">專屬鑰匙圈</span>
+          <b style="font-size:18px;">{{ purCharmName }}</b>
+          <span style="font-size:13px; color:#5E5653;">所屬票種：{{ purTierName }}</span>
+          <span style="font-size:13px; line-height:1.6; color:#5E5653;">{{ purCharmDesc }}</span>
+          <span style="font-size:13px; font-weight:700; color:#00665C;">{{ redeemText }}</span>
+        </div>
+      </div>
+      <button type="button" sc-camel-on-click="{{ openTicket }}" style="margin-top:16px; width:100%; height:52px; border-radius:16px; border:none; background:#292322; color:#F7F7F2; font-family:inherit; font-size:15px; font-weight:700; cursor:pointer;">查看我的票券</button>
+    </sc-if>
+  </div>
+</div>
+</div>
+</x-dc>

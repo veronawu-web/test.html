@@ -1,0 +1,30 @@
+  <section class="sec-pl" style="background:#FFFCF5;">
+    <div class="rv" ref="{{ setReveal }}">
+      <div class="st">
+        <div class="eyebrow">DATES</div>
+        <h2 class="h2">見面之前，記住這幾天。</h2>
+        <p class="sub">所有節點都列在下方，依時間排序；上方是下一個還沒到的日子。</p>
+      </div>
+      <div class="dt-next st">
+        <div class="dt-next-in">
+          <div class="big">{{ dnDate }}<small>{{ dnWk }}</small></div>
+          <div class="lbl">{{ dnLbl }}<span class="tag" style="background:{{ dnTagBg }}; color:{{ dnTagFg }};">{{ dnTag }}</span></div>
+          <div class="ttl">{{ dnTitle }}</div>
+          <div class="left">{{ dnLeft }}</div>
+        </div>
+      </div>
+      <div class="dt-list st">
+        <sc-for list="{{ dateRows }}" as="d" hint-placeholder-count="7">
+          <div class="dt-r" style="opacity:{{ d.op }};">
+            <div class="d" style="color:{{ d.dc }};">{{ d.date }}<small>{{ d.wk }}</small></div>
+            <div class="c">
+              <div class="tags"><span class="tag" style="background:{{ d.tbg }}; color:{{ d.tfg }};">{{ d.tag }}</span><span class="tag tag-done" style="display:{{ d.doneShow }};">已過</span></div>
+              <div class="ln">{{ d.l1 }}</div>
+              <div class="ln" style="display:{{ d.l2d }};">{{ d.l2 }}</div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+      <p class="st" style="margin:12px 2px 0; font-size:13px; line-height:1.6; color:#6B625F;">截止時間皆為當日 23:59（台北時間），另有標示者除外。</p>
+    </div>
+  </section>

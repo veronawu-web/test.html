@@ -1,0 +1,32 @@
+  <div style="padding:18px 20px 0;">
+    <div class="mc">
+      <div class="mc-h">
+        <div class="mc-t"><span class="eyebrow">{{ mcEyebrow }}</span><b>{{ mcTitle }}</b><span class="mc-sub">{{ mcSub }}</span></div>
+        <span class="chip" style="background:{{ memberChipBg }}; color:{{ memberChipFg }}; font-family:'IBM Plex Mono'; font-weight:600;">{{ navAcctLabel }}</span>
+      </div>
+      <div class="mc-rows">
+        <div><span>VIP 會員優先購票</span><b>10/24（六）<i class="tag" style="background:{{ mcVipBg }}; color:{{ mcVipFg }};">{{ mcVipTag }}</i></b></div>
+        <div><span>全票種開賣</span><b>10/27（二）<i class="tag" style="background:{{ mcAllBg }}; color:{{ mcAllFg }};">{{ mcAllTag }}</i></b></div>
+        <div style="display:{{ mcTierRowShow }};"><span>可購票種</span><b>入場・心動・寵愛・簽名，共 4 種</b></div>
+        <div style="display:{{ mcOrderRowShow }};"><span>已購票種</span><b>{{ orderTierName }}<i class="tag" style="background:#DDF7F3; color:#00665C;">已付款（模擬）</i></b></div>
+        <div><span>需確認的資格</span><b>首次參加<i class="tag" style="background:#EEEDE6; color:#5E5653;">待確認</i></b></div>
+      </div>
+      <button type="button" class="mc-btn" sc-camel-on-click="{{ mcPrimary }}">{{ mcPrimaryLabel }}</button>
+      <button type="button" class="mc-btn2" sc-camel-on-click="{{ mcSec }}">{{ mcSecLabel }}</button>
+      <div style="border-top:1px solid #EEEDE6; padding-top:4px;">
+        <button type="button" class="tgl" aria-expanded="{{ expPerksAria }}" sc-camel-on-click="{{ tgPerks }}">查看我的會員權益<svg class="car" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l4 4 4-4"/></svg></button>
+        <div class="exp" style="grid-template-rows:{{ expPerksRows }};"><div>
+          <div style="display:flex; flex-direction:column; border-top:1px solid #EEEDE6;">
+            <sc-for list="{{ perks }}" as="p" hint-placeholder-count="3">
+              <div style="display:flex; align-items:center; gap:10px; padding:10px 0; border-bottom:1px solid #EEEDE6; font-size:14px;">
+                <span style="width:8px; height:8px; flex:none; border-radius:50%; background:{{ p.dot }};"></span>
+                <span style="flex:1; color:{{ p.color }};">{{ p.text }}</span>
+                <span style="font-family:'IBM Plex Mono'; font-size:11px; color:#6B625F; text-align:right;">{{ p.tag }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <p class="fl-note" style="margin-top:8px;">{{ mcPerkNote }}</p>
+        </div></div>
+      </div>
+    </div>
+  </div>

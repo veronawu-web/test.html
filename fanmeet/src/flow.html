@@ -1,0 +1,308 @@
+
+<!-- ===== 安心小窩 ===== -->
+<sc-if value="{{ isDen }}" hint-placeholder-val="{{ false }}">
+<section class="fl" style="padding:14px 20px 40px;">
+  <div class="fl-seg" role="tablist"><button type="button" class="on" aria-selected="true">安心小窩</button><button type="button" sc-camel-on-click="{{ goRanch }}">主播牧場<span class="fl-seg-dot" style="display:{{ segRanchDot }};"></span></button></div>
+
+  <div class="fl-ttl"><div class="eyebrow">MY DEN</div><h2>我的安心小窩</h2><p>不管今天去哪裡，這裡一直有牠等你。</p></div>
+
+  <div class="{{ rcClass }}" style="gap:14px;">
+  <div class="rc-scene dn-scene">
+    <svg class="rc-svg" viewBox="0 0 390 340" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="dnWall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFBF3"/><stop offset="1" stop-color="#F6F0E4"/></linearGradient>
+        <linearGradient id="dnWood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E9D7BC"/><stop offset="1" stop-color="#DCC5A4"/></linearGradient>
+        <linearGradient id="dnMetal" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".3" stop-color="#C9D0D3"/><stop offset=".5" stop-color="#8E989C"/><stop offset=".75" stop-color="#F2F5F6"/><stop offset="1" stop-color="#A4AEB2"/></linearGradient>
+        <filter id="dnBlur" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="8"/></filter>
+      </defs>
+      <rect width="390" height="200" fill="url(#dnWall)"/>
+      <rect y="196" width="390" height="144" fill="url(#dnWood)"/>
+      <g stroke="#CDB68F" stroke-width="1" opacity=".5"><path d="M0 232h390M0 268h390M0 304h390"/><path d="M60 196v36M190 232v36M120 268v36M300 196v36M250 304v36"/></g>
+      <!-- 窗 -->
+      <rect x="236" y="40" width="112" height="86" rx="10" fill="#DDF0F7" stroke="#C6CFD2" stroke-width="2"/>
+      <path d="M292 40v86M236 83h112" stroke="#C6CFD2" stroke-width="2"/>
+      <ellipse cx="262" cy="64" rx="14" ry="6" fill="#fff" opacity=".8"/>
+      <rect x="226" y="124" width="132" height="6" rx="3" fill="url(#dnMetal)"/>
+      <!-- 層架與植物 -->
+      <rect x="40" y="88" width="96" height="6" rx="3" fill="url(#dnMetal)"/>
+      <rect x="54" y="62" width="22" height="26" rx="4" fill="#F7F7F2" stroke="#C6CFD2" stroke-width="1.2"/><path d="M65 62c-8-10-2-20 0-18 2-2 8 8 0 18Z" fill="#8CCBA6"/><path d="M60 50c-2 4 0 8 5 12" stroke="#5FAF86" stroke-width="1.5" fill="none"/>
+      <rect x="88" y="70" width="34" height="18" rx="3" fill="#00D2BE" opacity=".85"/><rect x="92" y="74" width="26" height="10" rx="2" fill="#0E2E2A" opacity=".5"/>
+      <!-- 柔光 -->
+      <ellipse class="rc-halo-svg" cx="110" cy="232" rx="96" ry="54" fill="#00D2BE" filter="url(#dnBlur)" opacity=".18"/>
+      <!-- 地毯 -->
+      <ellipse cx="200" cy="268" rx="118" ry="38" fill="#CFEBDD"/><ellipse cx="200" cy="268" rx="100" ry="30" fill="none" stroke="#A8DCC3" stroke-width="2" stroke-dasharray="6 6"/>
+      <!-- 床 -->
+      <g>
+        <rect x="46" y="188" width="128" height="18" rx="6" fill="#C9A77A"/><rect x="40" y="196" width="140" height="44" rx="12" fill="#D7B88C" stroke="#B8956A" stroke-width="1.5"/>
+        <rect x="52" y="204" width="116" height="26" rx="10" fill="#E6F6EF" stroke="#A8DCC3" stroke-width="1.5"/>
+        <rect x="58" y="200" width="36" height="16" rx="7" fill="#FFF8EC" stroke="#E4D7B8" stroke-width="1.2"/>
+        <rect x="96" y="186" width="64" height="12" rx="5" fill="#FFFFFF" stroke="#C6CFD2" stroke-width="1"/><text x="128" y="195" font-size="8" font-weight="700" text-anchor="middle" fill="#3F4A63" font-family="sans-serif">安心小窩</text>
+      </g>
+      <!-- 玩具 -->
+      <g><circle cx="214" cy="296" r="12" fill="#FFF0B8" stroke="#E5C977" stroke-width="1.5"/><path d="M204 290c6 4 14 4 20 0M204 302c6-4 14-4 20 0" stroke="#F2A94A" stroke-width="1.5" fill="none"/><circle cx="214" cy="296" r="2.5" fill="#F2A94A"/></g>
+      <!-- 碗 -->
+      <g>
+        <ellipse cx="322" cy="292" rx="44" ry="16" fill="#F1E6CE" stroke="#E4D7B8" stroke-width="1"/>
+        <ellipse cx="322" cy="286" rx="22" ry="9" fill="#FFFFFF" stroke="#1FA99A" stroke-width="2"/>
+        <ellipse cx="322" cy="284" rx="15" ry="5" fill="#F2CF8A"/>
+        <g fill="#D9A95A"><circle cx="316" cy="283" r="1.6"/><circle cx="324" cy="285" r="1.6"/><circle cx="330" cy="282" r="1.6"/></g>
+      </g>
+    </svg>
+    <button type="button" class="rc-hot" aria-label="寵物的床" sc-camel-on-click="{{ rcOpenHouse }}" style="left:8%; top:52%; width:40%; height:22%;"></button>
+    <button type="button" class="rc-hot" aria-label="餵食碗" sc-camel-on-click="{{ rcFeed }}" style="left:69%; top:76%; width:28%; height:20%;"></button>
+    <button type="button" class="rc-hot" aria-label="玩具" sc-camel-on-click="{{ dnPlay }}" style="left:46%; top:80%; width:18%; height:16%;"></button>
+    <span class="rc-lbl rc-lbl-hi" style="left:34%; top:44%;">小床・看看{{ petName }}</span>
+    <span class="rc-lbl" style="left:70%; top:70%;">餵食碗</span>
+    <span class="rc-lbl" style="left:44%; top:92%;">玩具・玩樂</span>
+    <div class="rc-pet" style="left:{{ rpX }}; top:{{ rpY }}; opacity:{{ rpOp }}; transition:left {{ rpDur }} linear, top {{ rpDur }} linear, opacity .5s ease; display:{{ denPetShow }};">
+      <span class="rc-me">我・{{ petName }}</span>
+      <span class="rc-bub" style="opacity:{{ rpBubOp }};">{{ rpBub }}</span>
+      <button type="button" class="rc-petbtn" aria-label="點一下{{ petName }}" sc-camel-on-click="{{ rcTapPet }}" style="animation:{{ rpAnim }};"><img src="{{ rpSrc }}" alt="" style="transform:scaleX({{ rpDir }});"></button>
+      <span class="rc-shadow"></span>
+      <div class="rc-menu" style="opacity:{{ rpMenuOp }}; pointer-events:{{ rpMenuPE }}; transform:translate(-50%, {{ rpMenuY }});">
+        <button type="button" sc-camel-on-click="{{ rcFeed }}">餵食</button>
+        <button type="button" sc-camel-on-click="{{ rcPet }}">摸摸</button>
+        <button type="button" sc-camel-on-click="{{ goMachine }}">看看牠</button>
+      </div>
+    </div>
+    <div class="rc-msg" style="opacity:{{ rcMsgOp }};">{{ rcMsg }}</div>
+    <div class="dn-empty" style="display:{{ denEmptyShow }};"><b>小窩準備好了，還差一隻牠。</b><span>完成測驗並命名後，牠就會住進來。</span></div>
+  </div>
+
+  <div style="display:{{ denPetShow }}; flex-direction:column; gap:14px;">
+    <div class="rc-actions">
+      <button type="button" sc-camel-on-click="{{ rcFeed }}"><img src="{{ iconFeed }}" alt="">餵食<small>剩 {{ feed }} 份</small></button>
+      <button type="button" sc-camel-on-click="{{ rcPet }}"><img src="{{ iconPet }}" alt="">摸摸<small>親密 +</small></button>
+      <button type="button" sc-camel-on-click="{{ dnPlay }}"><img src="{{ iconPlay }}" alt="">玩樂<small>接星星</small></button>
+    </div>
+    <div class="rc-card">
+      <div class="rc-card-h"><span class="eyebrow">MY PET</span><b>{{ petName }}・{{ speciesName }}</b></div>
+      <div class="rc-rows">
+        <div><span>成長</span><b>Lv.{{ level }}・{{ stageName }}</b></div>
+        <div class="rc-xp"><span></span><span class="bar"><span style="width:{{ xpPct }};"></span></span></div>
+        <div><span>飼料餘額</span><b>{{ feed }} 份<button type="button" class="rc-link" sc-camel-on-click="{{ openCoupons }}">補充</button></b></div>
+        <div><span>目前住所</span><b>{{ denWhere }}</b></div>
+      </div>
+    </div>
+    <div class="fl-sub" style="display:{{ denRanchIntroShow }};">
+      <div class="fl-sub-t"><b>主播牧場</b><span>{{ ranchStateLabel }}</span></div>
+      <p>{{ ranchStateSub }}</p>
+      <button type="button" class="fl-link" sc-camel-on-click="{{ goRanch }}">了解主播牧場 →</button>
+    </div>
+  </div>
+
+  <div style="display:{{ denEmptyShow }}; flex-direction:column; gap:12px;">
+    <button type="button" class="fl-btn" sc-camel-on-click="{{ goAdopt }}">領養我的寵物</button>
+    <p class="fl-note">領養不是購票的必要步驟；你可以先報名活動，之後再回來領養。</p>
+  </div>
+  <div class="rc-foot">
+    <div ref="{{ setSlot }}" style="width:64px; aspect-ratio:260 / 340; flex:none;"></div>
+    <button type="button" class="rc-back" sc-camel-on-click="{{ denFoot }}">{{ denFootLabel }}<span>{{ denFootSub }}</span></button>
+  </div>
+  </div>
+</section>
+</sc-if>
+
+<!-- ===== 報名流程 ===== -->
+<sc-if value="{{ isReg }}" hint-placeholder-val="{{ false }}">
+<section class="fl" style="padding:14px 20px 48px;">
+  <div class="fl-steps" aria-label="報名步驟">
+    <span style="color:{{ st1c }};"><i style="background:{{ st1b }}; color:{{ st1f }};">1</i>選票</span><em></em>
+    <span style="color:{{ st2c }};"><i style="background:{{ st2b }}; color:{{ st2f }};">2</i>填資料</span><em></em>
+    <span style="color:{{ st3c }};"><i style="background:{{ st3b }}; color:{{ st3f }};">3</i>確認與付款</span><em></em>
+    <span style="color:{{ st4c }};"><i style="background:{{ st4b }}; color:{{ st4f }};">4</i>完成</span>
+  </div>
+
+  <!-- 已完成報名 -->
+  <div style="display:{{ regHasOrderShow }};" class="fl-done-hint">
+    <b>你已完成這場活動的報名</b><span>訂單 {{ orderId }}・{{ orderStatusText }}。同一帳號不會重複建立訂單。</span>
+    <button type="button" class="fl-btn" sc-camel-on-click="{{ goTickets }}">查看我的入場票券</button>
+  </div>
+
+  <!-- Step 1 選票 -->
+  <div style="display:{{ regTierShow }};">
+    <div class="fl-ttl"><div class="eyebrow">STEP 1</div><h2>選擇票種</h2><p>全票種合計上限 150 人。價格與內容依 10/14 定案；重要限制直接標示。</p></div>
+    <div class="fl-login-line" style="display:{{ regGuestLineShow }};"><span>目前未登入，可先選票；進入填資料時會請你登入。</span><button type="button" class="fl-link" sc-camel-on-click="{{ openLogin }}">先登入</button></div>
+    <div class="fl-tiers">
+      <sc-for list="{{ regTiers }}" as="t" hint-placeholder-count="4">
+        <button type="button" class="fl-tier" sc-camel-on-click="{{ t.onPick }}" aria-pressed="{{ t.checked }}" disabled="{{ t.soldOut }}" style="border:{{ t.border }}; opacity:{{ t.op }};">
+          <span class="fl-tier-h"><b>{{ t.name }}</b><b class="mono">{{ t.price }}</b></span>
+          <span class="fl-tier-p">{{ t.perks }}</span>
+          <span class="fl-tier-row"><span class="chip chip-tbd">收藏：{{ t.charm }}</span><span class="chip" style="background:{{ t.rcBg }}; color:{{ t.rcFg }};">{{ t.rcText }}</span></span>
+          <span class="fl-tier-row"><span class="fl-stock" style="color:{{ t.stockColor }};">{{ t.stockText }}</span><span class="fl-limit">{{ t.limit }}</span></span>
+        </button>
+      </sc-for>
+    </div>
+    <button type="button" class="tgl" aria-expanded="{{ expRulesAria }}" sc-camel-on-click="{{ tgRules }}">詳細辦法（預購、簽名、退換）<svg class="car" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l4 4 4-4"/></svg></button>
+    <div class="exp" style="grid-template-rows:{{ expRulesRows }};"><div><ul class="fl-ul">
+      <li>多張預購 30 張享 9 折，每人限 1 次，11/16 截止；預購券綁帳號，不得轉售；未到場作廢不退。</li>
+      <li>簽名套票限量 10 組，先搶先得，11/18 截止；本身即可入場，享 Lv.80 同等福利。<span class="chip chip-tbdata">組數待確認</span></li>
+      <li>預購的券 1 張＝1 次簽名抽籤機會（單張也算），每人最多中 1 次，11/17 公布，11/18 12:00 前確認。</li>
+      <li>心動券、拍立得券超過內含數量需另購：心動券 1,888 鑽、互動券 3,000 鑽、鐵粉券 5,000 鑽／張。</li>
+      <li>主播牧場需另有主播邀約且經驗證；票種本身不保證可加入。</li>
+    </ul></div></div>
+    <div class="fl-cta"><button type="button" class="fl-btn" sc-camel-on-click="{{ regNext1 }}" disabled="{{ regNext1Dis }}" style="background:{{ regNext1Bg }};">{{ regNext1Label }}</button></div>
+  </div>
+
+  <!-- Step 2 填資料 -->
+  <div style="display:{{ regFormShow }};">
+    <div class="fl-ttl"><div class="eyebrow">STEP 2</div><h2>確認當天見面的資料</h2><p>已選：<b>{{ regTierName }}</b>・{{ regTierPrice }}<button type="button" class="fl-link" sc-camel-on-click="{{ regToTier }}">修改票種</button></p></div>
+    <div class="fl-form">
+      <div class="fl-f ro"><label>會員帳號與等級</label><div class="fl-ro">{{ memberName }}・{{ memberLv }}<span>唯讀，由帳號資料帶入</span></div></div>
+      <div class="fl-f"><label for="rg-name">報到暱稱 <i>必填</i></label><input id="rg-name" value="{{ rgName }}" sc-camel-on-change="{{ onRgName }}" placeholder="現場報到時使用" aria-invalid="{{ rgNameInv }}" style="border-color:{{ rgNameBd }};"><span class="fl-err" style="display:{{ rgNameErrShow }};">請填寫報到暱稱</span></div>
+      <div class="fl-f"><label for="rg-email">通知用電子郵件 <i>必填</i></label><input id="rg-email" type="email" value="{{ rgEmail }}" sc-camel-on-change="{{ onRgEmail }}" placeholder="name@example.com" aria-invalid="{{ rgEmailInv }}" style="border-color:{{ rgEmailBd }};"><span class="fl-hint">已依帳號帶入，可修改；報名結果與抽籤通知會寄到這裡。</span><span class="fl-err" style="display:{{ rgEmailErrShow }};">請填寫正確的電子郵件</span></div>
+
+      <div class="fl-f"><label>首次參加資格</label><div class="fl-ro">依 2026 年報到紀錄判定<span class="chip chip-tbd">待確認</span></div></div>
+
+      <div class="fl-f"><label class="fl-check"><input type="checkbox" checked="{{ rgTravel }}" sc-camel-on-change="{{ onRgTravel }}"><span>申請揪感心加碼（外縣市，限量 15 名）</span></label>
+        <div class="exp" style="grid-template-rows:{{ rgTravelRows }};"><div>
+          <div class="fl-f" style="margin-top:8px;"><label for="rg-region">出發地區 <i>必填</i></label>
+            <select id="rg-region" value="{{ rgRegion }}" sc-camel-on-change="{{ onRgRegion }}" aria-invalid="{{ rgRegionInv }}" style="border-color:{{ rgRegionBd }};">
+              <option value="">請選擇</option>
+              <option value="3000">基隆市／桃園市／新竹市／新竹縣／苗栗縣／宜蘭縣（3,000）</option>
+              <option value="5000">台中市／南投縣／彰化縣／花蓮縣（5,000）</option>
+              <option value="8000">雲林／嘉義市縣／台南／高雄／屏東（含墾丁、小琉球）／台東（含綠島、蘭嶼）（8,000）</option>
+              <option value="10000">澎湖縣／金門縣／連江縣（10,000）</option>
+            </select>
+            <span class="fl-hint">選擇地區不等於通過審核；名額與資格以主辦核定為準，到場才發放。</span>
+            <span class="fl-err" style="display:{{ rgRegionErrShow }};">請選擇出發地區</span>
+          </div>
+        </div></div>
+      </div>
+
+      <div class="fl-f" style="display:{{ rgSignShow }};"><label class="fl-check"><input type="checkbox" checked="{{ rgSign }}" sc-camel-on-change="{{ onRgSign }}"><span>Lv.80+ 全員簽名：我要參加（11/7 前勾選，不佔 20 組名額）</span></label></div>
+
+      <div class="fl-f"><label>活動須知與個資使用說明</label>
+        <button type="button" class="tgl" aria-expanded="{{ expTermsAria }}" sc-camel-on-click="{{ tgTerms }}">閱讀內容<svg class="car" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l4 4 4-4"/></svg></button>
+        <div class="exp" style="grid-template-rows:{{ expTermsRows }};"><div><div class="fl-terms">
+          <p>1. 到場才發獎勵：所有到場福利須持有效票券並完成現場報到。未到場不補不退；預購券作廢不退。</p>
+          <p>2. 互動範圍以主播意願為準，工作人員會事先說明；現場經安檢後入場。</p>
+          <p>3. 個資使用：報到暱稱、電子郵件僅用於本活動報名、通知與現場核對，活動結束後依規定保存期限刪除。</p>
+          <p>4. 主播牧場需主播邀約且經平台驗證；票種不保證可加入。</p>
+        </div></div></div>
+        <label class="fl-check" style="margin-top:8px;"><input type="checkbox" checked="{{ rgAgree }}" sc-camel-on-change="{{ onRgAgree }}" aria-invalid="{{ rgAgreeInv }}"><span>我已閱讀並同意活動須知與個資使用說明 <i>必填</i></span></label>
+        <span class="fl-err" style="display:{{ rgAgreeErrShow }};">請先閱讀並勾選同意</span>
+      </div>
+    </div>
+    <div class="fl-err-sum" style="display:{{ rgSumShow }};">{{ rgSumText }}</div>
+    <div class="fl-cta"><button type="button" class="fl-btn" sc-camel-on-click="{{ regNext2 }}">下一步：核對訂單</button><button type="button" class="fl-ghost" sc-camel-on-click="{{ regToTier }}">返回選票（已填資料會保留）</button></div>
+  </div>
+
+  <!-- Step 3 核對與付款 -->
+  <div style="display:{{ regReviewShow }};">
+    <div class="fl-ttl"><div class="eyebrow">STEP 3</div><h2>核對訂單與付款</h2><p>付款前會再次確認庫存與資格。</p></div>
+    <div class="fl-sum">
+      <div class="fl-sum-h"><b>VIP 同樂會・主播實體見面會</b><span>11/21（六）13:00–17:00・台北市中山區建國北路一段 80 號 B1</span></div>
+      <div class="fl-sum-r"><span>票種</span><b>{{ regTierName }}</b><button type="button" class="fl-link" sc-camel-on-click="{{ regToTier }}">修改</button></div>
+      <div class="fl-sum-r"><span>報名人</span><b>{{ rgName }}・{{ memberLv }}</b><button type="button" class="fl-link" sc-camel-on-click="{{ regToForm }}">修改</button></div>
+      <div class="fl-sum-r"><span>通知方式</span><b>{{ rgEmail }}</b><button type="button" class="fl-link" sc-camel-on-click="{{ regToForm }}">修改</button></div>
+      <div class="fl-sum-r"><span>數量</span><b>1 張</b><span></span></div>
+      <div class="fl-sum-r total"><span>總額</span><b class="mono">{{ regTierPrice }}</b><span></span></div>
+      <div class="fl-sum-g"><span>已包含</span><p>{{ regIncluded }}</p></div>
+      <div class="fl-sum-g"><span>需另行驗證／抽選</span><p>{{ regPending }}</p></div>
+      <div class="fl-sum-g"><span>邀約來源</span><p>{{ regRefText }}</p></div>
+    </div>
+    <div class="fl-pay">
+      <div class="fl-pay-r"><span>應付鑽石</span><b class="mono">{{ regTierPrice }}</b></div>
+      <div class="fl-pay-r"><span>可用餘額（模擬）</span><b class="mono" style="color:{{ balColor }};">{{ balanceText }}</b></div>
+      <div class="fl-pay-warn" style="display:{{ insufShow }};"><b>餘額不足，還差 {{ shortText }}</b><span>訂單選擇已保留；補足後可直接付款，或返回修改票種。</span><div class="fl-pay-warn-b"><button type="button" class="fl-btn sm" sc-camel-on-click="{{ topUp }}">模擬儲值 +50,000 鑽</button><button type="button" class="fl-ghost sm" sc-camel-on-click="{{ regToTier }}">修改票種</button></div></div>
+      <div class="fl-pay-warn" style="display:{{ soldOutShow }};"><b>此票種已售罄</b><span>你填的資料已保留，請返回選擇其他票種。</span><div class="fl-pay-warn-b"><button type="button" class="fl-btn sm" sc-camel-on-click="{{ regToTier }}">返回選票</button></div></div>
+      <div class="fl-pay-warn err" style="display:{{ payFailShow }};"><b>付款未完成</b><span>模擬交易失敗，沒有扣款。資料已保留，可以重試。</span></div>
+      <div class="fl-pay-warn" style="display:{{ confirmingShow }};"><b>確認付款結果中…</b><span>請稍候，不要重複送出。</span></div>
+      <label class="fl-check proto"><input type="checkbox" checked="{{ simFail }}" sc-camel-on-change="{{ onSimFail }}"><span>原型測試：模擬付款失敗</span></label>
+      <button type="button" class="fl-btn" sc-camel-on-click="{{ regPay }}" disabled="{{ rgPayDis }}" style="background:{{ rgPayBg }};">{{ rgPayLabel }}</button>
+      <p class="fl-note">原型以模擬交易展示流程，不會真的扣款。</p>
+    </div>
+  </div>
+
+  <!-- Step 4 完成 -->
+  <div style="display:{{ regDoneShow }};">
+    <div class="fl-done">
+      <span class="fl-done-ic"><svg viewBox="0 0 40 40" fill="none" stroke="#00665C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="20" cy="20" r="17" stroke="#00D2BE"/><path d="M12 20.5l5.5 5.5L28 15"/></svg></span>
+      <h2>報名完成，現場見！</h2>
+      <p>我們會把報名結果與後續通知寄到 {{ orderEmail }}。</p>
+    </div>
+    <div class="fl-sum">
+      <div class="fl-sum-r"><span>活動</span><b>11/21（六）13:00–17:00<br>台北市中山區建國北路一段 80 號 B1</b><span></span></div>
+      <div class="fl-sum-r"><span>票種</span><b>{{ orderTierName }}</b><span></span></div>
+      <div class="fl-sum-r"><span>訂單編號</span><b class="mono">{{ orderId }}</b><span></span></div>
+      <div class="fl-sum-r"><span>狀態</span><b>報名完成・{{ orderStatusText }}</b><span></span></div>
+      <div class="fl-sum-r"><span>通知方式</span><b>{{ orderEmail }}</b><span></span></div>
+    </div>
+    <div class="fl-unlock" style="display:{{ unlockShow }};"><span class="metal"><span><dc-import name="Keychain" kind="{{ orderTierId }}" letter="♥" serial="—/10" hint-size="40px,74px"></dc-import></span></span><div><b>收藏已解鎖：{{ orderCharm }}</b><span>到寵物機會看到它掛上去的動畫；可略過。</span></div><button type="button" class="fl-link" sc-camel-on-click="{{ skipUnlock }}">略過</button></div>
+    <div class="fl-cta">
+      <button type="button" class="fl-btn" sc-camel-on-click="{{ goTickets }}">查看我的入場票券</button>
+      <button type="button" class="fl-ghost" sc-camel-on-click="{{ goTickets }}">查看報到與交通資訊</button>
+      <button type="button" class="fl-ghost" sc-camel-on-click="{{ goDen }}" style="display:{{ doneDenShow }};">回安心小窩</button>
+      <button type="button" class="fl-ghost" sc-camel-on-click="{{ goAdopt }}" style="display:{{ doneAdoptShow }};">領養活動寵物（可稍後再做）</button>
+      <button type="button" class="fl-ghost teal" sc-camel-on-click="{{ goRanch }}" style="display:{{ doneRanchShow }};">查看主播邀請</button>
+    </div>
+  </div>
+</section>
+</sc-if>
+
+<!-- ===== 我的活動中心 ===== -->
+<sc-if value="{{ isTickets }}" hint-placeholder-val="{{ false }}">
+<section class="fl" style="padding:14px 20px 48px;">
+  <div class="fl-ttl"><div class="eyebrow">MY EVENT</div><h2>我的活動中心</h2><p>報名、票券、報到與資格確認都在這裡。</p></div>
+
+  <div style="display:{{ tkNoneShow }};" class="fl-card">
+    <div class="fl-st"><span>報名狀態</span><b class="chip chip-tbd">尚未報名</b></div>
+    <p class="fl-note" style="margin-top:8px;">尚未有任何訂單。未付款的訂單不會成為有效入場票。</p>
+    <button type="button" class="fl-btn" sc-camel-on-click="{{ goReg }}">查看票種並報名</button>
+  </div>
+
+  <div style="display:{{ tkHasShow }}; flex-direction:column; gap:14px;">
+    <div class="fl-card">
+      <div class="fl-st"><span>報名狀態</span><b class="chip chip-ok">已完成報名</b></div>
+      <div class="fl-st"><span>付款狀態</span><b class="chip chip-ok">{{ orderStatusText }}</b></div>
+      <div class="fl-st"><span>訂單編號</span><b class="mono">{{ orderId }}</b></div>
+    </div>
+
+    <div class="fl-pass">
+      <div class="fl-pass-l"><span class="mono">ADMIT ONE</span><b>{{ orderTierName }}</b><span>{{ orderName }}・{{ memberLv }}</span><span>11/21（六）12:30 開始報到<br>建國北路一段 80 號 B1</span></div>
+      <div class="fl-pass-r"><span class="fl-qr">QR</span><span>入場碼</span><span class="mono">{{ orderId }}</span></div>
+    </div>
+
+    <div class="fl-card">
+      <div class="fl-card-t">報到與核銷（分開記錄）</div>
+      <div class="fl-st"><span>入場報到</span><b class="chip" style="background:{{ ciBg }}; color:{{ ciFg }};">{{ ciText }}</b></div>
+      <div class="fl-st"><span>收藏兌換（數位鑰匙圈）</span><b class="chip" style="background:{{ rdBg }}; color:{{ rdFg }};">{{ rdText }}</b></div>
+      <div class="fl-st"><span>到場獎勵核銷</span><b class="chip" style="background:{{ pkBg }}; color:{{ pkFg }};">{{ pkText }}</b></div>
+      <div class="fl-sim"><button type="button" class="fl-ghost sm" sc-camel-on-click="{{ simCheckIn }}" disabled="{{ ciDone }}">模擬現場掃碼報到</button><button type="button" class="fl-ghost sm" sc-camel-on-click="{{ simRedeem }}" disabled="{{ rdDis }}">模擬兌換收藏</button><button type="button" class="fl-ghost sm" sc-camel-on-click="{{ simPerk }}" disabled="{{ pkDis }}">模擬核銷獎勵</button></div>
+    </div>
+
+    <div class="fl-card">
+      <div class="fl-card-t">購買權益</div>
+      <p class="fl-p">{{ orderIncluded }}</p>
+      <div class="fl-st"><span>收藏狀態</span><b class="chip" style="background:{{ rdBg }}; color:{{ rdFg }};">{{ rdText }}</b></div>
+    </div>
+
+    <div class="fl-card">
+      <div class="fl-card-t">需處理的資格確認</div>
+      <div class="fl-st"><span>首次參加資格</span><b class="chip chip-tbd">待確認（依報到紀錄）</b></div>
+      <div class="fl-st" style="display:{{ tkTravelShow }};"><span>揪感心加碼申請</span><b class="chip chip-tbd">審核中・{{ orderRegionText }}</b></div>
+      <div class="fl-st" style="display:{{ tkSignShow }};"><span>Lv.80+ 簽名參加意願</span><b class="chip chip-ok">已登記</b></div>
+      <div class="fl-st"><span>簽名抽籤</span><b class="chip chip-draw">11/17 公布</b></div>
+    </div>
+
+    <div class="fl-card">
+      <div class="fl-card-t">主播牧場邀請</div>
+      <div class="fl-st"><span>{{ ranchStateLabel }}</span><b class="chip" style="background:{{ rsBg }}; color:{{ rsFg }};">{{ ranchStateShort }}</b></div>
+      <p class="fl-p">{{ ranchStateSub }}</p>
+      <button type="button" class="fl-link" sc-camel-on-click="{{ goRanch }}">前往主播牧場 →</button>
+    </div>
+  </div>
+
+  <div class="fl-card">
+    <div class="fl-card-t">活動地點與交通</div>
+    <p class="fl-p"><b>台北市中山區建國北路一段 80 號 B1</b><br>11/21（六）12:15 開放排隊、12:30 掃碼報到、13:00 開場。現場經安檢後入場；寵愛套票設有專屬座位區。</p>
+  </div>
+
+  <div class="fl-cta">
+    <button type="button" class="fl-ghost" sc-camel-on-click="{{ goDen }}" style="display:{{ tkDenShow }};">回安心小窩</button>
+    <button type="button" class="fl-ghost" sc-camel-on-click="{{ goHome }}">回活動首頁</button>
+    <button type="button" class="fl-ghost" sc-camel-on-click="{{ resetAll }}" style="color:#6B625F;">清除進度，重新體驗</button>
+  </div>
+</section>
+</sc-if>

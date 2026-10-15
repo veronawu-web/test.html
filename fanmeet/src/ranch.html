@@ -1,0 +1,129 @@
+    <sc-if value="{{ ranchJoined }}" hint-placeholder-val="{{ false }}">
+      <div class="{{ rcClass }}">
+      <div class="fl-seg" role="tablist" style="margin-bottom:0;"><button type="button" sc-camel-on-click="{{ goDen }}">安心小窩</button><button type="button" class="on" aria-selected="true">主播牧場</button></div>
+      <!-- 頂部名牌 -->
+      <div class="rc-head">
+        <span class="rc-ava"><span>{{ ranchId }}</span></span>
+        <div class="rc-ht">
+          <b>主播 {{ ranchId }} 的牧場</b>
+          <span>你的寵物{{ petName }}住在{{ ranchName }}</span>
+        </div>
+        <span class="chip chip-ok" style="flex:none;">已入住</span>
+      </div>
+
+      <!-- 牧場場景 -->
+      <div class="rc-scene">
+        <svg class="rc-svg" viewBox="0 0 390 340" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <defs>
+            <linearGradient id="rcSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EEF8F4"/><stop offset="1" stop-color="#DDF0E7"/></linearGradient>
+            <linearGradient id="rcMetal" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".3" stop-color="#C9D0D3"/><stop offset=".5" stop-color="#8E989C"/><stop offset=".75" stop-color="#F2F5F6"/><stop offset="1" stop-color="#A4AEB2"/></linearGradient>
+            <filter id="rcBlur" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="9"/></filter>
+            <linearGradient id="rcRoof" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F08A95"/><stop offset="1" stop-color="#E26B78"/></linearGradient>
+          </defs>
+          <rect width="390" height="340" fill="url(#rcSky)"/>
+          <ellipse cx="300" cy="40" rx="46" ry="14" fill="#FFFFFF" opacity=".8"/><ellipse cx="322" cy="34" rx="30" ry="12" fill="#FFFFFF" opacity=".8"/>
+          <ellipse cx="80" cy="60" rx="34" ry="10" fill="#FFFFFF" opacity=".7"/>
+          <!-- 地面 -->
+          <path d="M0 118 C80 100 160 126 240 110 C300 98 350 108 390 102 L390 340 L0 340 Z" fill="#C9E8D7"/>
+          <path d="M0 150 C100 140 180 166 260 150 C320 138 360 150 390 144 L390 340 L0 340 Z" fill="#D4EDDF"/>
+          <!-- 小路 -->
+          <path d="M128 212 C150 232 190 236 212 262 C236 290 296 288 340 300" fill="none" stroke="#F4ECD8" stroke-width="30" stroke-linecap="round"/>
+          <path d="M128 212 C150 232 190 236 212 262 C236 290 296 288 340 300" fill="none" stroke="#EADFC4" stroke-width="2" stroke-dasharray="6 10" stroke-linecap="round" opacity=".7"/>
+          <!-- 圍欄（右上） -->
+          <g stroke="#9AA6AA" stroke-width="1.4">
+            <rect x="236" y="150" width="150" height="4" rx="2" fill="#F7F9F9"/><rect x="236" y="166" width="150" height="4" rx="2" fill="#F7F9F9"/>
+            <path d="M244 136 l6 -8 l6 8 v44 h-12 z M276 136 l6 -8 l6 8 v44 h-12 z M308 136 l6 -8 l6 8 v44 h-12 z M340 136 l6 -8 l6 8 v44 h-12 z M372 136 l6 -8 l6 8 v44 h-12 z" fill="#FFFFFF"/>
+          </g>
+          <!-- 草莓小屋 -->
+          <ellipse class="rc-halo-svg" cx="120" cy="178" rx="92" ry="66" fill="#00D2BE" filter="url(#rcBlur)"/>
+          <g>
+            <ellipse cx="120" cy="214" rx="78" ry="12" fill="#B9DFCB" opacity=".9"/>
+            <rect x="62" y="150" width="116" height="62" rx="6" fill="#FFF8EC" stroke="#C6CFD2" stroke-width="1.5"/>
+            <path d="M52 154 L120 96 L188 154 Z" fill="url(#rcRoof)" stroke="#C85B68" stroke-width="1.5" stroke-linejoin="round"/>
+            <g fill="#FFFFFF" opacity=".85"><circle cx="100" cy="134" r="2"/><circle cx="118" cy="120" r="2"/><circle cx="138" cy="134" r="2"/><circle cx="120" cy="146" r="2"/><circle cx="84" cy="146" r="2"/><circle cx="156" cy="146" r="2"/></g>
+            <path d="M104 100 C110 90 120 88 124 92 C130 86 140 92 136 100 C128 98 116 98 104 100 Z" fill="#8CCBA6"/>
+            <rect x="108" y="176" width="24" height="36" rx="4" fill="#1FA99A"/><circle cx="127" cy="195" r="1.8" fill="#FFF8EC"/>
+            <rect x="70" y="166" width="22" height="18" rx="3" fill="#D7F0FA" stroke="#C6CFD2" stroke-width="1.2"/><path d="M81 166 v18 M70 175 h22" stroke="#C6CFD2" stroke-width="1.2"/>
+            <rect x="148" y="166" width="22" height="18" rx="3" fill="#D7F0FA" stroke="#C6CFD2" stroke-width="1.2"/><path d="M159 166 v18 M148 175 h22" stroke="#C6CFD2" stroke-width="1.2"/>
+            <rect x="96" y="156" width="48" height="12" rx="3" fill="#FFFFFF" stroke="#C6CFD2" stroke-width="1"/><text x="120" y="165.5" font-size="8" font-weight="700" text-anchor="middle" fill="#3F4A63" font-family="sans-serif">草莓小屋</text>
+          </g>
+          <!-- 灌木與草莓 -->
+          <g>
+            <ellipse cx="214" cy="200" rx="26" ry="14" fill="#A8DCC3"/><ellipse cx="206" cy="194" rx="14" ry="10" fill="#92D0B4"/>
+            <ellipse cx="36" cy="236" rx="28" ry="14" fill="#A8DCC3"/><ellipse cx="46" cy="230" rx="14" ry="9" fill="#92D0B4"/>
+            <ellipse cx="366" cy="214" rx="24" ry="12" fill="#A8DCC3"/>
+            <g fill="#E8737F"><circle cx="222" cy="202" r="3"/><circle cx="30" cy="238" r="3"/><circle cx="372" cy="214" r="3"/></g>
+            <g fill="#FFFFFF"><circle cx="222" cy="202" r=".8"/><circle cx="30" cy="238" r=".8"/></g>
+          </g>
+          <!-- 休息處 -->
+          <g><ellipse cx="258" cy="236" rx="30" ry="10" fill="#B9DFCB"/><rect x="236" y="214" width="44" height="18" rx="9" fill="#E6F6EF" stroke="#9AA6AA" stroke-width="1.2"/><path d="M244 223 h28" stroke="#C6CFD2" stroke-width="1.2" stroke-linecap="round"/></g>
+          <!-- 餵食區 -->
+          <g>
+            <ellipse cx="322" cy="292" rx="48" ry="18" fill="#F1E6CE" stroke="#E4D7B8" stroke-width="1"/>
+            <ellipse cx="322" cy="286" rx="22" ry="9" fill="#FFFFFF" stroke="#1FA99A" stroke-width="2"/>
+            <ellipse cx="322" cy="284" rx="15" ry="5" fill="#F2CF8A"/>
+            <g fill="#D9A95A"><circle cx="316" cy="283" r="1.6"/><circle cx="324" cy="285" r="1.6"/><circle cx="330" cy="282" r="1.6"/></g>
+          </g>
+          <!-- 告示牌 -->
+          <g>
+            <rect x="60" y="262" width="6" height="44" rx="2" fill="url(#rcMetal)"/>
+            <rect x="36" y="248" width="56" height="32" rx="6" fill="#FFF8EC" stroke="#9AA6AA" stroke-width="1.4"/>
+            <rect x="36" y="248" width="56" height="7" rx="3" fill="#00D2BE"/>
+            <path d="M44 263 h40 M44 270 h28" stroke="#C6CFD2" stroke-width="2" stroke-linecap="round"/>
+          </g>
+          <!-- 小花 -->
+          <g fill="#FFFFFF"><circle cx="180" cy="300" r="2.5"/><circle cx="188" cy="306" r="2"/><circle cx="104" cy="314" r="2.5"/><circle cx="230" cy="318" r="2"/></g>
+          <g fill="#F2CF8A"><circle cx="180" cy="300" r="1"/><circle cx="104" cy="314" r="1"/></g>
+        </svg>
+
+        <!-- 可點擊物件 -->
+        <button type="button" class="rc-hot" aria-label="草莓小屋" sc-camel-on-click="{{ rcOpenHouse }}" style="left:12%; top:26%; width:36%; height:40%;"></button>
+        <button type="button" class="rc-hot" aria-label="餵食區" sc-camel-on-click="{{ rcFeed }}" style="left:69%; top:76%; width:28%; height:20%;"></button>
+        <button type="button" class="rc-hot" aria-label="牧場告示牌" sc-camel-on-click="{{ rcOpenBoard }}" style="left:6%; top:70%; width:20%; height:24%;"></button>
+        <span class="rc-hint" aria-hidden="true" style="left:31%; top:17%;"><span class="rc-hint-pill">點小屋看看</span><svg class="rc-hint-arr" viewBox="0 0 16 16" fill="none" stroke="#292322" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v10M4 8l4 4 4-4"/></svg></span>
+        <span class="rc-lbl rc-lbl-hi" style="left:46%; top:40%;">小屋・看看{{ petName }}</span>
+        <span class="rc-lbl" style="left:70%; top:70%;">餵食區</span>
+        <span class="rc-lbl" style="left:8%; top:66%;">告示牌</span>
+
+        <!-- 我的寵物 -->
+        <div class="rc-pet" style="left:{{ rpX }}; top:{{ rpY }}; opacity:{{ rpOp }}; transition:left {{ rpDur }} linear, top {{ rpDur }} linear, opacity .5s ease;">
+          <span class="rc-me">我・{{ petName }}</span>
+          <span class="rc-bub" style="opacity:{{ rpBubOp }};">{{ rpBub }}</span>
+          <button type="button" class="rc-petbtn" aria-label="點一下{{ petName }}" sc-camel-on-click="{{ rcTapPet }}" style="animation:{{ rpAnim }};"><img src="{{ rpSrc }}" alt="" style="transform:scaleX({{ rpDir }});"></button>
+          <span class="rc-shadow"></span>
+          <div class="rc-menu" style="opacity:{{ rpMenuOp }}; pointer-events:{{ rpMenuPE }}; transform:translate(-50%, {{ rpMenuY }});">
+            <button type="button" sc-camel-on-click="{{ rcFeed }}">餵食</button>
+            <button type="button" sc-camel-on-click="{{ rcPet }}">摸摸</button>
+            <button type="button" sc-camel-on-click="{{ goMachine }}">看看牠</button>
+          </div>
+        </div>
+        <div class="rc-msg" style="opacity:{{ rcMsgOp }};">{{ rcMsg }}</div>
+      </div>
+
+      <!-- 操作列 -->
+      <div class="rc-actions">
+        <button type="button" sc-camel-on-click="{{ rcFeed }}"><img src="{{ iconFeed }}" alt="">餵食<small>剩 {{ feed }} 份</small></button>
+        <button type="button" sc-camel-on-click="{{ rcPet }}"><img src="{{ iconPet }}" alt="">摸摸<small>親密 +</small></button>
+        <button type="button" sc-camel-on-click="{{ rcOpenBoard }}"><span class="rc-ico"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="14" height="9" rx="2"/><path d="M10 13v4M7 17h6M6.5 8h7M6.5 10.5h4"/></svg></span>牧場公告<small>介紹與公告</small></button>
+      </div>
+
+      <!-- 我的入住資訊 -->
+      <div class="rc-card">
+        <div class="rc-card-h"><span class="eyebrow">MY STAY</span><b>我的入住資訊</b></div>
+        <div class="rc-rows">
+          <div><span>寵物</span><b>{{ petName }}・{{ speciesName }}</b></div>
+          <div><span>目前住所</span><b>主播 {{ ranchId }} 的牧場・{{ ranchName }}</b></div>
+          <div><span>成長</span><b>Lv.{{ level }}・{{ stageName }}</b></div>
+          <div class="rc-xp"><span></span><span class="bar"><span style="width:{{ xpPct }};"></span></span></div>
+          <div><span>飼料餘額</span><b>{{ feed }} 份<button type="button" class="rc-link" sc-camel-on-click="{{ openCoupons }}">補充</button></b></div>
+        </div>
+        <button type="button" class="rc-msgbtn" sc-camel-on-click="{{ rcOpenMessage }}" style="display:{{ rcMsgShow }};">留言給主播<span>主播會在後台閱讀，不是即時聊天</span></button>
+      </div>
+
+      <!-- 次要入口：小型寵物機捷徑 -->
+      <div class="rc-foot">
+        <div ref="{{ setSlot }}" style="width:64px; aspect-ratio:260 / 340; flex:none;"></div>
+        <button type="button" class="rc-back" sc-camel-on-click="{{ goMachine }}">回到我的寵物機 →<span>餵食、玩樂與成長都會同步</span></button>
+      </div>
+      </div>
+    </sc-if>

@@ -1,0 +1,106 @@
+  <section class="sec-pl" style="background:#FFFFFF;">
+    <div class="rv" ref="{{ setReveal }}">
+      <div class="st">
+        <div class="eyebrow">REWARDS・到場才發</div>
+        <h2 class="h2">到場，還有這些驚喜。</h2>
+        <p class="sub">依會員等級與參加資格，查看你的到場福利。買任一票種（含 500 鑽入場票）並完成現場報到即解鎖，未到場不發放。</p>
+      </div>
+
+      <!-- 第一層｜我的到場福利 -->
+      <div class="rw-main st">
+        <div class="rw-main-in">
+          <div class="rw-top"><span class="rw-lbl">我的到場福利</span><span class="chip chip-lv" style="display:{{ rwLvShow }};">{{ memberLv }}</span></div>
+
+          <div style="display:{{ rwLoggedShow }};">
+            <div class="rw-row">
+              <div>
+                <div class="rw-num"><b>{{ rwNum }}</b><span>鑽</span></div>
+                <div style="margin-top:6px; font-size:14px; font-weight:700; color:#3F4A63;">報到鑽石・{{ rwBand }}</div>
+              </div>
+              <span class="rw-gem obj"><svg width="74" height="74" viewBox="0 0 74 74" fill="none"><defs><linearGradient id="gemA" x1="10" y1="12" x2="64" y2="62" gradientUnits="userSpaceOnUse"><stop stop-color="#FFFFFF"/><stop offset=".35" stop-color="#8CF5E8"/><stop offset=".65" stop-color="#00D2BE"/><stop offset="1" stop-color="#00A896"/></linearGradient><linearGradient id="gemB" x1="10" y1="12" x2="64" y2="62" gradientUnits="userSpaceOnUse"><stop stop-color="#FFFFFF"/><stop offset=".3" stop-color="#C9D0D3"/><stop offset=".5" stop-color="#7D878B"/><stop offset=".75" stop-color="#F2F5F6"/><stop offset="1" stop-color="#A4AEB2"/></linearGradient></defs><path d="M20 14h34l13 17-30 31L7 31l13-17Z" fill="url(#gemA)" fill-opacity=".82" stroke="url(#gemB)" stroke-width="2.2" stroke-linejoin="round"/><path d="M7 31h60M20 14l9 17 8-17 8 17 9-17M29 31l8 31 8-31" stroke="#FFFFFF" stroke-opacity=".85" stroke-width="1.4" stroke-linejoin="round"/></svg></span>
+            </div>
+            <div class="rw-cond">
+              <div class="l"><span class="chip chip-ok">符合資格</span><span>依等級核定；完成現場報到後發放。</span></div>
+              <div class="l"><span class="chip chip-tbd">待確認資格</span><span>首次參加者改領首次獎勵（取高、不相加）；2026 年參加過同樂會的 Lv.0–39 會員領 50%。是否適用以報到時系統核定為準。</span></div>
+            </div>
+          </div>
+
+          <div style="display:{{ rwGuestShow }};">
+            <div style="margin-top:12px; font-size:16px; font-weight:800; line-height:1.4;">登入查看你的到場福利</div>
+            <div style="margin-top:4px; font-size:14px; line-height:1.6; color:#3F4A63;">登入後會依你的等級顯示報到鑽石與可領項目；未登入仍可瀏覽下方公開規則。</div>
+            <button type="button" class="rw-login" sc-camel-on-click="{{ rwLogin }}">登入 SWAG 帳號</button>
+          </div>
+
+          <div style="margin-top:12px; border-top:1px solid #E4E3DC; padding-top:4px;">
+            <button type="button" class="tgl" aria-expanded="{{ expLvAria }}" sc-camel-on-click="{{ tgLv }}">查看完整等級表<svg class="car" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l4 4 4-4"/></svg></button>
+            <div class="exp" style="grid-template-rows:{{ expLvRows }};"><div>
+              <div class="lvt">
+                <sc-for list="{{ lvRows }}" as="r" hint-placeholder-count="11">
+                  <div class="r" style="background:{{ r.bg }}; border-radius:8px; padding:8px {{ r.px }}; margin:0 {{ r.mx }}; color:{{ r.fg }};"><span style="color:{{ r.fg }};">{{ r.lv }}</span><b style="color:{{ r.fg }};">{{ r.v }}</b></div>
+                </sc-for>
+              </div>
+              <div class="lvt-note">單位：鑽。2026 年參加過同樂會的 Lv.0–39 會員領 50%；Lv.40 以上領全額。首次參加者與首次獎勵取高。</div>
+            </div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 第二層｜額外福利展示 -->
+      <div class="st" style="margin-top:28px;"><div class="eyebrow">EXTRA</div><div style="margin-top:6px; font-size:19px; font-weight:800;">額外福利</div></div>
+      <div class="rw-grid st">
+
+        <div class="rw-card">
+          <div class="t"><span class="nm">A・首次參加</span><span class="chip chip-tbd">待確認</span></div>
+          <div class="v">4,666<small>鑽</small></div>
+          <div class="v2">加入 LINE@ 且符合條件，最高 <b class="mono">6,666</b> 鑽</div>
+          <div class="must">與報到鑽石取高，不相加。</div>
+          <div class="chips"><span class="chip chip-tbd">LINE 加碼須符合條件</span></div>
+          <button type="button" class="tgl" aria-expanded="{{ expFirstAria }}" sc-camel-on-click="{{ tgFirst }}">首次參加的完整定義<svg class="car" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l4 4 4-4"/></svg></button>
+          <div class="exp" style="grid-template-rows:{{ expFirstRows }};"><div><div class="note">首次＝2026 年未在任何同樂會（3／5／7／9 月）完成報到；只參加過女神聚會也算首次。LINE 加碼 2,000 限本次新加入 LINE@ 者，之前加過不可重複領。是否為首次由系統依報到紀錄核定。</div></div></div>
+        </div>
+
+        <div class="rw-card">
+          <div class="t"><span class="nm">B・遠道而來的加碼</span><span class="chip chip-tbd">需符合資格</span></div>
+          <div class="v">3,000–10,000<small>鑽</small></div>
+          <div class="v2">依出發縣市分四級加碼</div>
+          <div class="chips"><span class="chip chip-draw">限量 15 名</span><span class="chip chip-tbd">依縣市核定</span></div>
+          <button type="button" class="tgl" aria-expanded="{{ expCountyAria }}" sc-camel-on-click="{{ tgCounty }}">查看適用縣市<svg class="car" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l4 4 4-4"/></svg></button>
+          <div class="exp" style="grid-template-rows:{{ expCountyRows }};"><div>
+            <div class="ct-list">
+              <div class="r"><b>3,000</b><span>基隆市・桃園市・新竹市・新竹縣・苗栗縣・宜蘭縣</span></div>
+              <div class="r"><b>5,000</b><span>台中市・南投縣・彰化縣・花蓮縣</span></div>
+              <div class="r"><b>8,000</b><span>雲林縣・嘉義市・嘉義縣・台南市・高雄市・屏東縣（含墾丁、小琉球）・台東縣（含綠島、蘭嶼）</span></div>
+              <div class="r"><b>10,000</b><span>澎湖縣・金門縣・連江縣</span></div>
+            </div>
+            <div class="note">選擇所在地不等於通過資格審核；名額與資格以報名時系統核定為準。</div>
+          </div></div>
+        </div>
+
+        <div class="rw-card half">
+          <div class="t"><span class="nm">C・會員贈券</span><span class="chip" style="background:{{ cpBg }}; color:{{ cpFg }};">{{ cpChip }}</span></div>
+          <div class="tix obj"><span>COUPON ×1</span><span>COUPON ×1</span></div>
+          <div class="must">Lv.30+ 贈 1 張<br>Lv.50+ 再贈 1 張（共 2 張）</div>
+          <div class="note">心動券（1,888 鑽）／互動券（3,000 鑽）／鐵粉券（5,000 鑽）任選；簽名套票購買者同享共 2 張。到場報到後發放。</div>
+        </div>
+
+        <div class="rw-card half">
+          <div class="t"><span class="nm">D・高等級徽章</span><span class="chip" style="background:{{ bdBg }}; color:{{ bdFg }};">{{ bdChip }}</span></div>
+          <div class="bdg obj"><span>11.21<br>BADGE</span></div>
+          <div class="must">Lv.70+ 符合資格可獲得<br>線下活動專用動態徽章</div>
+          <div class="chips"><span class="chip chip-draw">抽選機會</span><span style="font-size:13px; color:#3F4A63; align-self:center;">另抽訂製動態徽章乙次</span></div>
+          <div class="note">簽名套票購買者同享。徽章設計細節待定。</div>
+        </div>
+      </div>
+
+      <!-- 第三層｜現場參與獎勵 -->
+      <div class="rw-live st">
+        <div class="eyebrow">ON-SITE</div>
+        <div class="h3">現場參與獎勵</div>
+        <div class="items">
+          <div class="it"><span class="k">動物任務</span><span class="v"><small>總獎池</small>50,000 鑽</span><span class="n"><span class="chip chip-task">需完成任務</span>　依線上測驗結果領任務紙，服務台核驗後入帳。每人數量與兌換時限待公布，非每人 50,000。</span></div>
+          <div class="it"><span class="k">抽獎</span><span class="v"><small>總獎池</small>50,000 鑽</span><span class="n"><span class="chip chip-draw">抽選機會</span>　與任務獎池分開計算；視報名人數加碼，限當天在場者。</span></div>
+          <div class="it"><span class="k">當日儲值</span><span class="v">回饋 5%</span><span class="n"><span class="chip chip-tbd">待確認</span>　細則另行公布；有儲值才發。</span></div>
+        </div>
+      </div>
+    </div>
+  </section>

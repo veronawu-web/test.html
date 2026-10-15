@@ -1,0 +1,36 @@
+import os as _os
+DIST=_os.path.join(_os.path.dirname(_os.path.abspath(__file__)),'..','dist')
+import asyncio, json, sys
+from playwright.async_api import async_playwright
+URL='file://'+_os.path.abspath(_os.path.join(DIST,'心動連線 FAN MEET v16（離線版）.html?env=mock'))
+async def main():
+    async with async_playwright() as p:
+        b=await p.chromium.launch(); pg=await b.new_page(viewport={'width':390,'height':844})
+        errs=[]; pg.on('pageerror', lambda e: errs.append(str(e)[:200]))
+        await pg.add_init_script("if(!sessionStorage.getItem('seeded')){localStorage.clear();sessionStorage.setItem('seeded','1');}")
+        await pg.goto(URL); await pg.wait_for_timeout(2000)
+        async def T(): return await pg.inner_text('body')
+        async def btn(name, exact=False):
+            l=pg.get_by_role('button', name=name, exact=exact); await l.first.wait_for(state='visible'); await l.first.click(); await pg.wait_for_timeout(500)
+        print('auth:', await pg.evaluate("OET.auth.state()"))
+        await btn('查看票種與報名')
+        await btn('登入', exact=True)
+        await pg.fill('#oet-code','123456'); await btn('進入活動', exact=True); await pg.wait_for_timeout(1500)
+        print('logged:', await pg.evaluate("OET.auth.state()"), '| products:', '合照券' in await T())
+        await pg.locator('button.fl-tier', has_text='合照券').first.click(); await pg.wait_for_timeout(300)
+        await btn('下一步：填寫資料（合照券）'); await pg.wait_for_selector('#rg-email', state='visible')
+        print('form name:', await pg.input_value('#rg-name'))
+        await pg.fill('#rg-email','a@b.co'); await pg.locator('label.fl-check', has_text='我已閱讀').locator('input').check()
+        await btn('下一步：核對訂單'); await pg.wait_for_timeout(500)
+        t=await T(); print('review:', '我的鑽石' in t, '1,000 鑽' in t, '300 鑽' in t, '先確認進入活動' in t)
+        await btn('確認進入活動', exact=True); await pg.wait_for_timeout(1500)
+        print('checked in:', await pg.evaluate("OET.mock.world().attendees && Object.keys(OET.mock.world().attendees).length"))
+        await btn('以鑽石購買 300 鑽'); await pg.wait_for_timeout(3000)
+        t=await T(); print('done:', '報名完成，現場見' in t, '| txn:', 'tb_' in t)
+        await btn('查看我的入場票券'); await pg.wait_for_timeout(1500)
+        t=await T(); print('tickets:', '我的券與鑽石' in t, '合照券' in t, '700 鑽' in t)
+        await pg.screenshot(path='oet1.png', full_page=True)
+        await pg.reload(); await pg.wait_for_timeout(2500); t=await T(); print('after reload:', 'ADMIT ONE' in t, await pg.evaluate("OET.auth.state()"))
+        print('errs', errs[:3])
+        await b.close()
+asyncio.run(main())
