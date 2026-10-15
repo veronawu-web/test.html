@@ -1,5 +1,5 @@
 # executed inside build via exec(); operates on tpl, S, rep1, sec
-mc_old=sec(134,152)
+mc_old=sec(134,153)  # 含 153 行卡片外層的 </div>；member_card.html 自帶外層
 assert tpl.count(mc_old)==1, 'member card region'
 tpl=tpl.replace(mc_old, open(S+'member_card.html',encoding='utf-8').read())
 tpl=rep1(tpl,"  renderVals() {\n", open(S+'member_methods.js',encoding='utf-8').read()+"  renderVals() {\n")

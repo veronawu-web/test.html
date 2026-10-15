@@ -4,8 +4,28 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>心動連線 FAN MEET（測試入口）</title>
-<!-- 測試入口：轉到 v16 離線版，保留 ?env=mock|test|live 等網址參數 -->
-<script>location.replace(encodeURI('dist/心動連線 FAN MEET v16（離線版）.html') + location.search + location.hash);</script>
+<!-- 測試入口：網址帶了 ?env= 就直接轉過去；沒帶就讓測試的人選模式（各模式的序號不同） -->
+<script>
+  var PAGE = encodeURI('dist/心動連線 FAN MEET v16（離線版）.html');
+  if (/[?&]env=/.test(location.search)) location.replace(PAGE + location.search + location.hash);
+</script>
+<style>
+  body { margin: 0; font: 15px/1.6 -apple-system, "PingFang TC", "Noto Sans TC", sans-serif; color: #292322; background: #E7E0FF; }
+  .wrap { max-width: 430px; margin: 0 auto; padding: 32px 16px; }
+  h1 { font-size: 20px; margin: 0 0 16px; }
+  a.card { display: block; margin: 12px 0; padding: 16px 18px; border-radius: 16px; background: #fff; border: 1px solid #E4E3DC; color: inherit; text-decoration: none; }
+  a.card b { font-size: 16px; }
+  .sub { color: #5E5653; font-size: 13px; }
+  code { font-family: "IBM Plex Mono", monospace; background: #F3F3EE; padding: 1px 6px; border-radius: 6px; }
+</style>
 </head>
-<body><a href="dist/%E5%BF%83%E5%8B%95%E9%80%A3%E7%B7%9A%20FAN%20MEET%20v16%EF%BC%88%E9%9B%A2%E7%B7%9A%E7%89%88%EF%BC%89.html">前往 FAN MEET v16</a></body>
+<body>
+<div class="wrap">
+  <h1>心動連線 FAN MEET v16・測試入口</h1>
+  <a class="card" href="?env=mock"><b>模擬後端（不連網）</b>
+    <div class="sub">用戶序號 <code>123456</code>、主播 <code>654321</code>。購買不扣真鑽，重新整理後模擬資料會清空。</div></a>
+  <a class="card" href="?env=test"><b>測試沙盒</b>
+    <div class="sub">用戶序號 <code>507210</code>、主播 <code>473335</code>。會真的記帳；伺服器只允許 localhost／127.0.0.1 等白名單網域連線。</div></a>
+</div>
+</body>
 </html>

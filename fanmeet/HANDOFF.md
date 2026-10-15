@@ -104,6 +104,7 @@ python3 tests/shot2.py           # 全頁截圖＋無殘留 {{ }}
 
 ## 7. 已知限制／坑
 
+- v16.1：`v15_patch.py` 的會員卡區段原本切到 134–152 行，漏掉 153 行外層 `</div>`，主容器提早關閉，報名／小窩／活動中心上方多出一整屏空白；已改成 134–153。
 - `componentDidUpdate(pp, ps)` 偶發 `ps` 為 undefined（原型本身），已加 `if (!ps) return;`。
 - 全頁截圖會把關閉的底部面板（translateY 105%）拍進來，不是 bug。
 - 字型 `IBM Plex Mono` 走 manifest 內嵌；中文字型是系統字。
